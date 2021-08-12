@@ -1,7 +1,7 @@
 [in russian](README.ru.md)
 
 # Downfall of Perception v0.7
-This is a game, adventure in a strange crumbling world.
+This is a game, adventure in a strange collapsing world.
 To some extent, this is an experiment with some mechanics, atmosphere, generation and linear story.
 
 Although the game is completely passable to the end, I give it version 0.7, leaving space for content edits, logic and balance improvements.
