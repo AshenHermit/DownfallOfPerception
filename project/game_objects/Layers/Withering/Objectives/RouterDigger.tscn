@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/router_digger/router_digger_phy_collision_shape.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/router_digger/router_digger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/visual_effects/NoiseMovement.cs" type="Script" id=3]
+[ext_resource path="res://src/objectives/Routers/RouterDigger.cs" type="Script" id=4]
+[ext_resource path="res://game_objects/Utils/Text3D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/WireInput.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/sounds/source_machine/source_machine_working.ogg" type="AudioStream" id=7]
+
+[node name="RouterDigger" type="StaticBody" groups=[
+"Persist",
+]]
+script = ExtResource( 4 )
+ModelPath = NodePath("Noise/router_digger")
+NoiseNodePath = NodePath("Noise")
+TextNodePath = NodePath("Noise/Text3D")
+WireInputPath = NodePath("Noise/WireInput")
+
+[node name="Noise" type="Spatial" parent="."]
+script = ExtResource( 3 )
+
+[node name="router_digger" parent="Noise" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Text3D" parent="Noise" instance=ExtResource( 5 )]
+transform = Transform( 0.485593, 0, -0.504182, 0, 0.7, 0, 0.504182, 0, 0.485593, 1.6162, 3.77713, -2.57644 )
+
+[node name="WireInput" parent="Noise" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12583, 1.89682, -4.5849 )
+visible = false
+model_path = NodePath("../../Model")
+wire_id = ""
+
+[node name="router_digger_phy_collision_shape" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_size = 10.0
+max_distance = 40.0
+bus = "world"
+
+[connection signal="wire_connected" from="Noise/WireInput" to="." method="OnWireConnected"]

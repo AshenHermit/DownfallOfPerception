@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/SceneComponents/Trigger.gd" type="Script" id=1]
+
+[node name="Trigger" type="Area"]
+transform = Transform( 0.820172, 0, 0.572119, 0, 1, 0, -0.572118, 0, 0.820173, 7.7218, 11.4891, -32.0975 )
+script = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Area_body_exited"]

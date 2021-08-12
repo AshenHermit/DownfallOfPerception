@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/objects/EnemySpawner.cs" type="Script" id=1]
+[ext_resource path="res://resources/models/layers/withering/enemy_spawners/creeping_spawner/creeping_spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Enemies/CreepingEnemy/CreepingEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/models/layers/withering/enemy_spawners/creeping_spawner/creeping_spawner_phy_collision_shape.tscn" type="PackedScene" id=4]
+
+[node name="CreepingSpawner" type="StaticBody"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+SpawnPointPath = NodePath("spawn_point")
+SpawnRate = 20.0
+SpawnChance = 0.4
+EnemyScene = ExtResource( 3 )
+
+[node name="creeping_spawner" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, 0, 0, 0 )
+
+[node name="creeping_spawner_phy_collision_shape" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, 0, 0, 0 )
+
+[node name="spawn_point" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75739, 5.52588 )

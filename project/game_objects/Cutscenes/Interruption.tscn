@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/models/cutscenes/interruption/interruption.glb" type="PackedScene" id=1]
+[ext_resource path="res://src/objects/Cutscene.cs" type="Script" id=2]
+[ext_resource path="res://resources/sounds/cutscenes/interruption.ogg" type="AudioStream" id=3]
+
+[node name="interruption" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+AudioTrack = ExtResource( 3 )
+
+[node name="CameraContainer" parent="Armature" index="0"]
+transform = Transform( 0.964333, 0.264513, 0.00973723, -0.264688, 0.96344, 0.0415156, 0.00160019, -0.0426122, 0.99909, 0.214874, 0.338576, 1.25678 )
+
+[node name="needle" parent="Armature" index="1"]
+transform = Transform( -1, -1.46885e-07, 1.59905e-09, 5.47351e-08, -0.362494, 0.931986, -1.36315e-07, 0.931986, 0.362494, 4.56186e-15, 14.407, -37.4542 )
+
+[node name="tumor_king" parent="Armature/needle" index="0"]
+transform = Transform( 1, -1.42109e-14, 2.84217e-14, 0, 0, -1, 0, 1, 0, 0, -7.027, -1 )

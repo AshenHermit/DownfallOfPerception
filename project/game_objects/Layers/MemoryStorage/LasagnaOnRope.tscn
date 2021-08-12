@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_objects/Items/Food/lasagna.tscn" type="PackedScene" id=1]
+
+[node name="Lasagna" type="Spatial"]
+
+[node name="Lasagna" parent="." instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 8
+mode = 1
+Properties = {
+"heal": 10.0,
+"usable": true
+}

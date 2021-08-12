@@ -1,0 +1,401 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://screenshot.png" type="Texture" id=2]
+[ext_resource path="res://fonts/title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://main_menu_theme.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/UI/MainMenuInfo.gd" type="Script" id=5]
+[ext_resource path="res://game_objects/UI/MainMenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/UI/LocalizedLabel.gd" type="Script" id=7]
+[ext_resource path="res://scripts/UI/LoadGameList.gd" type="Script" id=8]
+[ext_resource path="res://game_objects/UI/LoadGameButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://fonts/calibri.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scripts/SetEnvironment.gd" type="Script" id=11]
+[ext_resource path="res://materials/withering_surface.tres" type="Material" id=12]
+[ext_resource path="res://resources/models/layers/begining/begining_world_geometry.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_objects/Layers/Withering/Light/StreetLight.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.obj" type="ArrayMesh" id=15]
+[ext_resource path="res://src/generation/DecorationsSpawner.cs" type="Script" id=16]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.png" type="Texture" id=17]
+[ext_resource path="res://src/visual_effects/NoiseMovement.cs" type="Script" id=18]
+[ext_resource path="res://resources/ui/title.png" type="Texture" id=19]
+[ext_resource path="res://game_objects/Layers/Withering/withering_environment.tres" type="Environment" id=20]
+[ext_resource path="res://game_objects/WorldEnvironment.tscn" type="PackedScene" id=21]
+[ext_resource path="res://resources/ui/boot_splash.png" type="Texture" id=22]
+[ext_resource path="res://scripts/UI/FadeAndFree.gd" type="Script" id=23]
+[ext_resource path="res://resources/sounds/ambience/main_menu_ambience.ogg" type="AudioStream" id=24]
+[ext_resource path="res://game_objects/GenerationManager.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scripts/UI/MainMenuScreenFade.gd" type="Script" id=26]
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+background_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+ambient_light_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+ambient_light_energy = 2.0
+fog_enabled = true
+fog_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 0.0
+fog_depth_end = 80.0
+fog_depth_curve = 0.353553
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 0.5
+ssao_radius2 = 10.0
+ssao_quality = 0
+glow_enabled = true
+glow_intensity = 1.15
+glow_strength = 0.7
+glow_bloom = 1.0
+glow_blend_mode = 1
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="scene" type="Spatial"]
+script = ExtResource( 11 )
+environment = ExtResource( 20 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.173635, 0.18987, 0.966333, 0.241636, 0.943029, -0.228709, -0.954706, 0.273212, 0.117863, -0.485359, -0.213012, 0.246227 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 21 )]
+environment = SubResource( 3 )
+
+[node name="begining_world_geometry" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0871, 5.64472 )
+material_override = ExtResource( 12 )
+material/0 = null
+
+[node name="Node" type="Node" parent="begining_world_geometry"]
+script = ExtResource( 16 )
+MeshInstancePath = NodePath("..")
+Decorations = [ {
+"density": 0.02,
+"material": SubResource( 2 ),
+"mesh": ExtResource( 15 )
+} ]
+
+[node name="GenerationManager" parent="." instance=ExtResource( 25 )]
+VoxelLODTerrainPath = NodePath("")
+VoxelViewerPath = NodePath("")
+AmbienceStream = ExtResource( 24 )
+
+[node name="MainMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/MarginContainer"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/separation = 4
+alignment = 1
+
+[node name="Title" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+margin_top = 178.0
+margin_right = 43.0
+margin_bottom = 278.0
+size_flags_horizontal = 0
+theme = ExtResource( 4 )
+custom_constants/margin_top = 32
+custom_constants/margin_left = 43
+custom_constants/margin_bottom = 68
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/Title"]
+visible = false
+modulate = Color( 1, 1, 1, 0.27451 )
+margin_left = 43.0
+margin_top = 14.0
+margin_right = 377.0
+margin_bottom = 49.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.360784, 0.941176, 1, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+text = "Downfall  of  Perception"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/VBoxContainer/Title"]
+margin_left = 43.0
+margin_top = 32.0
+margin_right = 43.0
+margin_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/MarginContainer/VBoxContainer/Title/Control"]
+modulate = Color( 0.666667, 0.882353, 1, 1 )
+margin_right = 243.0
+margin_bottom = 36.0
+rect_scale = Vector2( 1.5, 1.5 )
+size_flags_horizontal = 0
+texture = ExtResource( 19 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+margin_top = 282.0
+margin_right = 96.0
+margin_bottom = 314.0
+size_flags_horizontal = 0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 0
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/VBoxContainer/Title2"]
+margin_left = 80.0
+margin_right = 80.0
+
+[node name="MainMenuButton2" parent="MainMenu/MarginContainer/VBoxContainer/Title2/Control" instance=ExtResource( 6 )]
+margin_left = 0.0
+margin_right = 74.0
+
+[node name="Title3" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+margin_top = 318.0
+margin_right = 96.0
+margin_bottom = 350.0
+size_flags_horizontal = 0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 0
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/VBoxContainer/Title3"]
+margin_left = 80.0
+margin_right = 80.0
+
+[node name="MainMenuButton" parent="MainMenu/MarginContainer/VBoxContainer/Title3/Control" instance=ExtResource( 6 )]
+margin_left = 0.0
+margin_right = 85.0
+text = "New game"
+button_type = 1
+screen_fade_path = NodePath("../../../../../FadeScreen")
+
+[node name="Title4" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+margin_top = 354.0
+margin_right = 96.0
+margin_bottom = 386.0
+size_flags_horizontal = 0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 0
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/VBoxContainer/Title4"]
+margin_left = 80.0
+margin_right = 80.0
+
+[node name="MainMenuButton2" parent="MainMenu/MarginContainer/VBoxContainer/Title4/Control" instance=ExtResource( 6 )]
+margin_left = 0.0
+margin_right = 68.0
+text = "Settings"
+button_type = 2
+
+[node name="Title5" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+margin_top = 390.0
+margin_right = 96.0
+margin_bottom = 422.0
+size_flags_horizontal = 0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 0
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/VBoxContainer/Title5"]
+margin_left = 80.0
+margin_right = 80.0
+
+[node name="MainMenuButton2" parent="MainMenu/MarginContainer/VBoxContainer/Title5/Control" instance=ExtResource( 6 )]
+margin_left = 0.0
+margin_right = 40.0
+text = "Exit"
+button_type = 3
+
+[node name="Control" type="Control" parent="MainMenu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/Control"]
+modulate = Color( 1, 1, 1, 0.254902 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1020.0
+margin_top = -132.0
+mouse_filter = 2
+size_flags_horizontal = 10
+size_flags_vertical = 9
+custom_constants/margin_right = 16
+custom_constants/margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainMenu/Control/MarginContainer"]
+margin_left = 1004.0
+margin_top = 100.0
+margin_right = 1004.0
+margin_bottom = 116.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource( 4 )
+align = 2
+valign = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="MainMenu"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/Control2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -577.0
+margin_top = -300.0
+margin_bottom = 300.0
+custom_constants/margin_right = 53
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Control2/MarginContainer"]
+margin_left = 414.0
+margin_right = 524.0
+margin_bottom = 600.0
+size_flags_horizontal = 10
+alignment = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_scene = ExtResource( 9 )
+
+[node name="LoadGameTitle" type="MarginContainer" parent="MainMenu/Control2/MarginContainer/VBoxContainer"]
+margin_top = 282.0
+margin_right = 110.0
+margin_bottom = 318.0
+size_flags_horizontal = 8
+custom_constants/margin_right = 16
+custom_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="MainMenu/Control2/MarginContainer/VBoxContainer/LoadGameTitle"]
+modulate = Color( 1, 1, 1, 0.737255 )
+margin_right = 94.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
+text = "Load Game"
+script = ExtResource( 7 )
+string_id = "main_menu_label.LOAD_GAME"
+
+[node name="LoadGameButton" parent="MainMenu/Control2/MarginContainer/VBoxContainer" instance=ExtResource( 9 )]
+visible = false
+margin_left = 0.0
+margin_top = 304.0
+margin_right = 110.0
+margin_bottom = 336.0
+text = "DEBUG"
+game_save = "_debug_load_test.voxel_test"
+
+[node name="BootScreen" type="MarginContainer" parent="MainMenu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+if_game_not_booted = true
+
+[node name="Panel" type="Panel" parent="MainMenu/BootScreen"]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/BootScreen"]
+margin_left = 401.0
+margin_top = 172.0
+margin_right = 622.0
+margin_bottom = 428.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 22 )
+
+[node name="FadeScreen" type="Panel" parent="MainMenu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 26 )
+
+[node name="street_light" parent="." instance=ExtResource( 14 )]
+transform = Transform( 0.685028, 0.523428, -0.506715, -0.0377823, -0.669082, -0.742228, -0.727536, 0.527592, -0.438563, -8.90385, 5.86156, -4.84812 )

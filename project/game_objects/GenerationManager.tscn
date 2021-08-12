@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/generation/GenerationManager.cs" type="Script" id=1]
+
+[node name="GenerationManager" type="Node"]
+script = ExtResource( 1 )
+VoxelLODTerrainPath = NodePath("../VoxelTerrain")
+VoxelViewerPath = NodePath("VoxelViewer")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="."]
+view_distance = 2048
+requires_collisions = true
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
+bus = "world"

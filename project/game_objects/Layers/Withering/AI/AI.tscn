@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/AI/AI_phy_collision_shape.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/AI/AIPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/WireOutput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/models/layers/withering/AI/AI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/npc/characters/AI/AI.cs" type="Script" id=5]
+[ext_resource path="res://game_objects/Layers/Withering/AI/AIDestroyControl.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/SceneComponents/IfObjectiveAchieved.gd" type="Script" id=7]
+[ext_resource path="res://scripts/SceneComponents/RegisterNode.gd" type="Script" id=8]
+[ext_resource path="res://resources/models/layers/withering/AI/AIHand.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/sounds/monologues/ai/breath.mp3" type="AudioStream" id=10]
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 6.48564, 12.3784, 8.09632 )
+
+[node name="AI" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.115, 0 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+MaxHealth = 100.0
+VisualNodePath = NodePath("AI")
+CollisionShapePath = NodePath("AI_phy_collision_shape")
+npcId = "ai"
+SpawnPointPath = NodePath("SpawnPoint")
+monologues = {
+"activate_memory_storage": [ {
+"action": "ai_activate_memory_storage"
+}, {
+} ],
+"come_with_me": [ {
+"stun_player": true
+}, {
+"action": "start_last_order"
+}, {
+} ],
+"found_a_fault": [ {
+}, {
+} ],
+"ill_1": [ {
+} ],
+"ill_2": [ {
+}, {
+}, {
+}, {
+} ],
+"lack_of_power": [ {
+} ],
+"looks_horrible": [ {
+}, {
+}, {
+}, {
+}, {
+"objective": "talked_about_looks_horrible"
+} ],
+"need_router_calibration": [ {
+}, {
+}, {
+}, {
+}, {
+}, {
+"action": "ai_unfold_wires"
+}, {
+}, {
+"objective": "unfolded_wires",
+"spawn": "res://game_objects/Layers/Withering/Objectives/RouterControllerItem.tscn"
+} ]
+}
+WireOutputScene = ExtResource( 3 )
+
+[node name="AI" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="AIPanel" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="AIHand" parent="." instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="AI_phy_collision_shape" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.277, 0.776231 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.55066 )
+shape = SubResource( 7 )
+
+[node name="SpawnPoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.8995, 0 )
+
+[node name="if_destroy_stage_1_passed" type="Spatial" parent="."]
+script = ExtResource( 7 )
+objective_id = "destroy_stage_1_passed"
+
+[node name="register_to_AIDestroyControl" type="Spatial" parent="if_destroy_stage_1_passed"]
+script = ExtResource( 8 )
+key = "AIDestroyControl"
+
+[node name="AI_destroy_control_static_body" parent="if_destroy_stage_1_passed/register_to_AIDestroyControl" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.471, 0.289325 )
+
+[node name="if _not_last_order_started" type="Spatial" parent="if_destroy_stage_1_passed"]
+script = ExtResource( 7 )
+invert = true
+objective_id = "last_order_started"
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.9628, 0 )
+stream = ExtResource( 10 )
+unit_db = 1.0
+unit_size = 30.0
+autoplay = true
+max_distance = 100.0
+bus = "world"
+
+[connection signal="body_entered" from="Area" to="." method="OnAreaBodyEntered"]

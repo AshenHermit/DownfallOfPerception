@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=1]
+[ext_resource path="res://resources/models/layers/withering/lights/street_light/street_light_item.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/models/layers/withering/lights/street_light/street_light_item_phy_collision_shape.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/Layers/Withering/Light/StreetLight.tscn" type="PackedScene" id=4]
+
+[node name="street_light_item_rigid_body" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 1 )
+ItemId = "street_light"
+Amount = 1
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 4 )
+}
+
+[node name="street_light_item" parent="." instance=ExtResource( 2 )]
+
+[node name="street_light_item_phy_collision_shape" parent="." instance=ExtResource( 3 )]

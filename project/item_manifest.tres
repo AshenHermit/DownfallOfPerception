@@ -1,0 +1,12 @@
+properties:
+	(Texture) icon
+	
+	(bool) placeable
+	(PackedScene) scene_to_place
+	(string) placeable_group
+	
+	(bool) weapon
+	(float) fire_speed
+	(PackedScene) weapon_scene
+	(string) ammo_item_id
+	

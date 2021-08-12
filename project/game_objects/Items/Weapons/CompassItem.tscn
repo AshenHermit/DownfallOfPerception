@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/models/weapons/compass/compass.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/weapons/compass/compass_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Weapons/Compass.tscn" type="PackedScene" id=4]
+
+[node name="compass_item" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 3 )
+ItemId = "compass"
+Amount = 1
+Properties = {
+"mode": 0,
+"weapon": true,
+"weapon_scene": ExtResource( 4 )
+}
+
+[node name="compass" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="compass_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )

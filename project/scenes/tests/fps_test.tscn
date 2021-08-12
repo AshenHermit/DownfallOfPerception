@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://prototyping/TestGeometry/TestStaticCube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Enemies/Spawners/CreepingSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/VfxManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/UI/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/Enemies/Spawners/FlyingSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_objects/Items/Weapons/DroneGunItem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_objects/Weapons/DroneGun.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_objects/Items/Weapons/MobileTurretItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/Weapons/MobileTurret.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/Triggers/LoadScene.gd" type="Script" id=13]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 6.16019, 2.37196, 6.28275 )
+
+[node name="scene" type="Spatial"]
+
+[node name="PlayerInventory" parent="." instance=ExtResource( 7 )]
+
+[node name="VfxManager" parent="." instance=ExtResource( 4 )]
+
+[node name="NpcManager" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.418649, 1.18168, 0 )
+
+[node name="TestStaticCube" parent="." instance=ExtResource( 1 )]
+transform = Transform( 62.6006, 0, 0, 0, 1, 0, 0, 0, 69.4912, -10.7404, -0.525901, -8.21009 )
+
+[node name="TestStaticCube3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 9.79743, 0, 0, 0, 0.944428, -12.0127, 0, 0.328718, 34.5134, -1.94246, 0.873238, -8.19326 )
+
+[node name="TestStaticCube4" parent="." instance=ExtResource( 1 )]
+transform = Transform( -2.53576, -0.963343, 1.32034, 9.46359, -0.258127, 0.353785, 0, 0.136344, 34.8019, 6.53158, 5.38404, 3.78991 )
+
+[node name="TestStaticCube2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 5.84202, 0.567648, 10.6174, 0, -0.707107, 13.2258, 7.86514, -0.421634, -7.88629, 2.28883, 3.81458, -17.0956 )
+
+[node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="CreepingSpawner" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4878, 0.474128, -46.6855 )
+SpawnRate = 0.3
+SpawnChance = 1.0
+
+[node name="CreepingSpawner2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7335, 0.474128, -46.6855 )
+SpawnRate = 0.3
+SpawnChance = 1.0
+
+[node name="FlyingSpawner" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6947, -0.0322647, -43.1318 )
+SpawnRate = 0.3
+SpawnChance = 0.0
+
+[node name="FlyingSpawner2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.476, -0.0322647, -43.1318 )
+SpawnRate = 0.3
+SpawnChance = 0.0
+
+[node name="drone_gun" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0143, 7.40462, 18.4598 )
+Amount = 64
+Properties = {
+"damage": 0.25,
+"fire_speed": 0.1,
+"weapon": true,
+"weapon_scene": ExtResource( 10 )
+}
+
+[node name="mobile_turret_rigid_body" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5388, 6.21452, 11.1074 )
+Amount = 64
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 12 )
+}
+
+[node name="GoToWithering" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6797, 15.2929, 48.0262 )
+script = ExtResource( 13 )
+scene_name = "Withering"
+spawn_point_id = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="GoToWithering"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426003, -12.8451, 0 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="GoToWithering" to="GoToWithering" method="_on_Area_body_entered"]

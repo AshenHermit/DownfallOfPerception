@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/fabricator/fabricator.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/fabricator/fabricator_old_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Consuming/Fabricator.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Utils/Text3D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/sounds/fabricator/fabricator_working.ogg" type="AudioStream" id=5]
+
+[node name="fabricator_static_body" type="StaticBody"]
+script = ExtResource( 3 )
+NeedItemsCount = {
+"lasagna": 2,
+"piston": 1
+}
+Text3DPath = NodePath("Text3D")
+ModelPath = NodePath("fabricator")
+ResultSpawnPointPath = NodePath("ResultSpawnPoint")
+
+[node name="fabricator" parent="." instance=ExtResource( 1 )]
+
+[node name="fabricator_old_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+
+[node name="ResultSpawnPoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.668983, 0 )
+
+[node name="Text3D" parent="." instance=ExtResource( 4 )]
+transform = Transform( -2.8213e-07, 0, -1, 0, 1, 0, 1, 0, -2.8213e-07, 1.62224, 0.953034, -0.00555408 )
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 1.0
+unit_size = 6.0
+bus = "world"

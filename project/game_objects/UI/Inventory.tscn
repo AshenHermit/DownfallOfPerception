@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/ui/inventory/Inventory.cs" type="Script" id=2]
+[ext_resource path="res://resources/ui/item_cell_background.png" type="Texture" id=3]
+[ext_resource path="res://ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://game_objects/UI/Item.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.772549, 0.772549, 0.772549, 1 )
+
+[sub_resource type="Theme" id=2]
+MarginContainer/styles/MarginContainer = SubResource( 1 )
+
+[node name="Inventory" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+UIItemPackedScene = ExtResource( 5 )
+ItemsContainerNodePath = NodePath("VSplitContainer/MarginContainer2/ItemsContainer")
+NameLabelNodePath = NodePath("VSplitContainer/MarginContainer/MarginContainer/VBoxContainer/NameLabel")
+DescriptionLabelNodePath = NodePath("VSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/DescriptionText")
+
+[node name="VSplitContainer" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VSplitContainer"]
+margin_right = 64.0
+margin_bottom = 560.0
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/MarginContainer2"]
+modulate = Color( 1, 1, 1, 0.843137 )
+margin_right = 64.0
+margin_bottom = 560.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="ItemsContainer" type="GridContainer" parent="VSplitContainer/MarginContainer2"]
+margin_right = 64.0
+margin_bottom = 560.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer"]
+margin_left = 68.0
+margin_right = 984.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme = SubResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/MarginContainer"]
+margin_right = 916.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/MarginContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 916.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="VSplitContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_right = 908.0
+margin_bottom = 16.0
+theme = ExtResource( 4 )
+text = "Item Name x10"
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 908.0
+margin_bottom = 552.0
+size_flags_vertical = 3
+custom_constants/margin_top = 13
+
+[node name="DescriptionText" type="RichTextLabel" parent="VSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+margin_top = 13.0
+margin_right = 908.0
+margin_bottom = 532.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_colors/default_color = Color( 1, 1, 1, 0.509804 )
+text = "Item Description
+Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description
+Item Description
+Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description
+Item Description
+Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description Long Long Description"

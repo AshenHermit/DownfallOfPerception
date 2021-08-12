@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://prototyping/TestGeometry/TestStaticCube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/VfxManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/WorldEnvironment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/Enemies/FlyingEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/Enemies/Spawners/FlyingSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_objects/UI/UI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_objects/Items/Weapons/DroneGunItem.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_objects/Items/Weapons/MobileTurretItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/Weapons/MobileTurret.tscn" type="PackedScene" id=12]
+
+[node name="scene" type="Spatial"]
+
+[node name="VfxManager" parent="." instance=ExtResource( 2 )]
+
+[node name="PlayerInventory" parent="." instance=ExtResource( 6 )]
+
+[node name="NpcManager" parent="." instance=ExtResource( 5 )]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 4 )]
+
+[node name="TestStaticCube" parent="." instance=ExtResource( 1 )]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01058, 0 )
+
+[node name="TestStaticCube2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20728, 1.86871, 12.6112 )
+
+[node name="TestStaticCube3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0366, 1.86871, -0.0217981 )
+
+[node name="TestStaticCube4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78072, 1.86871, 3.29022 )
+
+[node name="TestStaticCube5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8008, 1.86871, -30.407 )
+
+[node name="TestStaticCube6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5844, 1.86871, -46.6752 )
+
+[node name="TestStaticCube7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0201, 1.86871, 11.6559 )
+
+[node name="TestStaticCube8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1409, 1.86871, 30.7695 )
+
+[node name="FlyingSpawner" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73612, 1.02056, -12.5729 )
+SpawnRate = 5.0
+SpawnChance = 0.6
+
+[node name="FlyingEnemy" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 0.999936, -0.0113269, 0, 0.0113269, 0.999936, -1.64603, 9.34798, -7.6931 )
+ItemsToDrop = [ {
+"amount": 1,
+"chance": 1.0,
+"scene": ExtResource( 10 )
+} ]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.7012, 0 )
+omni_range = 71.0
+
+[node name="UI" parent="." instance=ExtResource( 9 )]
+
+[node name="mobile_turret_rigid_body" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2517, 3.65546, -6.35349 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 12 )
+}
+
+[node name="mobile_turret_rigid_body2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5605, 4.15769, -3.32162 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 12 )
+}
+
+[node name="mobile_turret_rigid_body3" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3801, 3.12443, -3.79745 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 12 )
+}

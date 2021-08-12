@@ -1,0 +1,453 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://game_objects/GenerationManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Layers/MemoryStorage/Fungus/Fungus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/Layers/Begining/StationDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/models/layers/begining/begining_world_geometry.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/VfxManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://materials/withering_surface.tres" type="Material" id=8]
+[ext_resource path="res://resources/models/layers/begining/begining_world_geometry_phy_collision_shape.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/generation/DecorationsSpawner.cs" type="Script" id=10]
+[ext_resource path="res://game_objects/Layers/Withering/Light/StreetLight.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/Layers/MemoryStorage/StickLamp.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/Items/Weapons/RifleItem.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_objects/Weapons/Rifle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_2.obj" type="ArrayMesh" id=15]
+[ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_2.png" type="Texture" id=18]
+[ext_resource path="res://game_objects/Items/Light/StreetLightItem.tscn" type="PackedScene" id=19]
+[ext_resource path="res://game_objects/Items/Food/lasagna.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scripts/Triggers/StartScreenFade.gd" type="Script" id=21]
+[ext_resource path="res://scripts/Triggers/LoadScene.gd" type="Script" id=22]
+[ext_resource path="res://game_objects/Layers/Withering/withering_environment.tres" type="Environment" id=23]
+[ext_resource path="res://scripts/SetEnvironment.gd" type="Script" id=24]
+[ext_resource path="res://scripts/SceneComponents/IfObjectiveAchieved.gd" type="Script" id=25]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/Begining/BeginingLayerProfile.tres" type="Resource" id=26]
+[ext_resource path="res://resources/models/layers/withering/decorations/trash_pipe/trash_pipe_static_body.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scripts/SceneComponents/PlayerSpawnPoint.gd" type="Script" id=28]
+[ext_resource path="res://game_objects/Containers/container_usable.tscn" type="PackedScene" id=29]
+[ext_resource path="res://game_objects/Layers/MemoryStorage/CrateContainer.tscn" type="PackedScene" id=30]
+[ext_resource path="res://game_objects/Layers/Withering/TumorKing/TumorKing.tscn" type="PackedScene" id=31]
+[ext_resource path="res://game_objects/Layers/Teleporter.tscn" type="PackedScene" id=32]
+[ext_resource path="res://game_objects/Layers/Withering/Fabricator.tscn" type="PackedScene" id=33]
+[ext_resource path="res://materials/begining_surface.tres" type="Material" id=34]
+[ext_resource path="res://resources/sounds/ambience/withering_ambience.ogg" type="AudioStream" id=35]
+[ext_resource path="res://scripts/SceneComponents/DebugContainer.gd" type="Script" id=36]
+[ext_resource path="res://scripts/SceneComponents/RegisterNode.gd" type="Script" id=37]
+[ext_resource path="res://game_objects/Layers/Corpse.tscn" type="PackedScene" id=38]
+[ext_resource path="res://game_objects/Items/Weapons/DroneGunItem.tscn" type="PackedScene" id=40]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/surface_instance_generator.tres" type="VoxelInstanceGenerator" id=41]
+[ext_resource path="res://scripts/SceneComponents/Trigger.gd" type="Script" id=42]
+[ext_resource path="res://game_objects/Items/Objectives/RouterDiggerItem.tscn" type="PackedScene" id=44]
+[ext_resource path="res://resources/models/layers/begining/station/station_static_body.tscn" type="PackedScene" id=45]
+[ext_resource path="res://game_objects/Items/Weapons/MobileTurretItem.tscn" type="PackedScene" id=48]
+[ext_resource path="res://game_objects/Trigger.tscn" type="PackedScene" id=51]
+
+[sub_resource type="VoxelMesherTransvoxel" id=24]
+
+[sub_resource type="ArrayMesh" id=26]
+
+[sub_resource type="VoxelInstanceLibraryItem" id=4]
+name = "spawn_point"
+generator = ExtResource( 41 )
+persistent = true
+mesh = SubResource( 26 )
+cast_shadow = 0
+collision_layer = 0
+collision_mask = 0
+
+[sub_resource type="FastNoiseLite" id=8]
+seed = 10
+
+[sub_resource type="VoxelInstanceGenerator" id=27]
+density = 0.01
+emit_mode = 1
+min_scale = 0.5
+max_scale = 0.5
+vertical_alignment = 0.0
+noise = SubResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=31]
+albedo_texture = ExtResource( 18 )
+
+[sub_resource type="VoxelInstanceLibraryItem" id=32]
+name = "decoration"
+generator = SubResource( 27 )
+persistent = true
+mesh = ExtResource( 15 )
+material_override = SubResource( 31 )
+
+[sub_resource type="GDScript" id=23]
+
+[sub_resource type="VoxelInstanceLibrary" id=29]
+item_1 = SubResource( 4 )
+item_2 = SubResource( 32 )
+script = SubResource( 23 )
+
+[sub_resource type="BoxShape" id=33]
+extents = Vector3( 36.6786, 23.4545, 1 )
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 1, 7.64846, 6.93712 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 18 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 6.16019, 38.5668, 6.28275 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 6.16019, 2.37196, 6.28275 )
+
+[node name="scene" type="Spatial"]
+script = ExtResource( 24 )
+environment = ExtResource( 23 )
+
+[node name="PlayerInventory" parent="." instance=ExtResource( 16 )]
+
+[node name="NpcManager" parent="." instance=ExtResource( 17 )]
+
+[node name="VfxManager" parent="." instance=ExtResource( 7 )]
+
+[node name="GenerationManager" parent="." instance=ExtResource( 1 )]
+VoxelViewerStartPosition = Vector3( 64.523, 69.128, 112.785 )
+CurrentGenerationProfile = ExtResource( 26 )
+AmbienceStream = ExtResource( 35 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.347017, 0, 0.937859, 0, 1, 0, -0.937859, 0, 0.347017, -11.6211, 7.19795, 7.73389 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="VoxelTerrain" type="VoxelLodTerrain" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 61.0756, 69.1282, 112.785 )
+mesher = SubResource( 24 )
+view_distance = 2048
+lod_count = 8
+lod_distance = 28.0
+material = ExtResource( 34 )
+collision_layer = 3
+collision_mask = 3
+collision_lod_count = 1
+run_stream_in_editor = false
+
+[node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
+library = SubResource( 29 )
+
+[node name="game_objects" type="Spatial" parent="."]
+
+[node name="Station" type="Spatial" parent="game_objects"]
+transform = Transform( -0.341587, 0, 2.98049, 0, 3, 0, -2.98049, 0, -0.341587, 1.76009, 3.25247, 14.0738 )
+
+[node name="fabricator_static_body" parent="game_objects/Station" instance=ExtResource( 33 )]
+transform = Transform( 0.160228, 0, 0.292298, 0, 0.333333, 0, -0.292298, 0, 0.160228, -3.98919, 0.418829, 1.57022 )
+NeedItemsCount = {
+"neuro_block": 2,
+"piston": 2
+}
+ResultItemId = "mobile_turret"
+ResultItemScene = ExtResource( 48 )
+ResultAmount = 1
+
+[node name="fabricator_static_body2" parent="game_objects/Station" instance=ExtResource( 33 )]
+transform = Transform( 0.218402, 0, 0.251818, 0, 0.333334, 0, -0.251818, 0, 0.218402, -4.06106, 2.36915, 4.16873 )
+NeedItemsCount = {
+"atomizer": 5,
+"neuro_block": 8,
+"piston": 4
+}
+ResultItemId = "router_digger"
+ResultItemScene = ExtResource( 44 )
+ResultAmount = 1
+
+[node name="fabricator_static_body4" parent="game_objects/Station" instance=ExtResource( 33 )]
+transform = Transform( -0.215072, 0, 0.254667, 0, 0.333335, 0, -0.254667, 0, -0.215072, -0.885814, 2.36916, 4.14083 )
+NeedItemsCount = {
+"atomizer": 2,
+"neuro_block": 1,
+"piston": 2
+}
+ResultItemId = "drone_gun"
+ResultItemScene = ExtResource( 40 )
+ResultAmount = 1
+
+[node name="fabricator_static_body3" parent="game_objects/Station" instance=ExtResource( 33 )]
+transform = Transform( 0.316052, 0.0856302, -0.0623735, -0.0994568, 0.307429, -0.081899, 0.0364871, 0.0962633, 0.317039, -3.26308, -0.0995615, 4.2637 )
+NeedItemsCount = {
+"atomizer": 2,
+"neuro_block": 1
+}
+ResultItemId = "street_light"
+ResultItemScene = ExtResource( 19 )
+ResultAmount = 3
+
+[node name="Corpse" parent="game_objects/Station" instance=ExtResource( 38 )]
+
+[node name="station_static_body" parent="game_objects/Station" instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 1.04308e-07, 0, 1, 0, -1.04308e-07, 0, 1, 0, 0, 0 )
+
+[node name="register_to_StationDoors" type="Spatial" parent="game_objects/Station"]
+transform = Transform( 9.68575e-08, 0, -1, 0, 1, 0, 1, 0, 9.68575e-08, -4.51282, 3.48914, -5.11567 )
+script = ExtResource( 37 )
+key = "StationDoors"
+is_array = true
+
+[node name="StationDoor" parent="game_objects/Station/register_to_StationDoors" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 9.53674e-07, -9.53674e-07, 0 )
+
+[node name="StationDoor2" parent="game_objects/Station/register_to_StationDoors" instance=ExtResource( 5 )]
+transform = Transform( -1, -1.50996e-07, 8.19564e-08, 1.50996e-07, -1, 8.74229e-08, 8.19564e-08, 8.74229e-08, 1, -9.05991e-06, -3.46841, 0 )
+
+[node name="StationDoor3" parent="game_objects/Station" instance=ExtResource( 5 )]
+transform = Transform( -0.983947, -0.177513, 0.0184084, -0.177448, 0.984121, 0.00511007, -0.0190231, 0.00176152, -0.999818, -35.5222, 23.9134, 19.5819 )
+OpenOnLayerGenerated = true
+
+[node name="StationDoor4" parent="game_objects/Station" instance=ExtResource( 5 )]
+transform = Transform( 0.983947, 0.177514, 0.0184084, 0.177448, -0.984122, 0.00511008, 0.0190231, -0.00176152, -0.999819, -34.9632, 20.5313, 19.597 )
+OpenOnLayerGenerated = true
+
+[node name="register_to_TrapDoors" type="Spatial" parent="game_objects/Station"]
+transform = Transform( 0.967259, -0.252087, -0.0294482, 0.253223, 0.966366, 0.0450138, 0.0171102, -0.050997, 0.998553, -35.5375, 23.4005, 16.4317 )
+script = ExtResource( 37 )
+key = "TrapDoors"
+is_array = true
+
+[node name="StationDoor5" parent="game_objects/Station/register_to_TrapDoors" instance=ExtResource( 5 )]
+transform = Transform( 0.993289, 0.0653013, 0.0954656, -0.0892729, 0.957631, 0.273812, -0.0735408, -0.2805, 0.957033, 0.0512199, -0.0154457, -1.24566 )
+OpenOnStart = true
+
+[node name="StationDoor6" parent="game_objects/Station/register_to_TrapDoors" instance=ExtResource( 5 )]
+transform = Transform( -0.993289, -0.065302, 0.0954656, 0.0892729, -0.957631, 0.273812, 0.0735408, 0.2805, 0.957033, -0.125191, -3.30831, -0.309021 )
+OpenOnStart = true
+
+[node name="if_last_order_started" type="Spatial" parent="game_objects"]
+transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -11.9126, 8.73723, 28.4511 )
+script = ExtResource( 25 )
+objective_id = "last_order_started"
+
+[node name="register_to_Funguses" type="Spatial" parent="game_objects/if_last_order_started"]
+script = ExtResource( 37 )
+key = "Funguses"
+is_array = true
+
+[node name="Fungus" parent="game_objects/if_last_order_started/register_to_Funguses" instance=ExtResource( 3 )]
+transform = Transform( -0.258819, -0.154751, 0.95345, 8.19564e-08, 0.987084, 0.160209, -0.965927, 0.041465, -0.255476, 24.4687, 3.11899, -44.6693 )
+monologues = {
+"": null
+}
+
+[node name="Fungus2" parent="game_objects/if_last_order_started/register_to_Funguses" instance=ExtResource( 3 )]
+transform = Transform( 0.258819, 0.124373, -0.957887, -6.79505e-08, 0.991677, 0.12876, 0.965928, -0.0333255, 0.256665, -40.9797, 31.2525, -56.9171 )
+monologues = {
+"": null
+}
+
+[node name="register_to_TumorKingNpc" type="Spatial" parent="game_objects/if_last_order_started"]
+transform = Transform( 0.984809, -4.17233e-07, 0.173648, 4.47035e-07, 1, -4.39584e-07, -0.173648, -1.04308e-07, 0.984808, 3.68572, 9.26668, -4.39491 )
+script = ExtResource( 37 )
+key = "TumorKingNpc"
+
+[node name="TumorKing" parent="game_objects/if_last_order_started/register_to_TumorKingNpc" instance=ExtResource( 31 )]
+transform = Transform( 1, 8.88178e-15, 0, -2.84217e-14, 1, 0, -1.49012e-08, -1.42109e-14, 1, 0, 0, 0 )
+MaxHealth = 30.0
+monologues = {
+"last_order": [ {
+}, {
+} ]
+}
+
+[node name="if_not_got_rifle" type="Spatial" parent="game_objects/if_last_order_started"]
+transform = Transform( 0.962311, -0.0821976, -0.259233, 0.268293, 0.131094, 0.954377, -0.0444634, -0.987956, 0.148207, 0, 0, 0 )
+script = ExtResource( 25 )
+invert = true
+objective_id = "got_rifle"
+
+[node name="rifle_rigid_body" parent="game_objects/if_last_order_started/if_not_got_rifle" instance=ExtResource( 13 )]
+transform = Transform( 1, -7.45058e-09, 3.25963e-09, 3.72529e-09, 1, 1.49012e-08, 1.62981e-08, 0, 1, 0, 0, 0 )
+mode = 1
+Properties = {
+"damage": 35.0,
+"weapon": true,
+"weapon_scene": ExtResource( 14 )
+}
+
+[node name="EscapeTrigger" parent="game_objects/if_last_order_started" instance=ExtResource( 51 )]
+transform = Transform( 0.425164, 0, 0.905121, 0, 1, 0, -0.905117, 0, 0.425165, -6.18403, 11.4891, -43.4733 )
+
+[node name="CollisionShape" type="CollisionShape" parent="game_objects/if_last_order_started/EscapeTrigger"]
+transform = Transform( 1, 0, -4.47035e-07, 0, 1, 0, 4.17233e-07, 0, 0.999997, 8.10623e-06, 4.00543e-05, -8.58307e-06 )
+shape = SubResource( 33 )
+
+[node name="TrapArea" type="Area" parent="game_objects/if_last_order_started"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.9293, 59.9683, 84.3849 )
+script = ExtResource( 42 )
+
+[node name="CollisionShape" type="CollisionShape" parent="game_objects/if_last_order_started/TrapArea"]
+shape = SubResource( 30 )
+
+[node name="KingUtilizerSpawnPoint" type="Spatial" parent="game_objects/if_last_order_started"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 10.3545, 12.5436, -12.7731 )
+script = ExtResource( 37 )
+key = "KingUtilizerSpawnPoint"
+
+[node name="crate_static_body" parent="game_objects/if_last_order_started" instance=ExtResource( 30 )]
+transform = Transform( 0.422619, 0.184701, 0.887288, 0, 0.979014, -0.203796, -0.906308, 0.0861277, 0.413749, -74.0282, -10.1068, -60.6216 )
+ScenesToSpawn = [ ExtResource( 20 ) ]
+ItemAmount = 40
+
+[node name="register_BeginingTeleporter" type="Spatial" parent="game_objects"]
+transform = Transform( 0.960094, -1.90798e-08, 0.279678, 2.77076e-08, 1, -2.68954e-08, -0.279678, 3.35713e-08, 0.960094, -3.55335, 37.3641, -0.711399 )
+script = ExtResource( 37 )
+key = "BeginingTeleporter"
+
+[node name="teleport_static_body" parent="game_objects/register_BeginingTeleporter" instance=ExtResource( 32 )]
+transform = Transform( 1, -2.25239e-08, 5.96046e-08, -2.98023e-08, 1, 3.72529e-09, 2.98023e-08, -2.45539e-08, 1, -5.00679e-06, -3.8147e-06, 5.00679e-06 )
+NeedItemsCount = {
+"lasagna": 4,
+"piston": 2
+}
+
+[node name="StickLamp" parent="game_objects" instance=ExtResource( 12 )]
+transform = Transform( 0.999971, 0, -0.00766192, 0, 1, 0, 0.00766192, 0, 0.999971, -7.41018, 3.16648, 13.9985 )
+
+[node name="StickLamp2" parent="game_objects" instance=ExtResource( 12 )]
+transform = Transform( 0.737112, -0.627478, -0.250872, 0.00584399, -0.365306, 0.930869, -0.675745, -0.687621, -0.265605, 16.4573, 20.8591, 26.8347 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1915, 27.0599, -12.2084 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="begining_world_geometry" parent="StaticBody" instance=ExtResource( 6 )]
+material_override = ExtResource( 8 )
+material/0 = null
+
+[node name="Node" type="Node" parent="StaticBody/begining_world_geometry"]
+script = ExtResource( 10 )
+MeshInstancePath = NodePath("..")
+Decorations = [ {
+"density": 0.002,
+"material": SubResource( 1 ),
+"mesh": ExtResource( 15 )
+} ]
+
+[node name="begining_world_geometry_phy_collision_shape" parent="StaticBody" instance=ExtResource( 9 )]
+visible = false
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3412, 5.37308, 17.8661 )
+script = ExtResource( 36 )
+
+[node name="street_light_item_rigid_body" parent="Spatial" instance=ExtResource( 19 )]
+transform = Transform( -0.0532596, 0, -0.998581, 0, 1, 0, 0.998581, 0, -0.0532596, 0, 0, 0 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 11 )
+}
+
+[node name="street_light_item_rigid_body2" parent="Spatial" instance=ExtResource( 19 )]
+transform = Transform( 0.90515, 0.319581, 0.280304, -0.275407, 0.943165, -0.185988, -0.323811, 0.0911498, 0.941721, 4.5171, 0.33028, -6.294 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 11 )
+}
+
+[node name="street_light_item_rigid_body3" parent="Spatial" instance=ExtResource( 19 )]
+transform = Transform( 0.00900561, 0, 0.99996, 0, 1, 0, -0.99996, 0, 0.00900561, -3.47604, 4.56584, -22.8364 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 11 )
+}
+
+[node name="street_light_item_rigid_body4" parent="Spatial" instance=ExtResource( 19 )]
+transform = Transform( -0.730913, 0, -0.682471, 0, 1, 0, 0.682471, 0, -0.730913, 4.8261, 2.83558, -14.086 )
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 11 )
+}
+
+[node name="street_light2" parent="Spatial" instance=ExtResource( 11 )]
+transform = Transform( 0.718864, 0.69418, 0.0367076, -0.173623, 0.230427, -0.957475, -0.673119, 0.681921, 0.286172, -49.5539, 33.842, -61.7334 )
+
+[node name="street_light3" parent="Spatial" instance=ExtResource( 11 )]
+transform = Transform( -0.11606, 0.829207, 0.546759, -0.220915, 0.515139, -0.828147, -0.968363, -0.216901, 0.123398, -90.8912, 33.4263, -61.7334 )
+
+[node name="ScreenFade" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8288, -12.6434, -43.4499 )
+script = ExtResource( 21 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ScreenFade"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426003, -38.2617, 0 )
+shape = SubResource( 3 )
+
+[node name="if_not_layers_destroyed" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9644, -86.9839, -43.4499 )
+script = ExtResource( 25 )
+invert = true
+objective_id = "layers_destroyed"
+
+[node name="GoToWithering" type="Area" parent="if_not_layers_destroyed"]
+script = ExtResource( 22 )
+scene_name = "Withering"
+spawn_point_id = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="if_not_layers_destroyed/GoToWithering"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426003, -12.8451, 0 )
+shape = SubResource( 2 )
+
+[node name="trash_pipe_static_body" parent="." instance=ExtResource( 27 )]
+transform = Transform( -0.5, -0.387514, 0.774488, 5.82337e-08, 0.894302, 0.447463, -0.866025, 0.223731, -0.447151, -40.0149, 50.5629, -45.5407 )
+
+[node name="trash_pipe_static_body2" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.991149, 0.126281, 0.0409393, -0.120562, 0.72718, 0.675776, 0.0555676, -0.674731, 0.735969, -63.4989, 52.8961, -49.2249 )
+
+[node name="trash_pipe_static_body3" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.728062, 0.12775, -0.673502, 0.0116154, 0.980042, 0.198451, 0.685412, -0.152308, 0.712048, -81.0023, 34.9377, -29.6708 )
+
+[node name="trash_pipe_static_body4" parent="." instance=ExtResource( 27 )]
+transform = Transform( -0.299732, 0.12775, 0.945431, -0.108236, 0.980042, -0.166741, -0.947863, -0.152308, -0.279923, -71.7284, 16.1266, -28.3869 )
+
+[node name="trash_pipe_static_body5" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.845656, 0.0466423, -0.531685, -0.0273959, 0.998654, 0.0440337, 0.533023, -0.0226714, 0.845797, -85.9639, 6.09604, -22.6474 )
+
+[node name="PlayerSpawnPoint2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84975, 36.2658, -3.33532 )
+script = ExtResource( 28 )
+local_velocity = Vector3( 0, 10, -10 )
+camera_shake_amount = 2.0
+came_from_teleporter = true
+
+[node name="PlayerSpawnPoint" type="Spatial" parent="."]
+transform = Transform( 0.559858, 0, -0.828589, 0, 1, 0, 0.828589, 0, 0.559858, 3.23055, 3.25247, 8.22913 )
+script = ExtResource( 28 )
+id = 1
+cutscene_name = "BeginingCutscene"
+
+[node name="PlayerSpawnPoint3" type="Spatial" parent="."]
+transform = Transform( -0.96165, 0, -0.274278, 0, 1, 0, 0.274278, 0, -0.96165, -12.7202, 3.25247, 16.701 )
+script = ExtResource( 28 )
+id = 2
+cutscene_name = "LastOrderCutscene"
+camera_shake_amount = 3.0
+
+[node name="container_static_body" parent="." instance=ExtResource( 29 )]
+transform = Transform( -0.56442, 0.396937, -0.72379, -4.20373e-08, 0.876802, 0.480851, 0.825488, 0.271402, -0.494885, -79.7356, 52.1196, -63.0475 )
+Exports = {
+"can_spawn_grappling_gun": false,
+"item_amount": 1,
+"item_to_check_id": "lasagna",
+"scenes_to_spawn": [ ExtResource( 20 ) ],
+"timeout": 0.5,
+"use_timeout": true
+}
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[connection signal="body_entered" from="game_objects/if_last_order_started/TrapArea" to="game_objects/if_last_order_started/TrapArea" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="game_objects/if_last_order_started/TrapArea" to="game_objects/if_last_order_started/TrapArea" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="ScreenFade" to="ScreenFade" method="_on_ScreenFade_body_entered"]
+[connection signal="body_exited" from="ScreenFade" to="ScreenFade" method="_on_ScreenFade_body_exited"]
+[connection signal="body_entered" from="if_not_layers_destroyed/GoToWithering" to="if_not_layers_destroyed/GoToWithering" method="_on_Area_body_entered"]

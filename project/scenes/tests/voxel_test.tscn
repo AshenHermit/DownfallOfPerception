@@ -1,0 +1,366 @@
+[gd_scene load_steps=55 format=2]
+
+[ext_resource path="res://game_objects/GenerationManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/Items/tracer_block.tscn" type="PackedScene" id=5]
+[ext_resource path="res://materials/withering_surface.tres" type="Material" id=6]
+[ext_resource path="res://game_objects/VfxManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://materials/object_preview_material.tres" type="Material" id=8]
+[ext_resource path="res://prototyping/TestGeometry/TestStaticCube.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/models/items/printer_detail_1.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://game_objects/Items/Weapons/DroneGunItem.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/Weapons/DroneGun.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_objects/Layers/Withering/withering_environment.tres" type="Environment" id=14]
+[ext_resource path="res://game_objects/Containers/container_usable.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://game_objects/Switches/SwitchLever.tscn" type="PackedScene" id=18]
+[ext_resource path="res://resources/models/tech/spawn_machine_static_body.tscn" type="PackedScene" id=19]
+[ext_resource path="res://game_objects/WorldEnvironment.tscn" type="PackedScene" id=20]
+[ext_resource path="res://game_objects/Building/stairs_placeable.tscn" type="PackedScene" id=21]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.png" type="Texture" id=23]
+[ext_resource path="res://game_objects/Items/Traps/spike_item.tscn" type="PackedScene" id=24]
+[ext_resource path="res://game_objects/Items/Weapons/GrapplingGunItem.tscn" type="PackedScene" id=25]
+[ext_resource path="res://game_objects/Weapons/GrapplingGun.tscn" type="PackedScene" id=26]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/Commutator.tscn" type="PackedScene" id=27]
+[ext_resource path="res://game_objects/Items/Weapons/WireEndItem.tscn" type="PackedScene" id=29]
+[ext_resource path="res://game_objects/Weapons/WireEnd.tscn" type="PackedScene" id=30]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/SourceMachine.tscn" type="PackedScene" id=31]
+[ext_resource path="res://game_objects/Items/Building/stairs_item.tscn" type="PackedScene" id=32]
+[ext_resource path="res://resources/models/items/traps/spike_item_icon.png" type="Texture" id=33]
+[ext_resource path="res://resources/models/items/tracer_block/tracer_block_icon.png" type="Texture" id=34]
+[ext_resource path="res://resources/icons/lasagna.png" type="Texture" id=35]
+[ext_resource path="res://game_objects/Items/Food/lasagna.tscn" type="PackedScene" id=36]
+[ext_resource path="res://resources/icons/stairs.png" type="Texture" id=37]
+[ext_resource path="res://scripts/SetEnvironment.gd" type="Script" id=38]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/Withering/WitheringLayerProfile.tres" type="Resource" id=39]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/surface_instance_generator.tres" type="VoxelInstanceGenerator" id=40]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.768627, 0.768627, 0.768627, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="VoxelMesherTransvoxel" id=16]
+
+[sub_resource type="ArrayMesh" id=25]
+
+[sub_resource type="VoxelInstanceLibraryItem" id=4]
+name = "spawn_point"
+generator = ExtResource( 40 )
+persistent = true
+mesh = SubResource( 25 )
+cast_shadow = 0
+collision_layer = 0
+collision_mask = 0
+
+[sub_resource type="FastNoiseLite" id=8]
+seed = 10
+period = 128.0
+
+[sub_resource type="VoxelInstanceGenerator" id=5]
+density = 0.01
+emit_mode = 1
+vertical_alignment = 0.0
+noise = SubResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 23 )
+
+[sub_resource type="VoxelInstanceLibraryItem" id=6]
+name = "decoration"
+generator = SubResource( 5 )
+persistent = true
+mesh = ExtResource( 22 )
+material_override = SubResource( 7 )
+
+[sub_resource type="GDScript" id=23]
+
+[sub_resource type="VoxelInstanceLibrary" id=24]
+item_1 = SubResource( 4 )
+item_2 = SubResource( 6 )
+script = SubResource( 23 )
+
+[sub_resource type="PlaneMesh" id=17]
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_transparent = true
+albedo_texture = ExtResource( 37 )
+
+[sub_resource type="SpatialMaterial" id=21]
+flags_transparent = true
+albedo_texture = ExtResource( 35 )
+
+[sub_resource type="SpatialMaterial" id=19]
+flags_transparent = true
+albedo_texture = ExtResource( 34 )
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_transparent = true
+albedo_texture = ExtResource( 33 )
+
+[node name="scene" type="Spatial"]
+script = ExtResource( 38 )
+environment = ExtResource( 14 )
+
+[node name="PlayerInventory" parent="." instance=ExtResource( 16 )]
+
+[node name="NpcManager" parent="." instance=ExtResource( 17 )]
+
+[node name="VfxManager" parent="." instance=ExtResource( 7 )]
+
+[node name="GenerationManager" parent="." instance=ExtResource( 1 )]
+CurrentGenerationProfile = ExtResource( 39 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.29547, 2.46719, 3.22016 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 14.0923, 0, 0, 0, 1, 0, 0, 0, 27.3539, 0, 0, 0 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0631234, 0.0620522, -0.00788647 )
+generate_lightmap = false
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 3 )
+
+[node name="StaticBody3" type="StaticBody" parent="."]
+transform = Transform( 14.0923, 0, 0, 0, 1, 0, 0, 0, 27.3539, -42.3608, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000936816, -0.00525165, 6.79621e-05 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
+shape = SubResource( 3 )
+
+[node name="tracer_block_item" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53246, 1.19475, 0.458409 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 0, 0, 0 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 0, 0, 16 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 0, 0, -16 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 0, 0, -32 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 16, 0, 0 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 16, 0, 16 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 16, 0, -16 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance12" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 16, 0, -32 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance13" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 32, 0, 0 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance14" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 32, 0, 16 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance15" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 32, 0, -16 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance16" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 10, 0, 0, 0, 0.4, 32, 0, -32 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="TestStaticCube" parent="." instance=ExtResource( 9 )]
+transform = Transform( 14.4364, 0, 0, 0, 4.88473, 0, 0, 0, 4.39164, -20.3563, 3.37742, 12.0003 )
+
+[node name="TestStaticCube4" parent="." instance=ExtResource( 9 )]
+transform = Transform( -6.68623e-08, 0, -0.271536, 0, 2.0571, 0, 6.32958, 0, -4.91145e-08, -13.9538, 4.06234, 5.68663 )
+
+[node name="TestStaticCube2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 5.19146, 0, 0, 0, 2.5616, 0, 0, 0, 4.39164, -3.90099, 3.17888, 13.2427 )
+
+[node name="TestStaticCube3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 5.19146, 0, 0, 0, 2.336, 0, 0, 0, 4.39164, 3.11635, 1.1301, 15.1497 )
+
+[node name="TestStaticCube5" parent="." instance=ExtResource( 9 )]
+transform = Transform( 5.19145, -0.00525944, 0, 0.0116884, 2.33599, 0, 0, 0, 4.39164, -5.42205, 14.9271, 3.63704 )
+
+[node name="container_static_body" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.0106114, 0, -0.999944, 0, 1, 0, 0.999944, 0, 0.0106114, -13.7133, 3.27025, 5.82163 )
+Exports = {
+"scenes_to_spawn": [ ExtResource( 32 ) ],
+"timeout": 0.5
+}
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03699, 7.35029, 5.64933 )
+light_energy = 0.62
+omni_range = 13.4955
+omni_attenuation = 1.86607
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6099, 10.4674, -16.0378 )
+light_energy = 0.62
+omni_range = 29.8
+omni_attenuation = 1.86607
+
+[node name="drone_holder_rigid_body" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47751, 2.45071, 5.0746 )
+Properties = {
+"damage": 0.25,
+"fire_speed": 0.1,
+"weapon": true,
+"weapon_scene": ExtResource( 13 )
+}
+
+[node name="switch" parent="." instance=ExtResource( 18 )]
+transform = Transform( -0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, -2.21816, 2.74966, 8.81962 )
+Exports = {
+"connection": [ NodePath("../OmniLight"), NodePath("../OmniLight3") ],
+"state": false
+}
+
+[node name="spawn_machine_static_body" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0275, 0.150303, -14.1751 )
+
+[node name="VoxelTerrain" type="VoxelLodTerrain" parent="."]
+mesher = SubResource( 16 )
+view_distance = 2048
+lod_count = 8
+lod_distance = 32.0
+material = ExtResource( 6 )
+collision_layer = 3
+collision_mask = 3
+collision_lod_count = 1
+run_stream_in_editor = false
+
+[node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
+library = SubResource( 24 )
+
+[node name="GrapplingGunItem" parent="." instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.653711, 2.25063, 5.22586 )
+Properties = {
+"ammo_item_id": "tracer_block",
+"damage": 0.25,
+"weapon": true,
+"weapon_scene": ExtResource( 26 )
+}
+
+[node name="drone_holder_rigid_body2" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33372, 2.41355, 4.31747 )
+Properties = {
+"damage": 0.25,
+"weapon": true,
+"weapon_scene": ExtResource( 30 )
+}
+
+[node name="Commutator" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.656085, 0, 0.754687, 0, 1, 0, -0.754687, 0, 0.656085, -12.6231, 0.994748, -6.20074 )
+
+[node name="SourceMachine" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65024, 5.02609, 7.59964 )
+
+[node name="stairs_static_body" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29326, 1.19475, -4.84802 )
+
+[node name="stairs_static_body2" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29326, 3.19475, -8.84802 )
+
+[node name="stairs_static_body5" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29326, 1.19475, -4.84802 )
+
+[node name="stairs_static_body6" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29326, 3.19475, -8.84802 )
+
+[node name="stairs_item" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.10317, 0.994748, 2.13663 )
+Amount = 10
+Properties = {
+"placeable": true,
+"placeable_group": "building",
+"scene_to_place": ExtResource( 21 )
+}
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -13.5734, 5.23662, 5.82987 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
+
+[node name="container_static_body4" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.999944, 0, 0.0106114, 0, 1, 0, -0.0106114, 0, 0.999944, -10.7525, 3.27025, 7.60337 )
+Exports = {
+"scenes_to_spawn": [ ExtResource( 36 ) ],
+"timeout": 0.5
+}
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( -1, -8.74228e-08, -4.37114e-08, 4.37114e-08, 1.91069e-15, -1, 8.74228e-08, -1, 1.91069e-15, -10.7443, 5.23662, 7.46347 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 21 )
+
+[node name="container_static_body2" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.0117632, 0, -0.999931, 0, 1, 0, 0.999931, 0, 0.0117632, -13.7133, 3.27025, 3.22073 )
+Exports = {
+"scenes_to_spawn": [ ExtResource( 5 ) ],
+"timeout": 0.5
+}
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -13.5734, 5.23662, 3.22897 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 19 )
+
+[node name="container_static_body3" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.0117632, 0, -0.999931, 0, 1, 0, 0.999931, 0, 0.0117632, -13.7133, 3.27025, 0.614187 )
+Exports = {
+"scenes_to_spawn": [ ExtResource( 24 ) ],
+"timeout": 0.5
+}
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -13.5734, 5.23662, 0.622423 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 20 )
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 20 )]

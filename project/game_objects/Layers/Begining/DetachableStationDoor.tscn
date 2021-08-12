@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/models/layers/begining/station/station_door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/begining/station/station_door_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Detachable/Detachable.cs" type="Script" id=3]
+
+[node name="DetachableStationDoor" type="RigidBody"]
+mode = 1
+script = ExtResource( 3 )
+
+[node name="station_door" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="station_door_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )

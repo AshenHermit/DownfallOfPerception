@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/models/items/traps/spike_item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/items/traps/spike_item_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Traps/Spike.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/models/traps/spike.material" type="Material" id=5]
+
+[node name="spike_item" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 3 )
+ItemId = "spike_trap"
+Amount = 1
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 4 )
+}
+
+[node name="spike_item" parent="." instance=ExtResource( 1 )]
+material/0 = ExtResource( 5 )
+
+[node name="spike_item_phy_collision_shape" parent="." instance=ExtResource( 2 )]

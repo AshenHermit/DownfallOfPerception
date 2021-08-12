@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/models/enemies/scavenger/scavenger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/model.gd" type="Script" id=2]
+
+[node name="scavenger" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+step_frames = [ 0.0, 0.4 ]
+
+[node name="base" parent="Armature" index="0"]
+transform = Transform( 1, 6.07557e-17, -8.47365e-18, -6.07557e-17, 0.961838, -0.273619, -8.47365e-18, 0.273619, 0.961838, 0, 0, 0 )
+
+[node name="front_leg" parent="Armature/base" index="0"]
+transform = Transform( 1, 1.7053e-13, 7.15256e-07, 7.1411e-07, -0.0565841, -0.998398, 4.04719e-08, 0.998398, -0.0565841, -2.46704e-16, -0.168778, 0.323152 )
+
+[node name="back_leg_right_0" parent="Armature/base" index="1"]
+transform = Transform( -0.30594, 0.614765, 0.726956, -0.689413, -0.669657, 0.276169, 0.65659, -0.416682, 0.628702, 0.423093, 0.592754, -0.399305 )
+
+[node name="back_leg_right_1" parent="Armature/base/back_leg_right_0" index="0"]
+transform = Transform( 0.647719, 0.737536, 0.191049, -0.761209, 0.636985, 0.121698, -0.031939, -0.224255, 0.974007, -7.11074e-08, 1.2021, -2.42423e-08 )
+
+[node name="back_leg_left_0" parent="Armature/base" index="2"]
+transform = Transform( -0.319022, -0.679546, 0.660638, 0.945045, -0.280689, 0.16764, 0.0715146, 0.677814, 0.731747, -0.395499, 0.592754, -0.399305 )
+
+[node name="back_leg_left_1" parent="Armature/base/back_leg_left_0" index="0"]
+transform = Transform( 0.625181, -0.757087, 0.189649, 0.779181, 0.619447, -0.0957245, -0.0450055, 0.207616, 0.977175, -7.37588e-08, 1.2021, 9.01051e-08 )
+
+[node name="left_weapon" parent="Armature/base" index="3"]
+transform = Transform( -0.912643, 0.00948633, -0.408648, 0.408722, 0.00784433, -0.912625, -0.00545186, -0.999924, -0.0110365, 0.576724, 0.465269, -0.00834984 )
+
+[node name="right_weapon" parent="Armature/base" index="4"]
+transform = Transform( -0.817032, -0.00190926, 0.576589, -0.576567, 0.0121608, -0.81696, -0.00545195, -0.999924, -0.0110365, -0.555344, 0.465269, -0.00834984 )

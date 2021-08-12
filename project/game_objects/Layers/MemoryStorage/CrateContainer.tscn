@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/models/layers/memory_storage/crate/crate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/memory_storage/crate/crate_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/TumorContainer.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Items/tracer_block.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/Items/Food/lasagna.tscn" type="PackedScene" id=6]
+
+[node name="crate_static_body" type="KinematicBody"]
+script = ExtResource( 3 )
+MaxHealth = 100.0
+VisualNodePath = NodePath("crate")
+CollisionShapePath = NodePath("crate_phy_collision_shape")
+ScenesToSpawn = [ ExtResource( 6 ), ExtResource( 5 ) ]
+SpawnPointPath = NodePath("SpawnPoint")
+
+[node name="crate" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="crate_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="SpawnPoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 1.26362e-05, 0, 1, 0, -1.26362e-05, 0, 1, 2.36427e-06, 3.28488, 0.659113 )

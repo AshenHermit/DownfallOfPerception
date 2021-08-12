@@ -1,0 +1,35 @@
+[gd_resource type="VoxelInstanceLibrary" load_steps=10 format=2]
+
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/surface_instance_generator.tres" type="VoxelInstanceGenerator" id=1]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decoration_1.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decoration_1.png" type="Texture" id=3]
+
+[sub_resource type="VoxelInstanceLibraryItem" id=4]
+name = "spawn_point"
+generator = ExtResource( 1 )
+persistent = true
+
+[sub_resource type="FastNoiseLite" id=8]
+seed = 10
+period = 128.0
+
+[sub_resource type="VoxelInstanceGenerator" id=5]
+density = 0.01
+emit_mode = 1
+vertical_alignment = 0.0
+noise = SubResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="VoxelInstanceLibraryItem" id=6]
+generator = SubResource( 5 )
+mesh = ExtResource( 2 )
+material_override = SubResource( 7 )
+
+[sub_resource type="GDScript" id=1]
+
+[resource]
+item_1 = SubResource( 4 )
+item_2 = SubResource( 6 )
+script = SubResource( 1 )

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/ui/inventory/Item.cs" type="Script" id=1]
+[ext_resource path="res://resources/models/items/printer_detail_1_icon.png" type="Texture" id=2]
+[ext_resource path="res://resources/ui/item_cell_background.png" type="Texture" id=3]
+[ext_resource path="res://resources/ui/item_selection.png" type="Texture" id=4]
+[ext_resource path="res://ui_theme.tres" type="Theme" id=5]
+
+[node name="Item" type="TextureRect"]
+margin_right = 64.0
+margin_bottom = 64.0
+size_flags_stretch_ratio = 0.0
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+EmptyIcon = ExtResource( 3 )
+NameLabelNodePath = NodePath("Name")
+AmountLabelNodePath = NodePath("Amount")
+SelectionNodePath = NodePath("Selection")
+
+[node name="Name" type="Label" parent="."]
+visible = false
+margin_left = 1.9966
+margin_top = 32.5209
+margin_right = 49.9966
+margin_bottom = 63.5209
+theme = ExtResource( 5 )
+text = "Item Name"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="."]
+margin_left = 11.6741
+margin_top = 30.7215
+margin_right = 59.6741
+margin_bottom = 62.7215
+theme = ExtResource( 5 )
+text = "0"
+align = 2
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selection" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="." to="." method="OnGuiInput"]

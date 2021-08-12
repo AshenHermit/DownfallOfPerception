@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://prototyping/TestGeometry/TestStaticCube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Enemies/Spawners/CreepingSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/VfxManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/UI/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_objects/Enemies/CreepingEnemy/CreepingEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_objects/Items/Objectives/Fruits/NeuroBlockItem.tscn" type="PackedScene" id=9]
+
+[node name="scene" type="Spatial"]
+
+[node name="PlayerInventory" parent="." instance=ExtResource( 7 )]
+
+[node name="VfxManager" parent="." instance=ExtResource( 4 )]
+
+[node name="NpcManager" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.418649, 1.18168, 0 )
+
+[node name="TestStaticCube" parent="." instance=ExtResource( 1 )]
+transform = Transform( 62.6006, 0, 0, 0, 1, 0, 0, 0, 69.4912, -10.7404, -0.525901, -8.21009 )
+
+[node name="TestStaticCube3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 9.79743, 0, 0, 0, 0.944428, -12.0127, 0, 0.328718, 34.5134, -1.94246, 0.873238, -8.19326 )
+
+[node name="TestStaticCube4" parent="." instance=ExtResource( 1 )]
+transform = Transform( -2.53576, -0.963343, 1.32034, 9.46359, -0.258127, 0.353785, 0, 0.136344, 34.8019, 6.53158, 5.38404, 3.78991 )
+
+[node name="TestStaticCube2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 5.84202, 0.567648, 10.6174, 0, -0.707107, 13.2258, 7.86514, -0.421634, -7.88629, 2.28883, 3.81458, -17.0956 )
+
+[node name="CreepingEnemy" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.641149, -0.0713581, 0.764091, 0.0458685, 0.997451, 0.0546637, -0.766044, 0, 0.642788, -4.189, 7.312, -1.14942 )
+ItemsToDrop = [ {
+"amount": 1,
+"chance": 0.4,
+"scene": ExtResource( 9 )
+} ]
+
+[node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="CreepingSpawner" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4878, 0.474128, -8.62351 )
+SpawnRate = 5.0
+SpawnChance = 0.0

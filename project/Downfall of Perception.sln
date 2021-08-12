@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downfall of Perception.sln", "Downfall of Perception.csproj", "{979B6653-DD80-4295-B4EB-9878234D03DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{979B6653-DD80-4295-B4EB-9878234D03DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979B6653-DD80-4295-B4EB-9878234D03DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979B6653-DD80-4295-B4EB-9878234D03DF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{979B6653-DD80-4295-B4EB-9878234D03DF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{979B6653-DD80-4295-B4EB-9878234D03DF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{979B6653-DD80-4295-B4EB-9878234D03DF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

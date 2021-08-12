@@ -1,0 +1,1103 @@
+{
+  "C:/Users/user/Dropbox/under_standing/resources/bases/person_bone.blend": {
+    "mtime": 1622572672.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/building/stairs.blend": {
+    "mtime": 1628251958.6152506
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_celing.blend": {
+    "mtime": 1622751312.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_floor.blend": {
+    "mtime": 1622751473.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_pillar.blend": {
+    "mtime": 1622751437.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_wall.blend": {
+    "mtime": 1622751399.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/ceiling.blend": {
+    "mtime": 1623700887.0032132
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/column.blend": {
+    "mtime": 1622276270.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/floor.blend": {
+    "mtime": 1622319277.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/wall.blend": {
+    "mtime": 1622208002.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/decorations/ceiling_mess.blend": {
+    "mtime": 1623939487.1482432
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/containers/container.blend": {
+    "mtime": 1628247457.0322337
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/adjuster.blend": {
+    "mtime": 1626862356.9180055
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/adjuster_2.blend": {
+    "mtime": 1626460482.9659216
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/utilizer.blend": {
+    "mtime": 1626964907.0348158
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemy_spawners/creeping_spawner.blend": {
+    "mtime": 1626370251.046456
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemy_spawners/flying_spawner.blend": {
+    "mtime": 1626368001.8632505
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/printer_details.blend": {
+    "mtime": 1623699554.1875832
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/tracer_block.blend": {
+    "mtime": 1626590209.0293531
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/traps/spike_item.blend": {
+    "mtime": 1628748613.0458097
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/commutator/commutator.blend": {
+    "mtime": 1627979889.6378686
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/source_machine/source_machine.blend": {
+    "mtime": 1627980603.6568828
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire/wire.blend": {
+    "mtime": 1626518944.8276856
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire_end/wire_end.blend": {
+    "mtime": 1626590186.52557
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/surface_decorations.blend": {
+    "mtime": 1626432772.2250724
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/almost_matter_printer.blend": {
+    "mtime": 1623699225.1792152
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/refrigerator.blend": {
+    "mtime": 1620990352.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/spawn_machine.blend": {
+    "mtime": 1623858310.3608954
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/switch.blend": {
+    "mtime": 1625423901.4367716
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/terminal.blend": {
+    "mtime": 1624179018.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/wall_panel_0.blend": {
+    "mtime": 1620990351.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/traps/spike.blend": {
+    "mtime": 1628665565.205903
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_holder.blend": {
+    "mtime": 1626022449.440759
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/sfg.blend": {
+    "mtime": 1622207975.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/grappling_gun/grappling_gun.blend": {
+    "mtime": 1628324187.5328352
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/placeholders/placeholder.blend": {
+    "mtime": 1622119276.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/icons/grappling_gun.png": {
+    "mtime": 1625812462.5438337
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/icons/lasagna.png": {
+    "mtime": 1625811557.8124528
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/icons/stairs.png": {
+    "mtime": 1625812395.483117
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/icons/wire_end.png": {
+    "mtime": 1625812500.534066
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_celing.png": {
+    "mtime": 1622366166.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_floor.png": {
+    "mtime": 1622319129.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_pillar.png": {
+    "mtime": 1622319364.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/farm/wooden_wall.png": {
+    "mtime": 1622319723.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/floor_uv.png": {
+    "mtime": 1622276310.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/traps/spike_item.png": {
+    "mtime": 1625063320.4552877
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire/wire_uv.png": {
+    "mtime": 1626453868.1691518
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire_end/wire_end_uv.png": {
+    "mtime": 1626452013.7466786
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/traps/spike.png": {
+    "mtime": 1624995222.490265
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/placeholders/placeholder.png": {
+    "mtime": 1611866583.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/withering_surface.png": {
+    "mtime": 1625504760.2660918
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/crosshair.png": {
+    "mtime": 1625742766.6208396
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/item_cell_background.png": {
+    "mtime": 1624985985.6268256
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/item_selection.png": {
+    "mtime": 1625054475.7896552
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/quick_inventory_item_placeholder.png": {
+    "mtime": 1624986088.5286345
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/building/stairs.psd": {
+    "mtime": 1626542123.875288
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/building/stairs_emission.psd": {
+    "mtime": 1626548893.716355
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/ceiling.psd": {
+    "mtime": 1622197254.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/column.psd": {
+    "mtime": 1622276228.0
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/floor.psd": {
+    "mtime": 1623614132.0076334
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/wall.psd": {
+    "mtime": 1623614146.9703894
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/decorations/ceiling_mess_0.psd": {
+    "mtime": 1623701139.1528897
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/decorations/ceiling_mess_1.psd": {
+    "mtime": 1623701647.106874
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/constructions/withering/decorations/ceiling_mess_2.psd": {
+    "mtime": 1623702443.2194295
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/containers/container.psd": {
+    "mtime": 1627981454.5518186
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/containers/container_emission.psd": {
+    "mtime": 1626538974.2591686
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/utilizer.psd": {
+    "mtime": 1626461432.9724896
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/printer_detail_0.psd": {
+    "mtime": 1623604841.375935
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/printer_detail_1.psd": {
+    "mtime": 1623604724.0398898
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/tracer_block.psd": {
+    "mtime": 1623532750.1347368
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/commutator/commutator.psd": {
+    "mtime": 1627979734.3623886
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/source_machine/source_machine.psd": {
+    "mtime": 1627980437.988446
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire/wire.psd": {
+    "mtime": 1626454270.1635816
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire/wire_emission.psd": {
+    "mtime": 1626454454.6741998
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire_end/wire_end.psd": {
+    "mtime": 1626444189.1082778
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/wire_end/wire_end_emission.psd": {
+    "mtime": 1626453735.874364
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/surface_decoration_1.psd": {
+    "mtime": 1626429719.0337155
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/tech/spawn_machine.psd": {
+    "mtime": 1623857689.7926233
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/grappling_gun/grappling_gun.psd": {
+    "mtime": 1628017903.3003092
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/particles/damage.psd": {
+    "mtime": 1626604323.0912993
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/withering/minor_surface.psd": {
+    "mtime": 1627931700.1551747
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/withering/surface.psd": {
+    "mtime": 1626861695.2107332
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/9patch_panel.psd": {
+    "mtime": 1623660714.4459865
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/active_9patch_panel.psd": {
+    "mtime": 1623670598.7587757
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/item_icon_placeholder.psd": {
+    "mtime": 1623669693.7962098
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/state.psd": {
+    "mtime": 1623532907.7963061
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/use_icon.psd": {
+    "mtime": 1626955875.0395663
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/item_selection.psd": {
+    "mtime": 1626552565.2415352
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/jar.blend": {
+    "mtime": 1626553902.677802
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/jar/jar.blend": {
+    "mtime": 1627979282.343746
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/jar/jar.psd": {
+    "mtime": 1627983506.0752468
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/jar/jar_emission.psd": {
+    "mtime": 1626592172.4668798
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/particles/damage_old.psd": {
+    "mtime": 1626603971.9276974
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/world_geometry.blend": {
+    "mtime": 1627731280.5319216
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/decoration.blend": {
+    "mtime": 1626704022.924346
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/surface_decorations/surface_decorations.blend": {
+    "mtime": 1627979474.077374
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.psd": {
+    "mtime": 1626900300.993048
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/surface_decorations/surface_decoration_2.psd": {
+    "mtime": 1627979458.1150281
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/lights/street_light/street_light.blend": {
+    "mtime": 1627980999.0482318
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/lights/street_light/street_light.psd": {
+    "mtime": 1627980957.0005744
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/lights/street_light/street_light_emission.psd": {
+    "mtime": 1626718343.0967906
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_holder/drone_holder.blend": {
+    "mtime": 1626798235.6695821
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_holder/drone_holder.psd": {
+    "mtime": 1626795688.6046474
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_holder/drone_gun.psd": {
+    "mtime": 1626797928.863687
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_gun/drone_gun.blend": {
+    "mtime": 1628261588.1044295
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_gun/drone_gun.psd": {
+    "mtime": 1628252379.5002356
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/drone_gun/drone.psd": {
+    "mtime": 1626799127.410999
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/boot_splash.psd": {
+    "mtime": 1628745884.4994512
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/title.psd": {
+    "mtime": 1626814861.0393896
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/trash_pipe/trash_pipe.blend": {
+    "mtime": 1627978998.222642
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/decorations/trash_pipe/trash_pipe.psd": {
+    "mtime": 1627978724.8705046
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/buildings/booth/booth.blend": {
+    "mtime": 1628578485.1984723
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/buildings/booth/booth.psd": {
+    "mtime": 1628578294.131854
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/piston/piston.blend": {
+    "mtime": 1628064043.675188
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/teleporter/teleporter.blend": {
+    "mtime": 1627976863.7966304
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/rope/rope.blend": {
+    "mtime": 1627938776.6659255
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/piston/piston.psd": {
+    "mtime": 1628063737.7386847
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/proxy/static_geometry/static_geometry.blend": {
+    "mtime": 1626973533.573249
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/particles.psd": {
+    "mtime": 1626961107.3621027
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fabricator/fabricator.blend": {
+    "mtime": 1628593583.153547
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/check_button.psd": {
+    "mtime": 1627053449.9758043
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/check_button_off.psd": {
+    "mtime": 1627054779.5358856
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/check_button_on.psd": {
+    "mtime": 1627054802.515361
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/enemy_spawners/creeping_spawner.blend": {
+    "mtime": 1627228939.9403207
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/enemy_spawners/creeping_spawner.psd": {
+    "mtime": 1627228913.3866403
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/teleporter/teleporter.psd": {
+    "mtime": 1627975708.0846727
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/scavenger/scavenger.blend": {
+    "mtime": 1628324544.8610556
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/scavenger/scavenger.psd": {
+    "mtime": 1628262469.8506107
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/compass/compass.blend": {
+    "mtime": 1628450324.7922702
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/compass/compass.psd": {
+    "mtime": 1628450293.46548
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/objectives/memory_card/memory_card.blend": {
+    "mtime": 1628687357.4371066
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/objectives/memory_card/memory_card.psd": {
+    "mtime": 1628687417.6626427
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/objectives/memory_card/memory_card_socket.psd": {
+    "mtime": 1628687415.3085692
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/router_digger/router_digger.blend": {
+    "mtime": 1627978520.5602014
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/router_digger/router_digger.psd": {
+    "mtime": 1627978209.3334787
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/router_controller/router_controller.blend": {
+    "mtime": 1628276452.936877
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/router_controller/router_controller.psd": {
+    "mtime": 1628262712.8953805
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/corpse/corpse.blend": {
+    "mtime": 1627983453.5510824
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/corpse/corpse.psd": {
+    "mtime": 1628017579.922853
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/station/station.blend": {
+    "mtime": 1627820930.3416884
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/station/station.psd": {
+    "mtime": 1627731933.2861974
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/AI/AI.blend": {
+    "mtime": 1627913665.9034312
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/AI/AI.psd": {
+    "mtime": 1627413332.9093182
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemy_spawners/flying_spawner/flying_spawner.blend": {
+    "mtime": 1627459981.2811847
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/terminal/terminal.blend": {
+    "mtime": 1628406286.8267527
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/tumor/tumor.blend": {
+    "mtime": 1627997421.3015506
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/turret/turret.blend": {
+    "mtime": 1627638068.426336
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/weak_door/weak_door.blend": {
+    "mtime": 1627911787.1915257
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemy_spawners/flying_spawner/flying_spawner.psd": {
+    "mtime": 1627457418.616788
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/terminal/terminal.psd": {
+    "mtime": 1627420799.3297226
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/tumor/tumor.psd": {
+    "mtime": 1628017576.2177618
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/turret/turret.psd": {
+    "mtime": 1627577220.0134292
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/weak_door/weak_door.psd": {
+    "mtime": 1627419375.5535061
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/enemy_spawners/creeping_spawner/creeping_spawner.blend": {
+    "mtime": 1627974930.7488556
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/enemy_spawners/flying_spawner/flying_spawner.blend": {
+    "mtime": 1627974710.409245
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/enemy_spawners/creeping_spawner/creeping_spawner.psd": {
+    "mtime": 1627974823.9945326
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/enemy_spawners/flying_spawner/flying_spawner.psd": {
+    "mtime": 1627974684.0475142
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/begining_cutscene/begining_cutscene.blend": {
+    "mtime": 1628693341.902278
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/fungus/fungus.blend": {
+    "mtime": 1628422859.1146991
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/turret/turret.blend": {
+    "mtime": 1628343312.1503153
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/gate/gate.blend": {
+    "mtime": 1627676650.909424
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/gate/gate.psd": {
+    "mtime": 1627671722.6252646
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/begining/station/station_door.psd": {
+    "mtime": 1627731922.905774
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/rifle/rifle.blend": {
+    "mtime": 1627760215.195731
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/rifle/rifle.psd": {
+    "mtime": 1627743982.1597536
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/tumor_king/tumor_king.blend": {
+    "mtime": 1628434601.8227012
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/last_order_cutscene/last_order_cutscene.blend": {
+    "mtime": 1628694160.3894656
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/AI/AI_destroy_control.psd": {
+    "mtime": 1627832096.3972416
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/caramel/caramel.blend": {
+    "mtime": 1627851769.4984167
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/atomizer/atomizer.blend": {
+    "mtime": 1628063709.9530306
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/neuro_block/neuro_block.blend": {
+    "mtime": 1628355345.0871463
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/atomizer/atomizer.psd": {
+    "mtime": 1628063491.8614037
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/neuro_block/neuro_block.psd": {
+    "mtime": 1627938946.0863655
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/destroyed/destroyed_world_geometry.blend": {
+    "mtime": 1627889046.280539
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/rope/rope.psd": {
+    "mtime": 1627938739.4745903
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/teleporter/teleporter_uv.png": {
+    "mtime": 1627926770.1696026
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/teleporter/teleporter.png": {
+    "mtime": 1627927538.009131
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/memory_storage/minor_surface.psd": {
+    "mtime": 1628244538.5874965
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/memory_storage/surface.psd": {
+    "mtime": 1628244552.2031238
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/rope/rope_uv.png": {
+    "mtime": 1627938617.0517898
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/tracer_block/tracer_block.blend": {
+    "mtime": 1627977987.2001803
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/tracer_block/tracer_block.psd": {
+    "mtime": 1627976894.9014332
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/tracer_block/tracer_block_emission.psd": {
+    "mtime": 1627977146.2143567
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/commutator/commutator_emission.psd": {
+    "mtime": 1627979872.0356033
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/commutation/source_machine/source_machine_emission.psd": {
+    "mtime": 1627980567.9774482
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/router_digger/router_digger_emission.psd": {
+    "mtime": 1627978480.6465943
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/teleporter/teleporter_emission.psd": {
+    "mtime": 1627976828.164893
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/tumor/tumor_emission.psd": {
+    "mtime": 1627987092.6294758
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/rumble.wav": {
+    "mtime": 1628001222.6816902
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/compass/radar_click.wav": {
+    "mtime": 1627479306.357486
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/dialogs/ai_monologue_0.wav": {
+    "mtime": 1627132273.349844
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/dialogs/ai_monologue_1.wav": {
+    "mtime": 1627132335.431611
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/creeping_enemy/attack.wav": {
+    "mtime": 1627998942.0909088
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/creeping_enemy/step_1.wav": {
+    "mtime": 1628001033.0378644
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/creeping_enemy/step_2.wav": {
+    "mtime": 1628001066.6548104
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/creeping_enemy/step_3.wav": {
+    "mtime": 1628001090.1750064
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/tumor/tumor.wav": {
+    "mtime": 1627997126.8227139
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/dialogs/ai_monologue_0.mp3": {
+    "mtime": 1627118198.2069426
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/dialogs/ai_monologue_1.mp3": {
+    "mtime": 1627118582.032451
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/human_death.mp3": {
+    "mtime": 1628082714.0816936
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/flying_enemy/voice.mp3": {
+    "mtime": 1628001387.8891423
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/grappling_gun/grappling_gun_emission.psd": {
+    "mtime": 1628020168.8165665
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/creeping_enemy/death.wav": {
+    "mtime": 1628023279.4682152
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/drone_gun/drone_gun_fire.wav": {
+    "mtime": 1628023736.0356677
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/drone_gun/drone_gun_start_firing.wav": {
+    "mtime": 1628024986.8737187
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/drone_gun/drone_gun_stop_firing.wav": {
+    "mtime": 1628024970.295313
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/atomizer/atomizer_emission.psd": {
+    "mtime": 1628063678.0333703
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/neuro_block/neuro_block_emission.psd": {
+    "mtime": 1628064148.2341588
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fruits/piston/piston_emission.psd": {
+    "mtime": 1628064031.9804366
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/particles/grappling_gun_grab_particle.psd": {
+    "mtime": 1628065134.9491043
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/particles/grappling_gun_scanner_particle.psd": {
+    "mtime": 1628065501.0276427
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/deep_rumble.mp3": {
+    "mtime": 1628067405.157479
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/elevator_shaking.mp3": {
+    "mtime": 1628069458.6486256
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/elevator_stop.mp3": {
+    "mtime": 1628068848.134053
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/withering_ambience.mp3": {
+    "mtime": 1628071230.8550413
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/grappling_gun/grappling_gun_grab.mp3": {
+    "mtime": 1628074305.9506986
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/grappling_gun/grappling_gun_hold.mp3": {
+    "mtime": 1628074547.786156
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/grappling_gun/grappling_gun_release.mp3": {
+    "mtime": 1628077428.0475469
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/grappling_gun/grappling_gun_scan.mp3": {
+    "mtime": 1628074255.2296765
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/turret/turret_fire.mp3": {
+    "mtime": 1628080684.7642977
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/human_damage_1.wav": {
+    "mtime": 1628082757.4606762
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/human_damage_2.wav": {
+    "mtime": 1628082800.727409
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/human_damage_3.wav": {
+    "mtime": 1628082826.9857025
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/utilizer/utilizer.blend": {
+    "mtime": 1628335458.6417737
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/utilizer/flowers.psd": {
+    "mtime": 1628113295.6921914
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/utilizer/utilizer.psd": {
+    "mtime": 1628262507.6418483
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/scavenger/flowers.psd": {
+    "mtime": 1628113295.6921914
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/crate/crate.blend": {
+    "mtime": 1628403217.256786
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/tumor_rope/tumor_rope.blend": {
+    "mtime": 1628542616.6056867
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/crate/crate.psd": {
+    "mtime": 1628276742.7153006
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/tumor_rope/tumor_rope.psd": {
+    "mtime": 1628542244.3630435
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/tumor_rope/tumor_rope_end.psd": {
+    "mtime": 1628542190.5473511
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/stick_lamp/stick_lamp.blend": {
+    "mtime": 1628242027.7830358
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/stick_lamp/stick_lamp.psd": {
+    "mtime": 1628232767.7308114
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/stick_lamp/stick_lamp_emission.psd": {
+    "mtime": 1628233178.1760633
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/surface_flower/surface_flower.blend": {
+    "mtime": 1628247536.7331266
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/surface_flower/surface_flower.psd": {
+    "mtime": 1628246324.7536495
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/food/lasagna/lasagna.blend": {
+    "mtime": 1628250130.112993
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/food/lasagna/lasagna.psd": {
+    "mtime": 1628248806.4947474
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/food/lasagna/lasagna_emission.psd": {
+    "mtime": 1628249937.5362287
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/breath.mp3": {
+    "mtime": 1628592189.4067726
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/ill_1_0.mp3": {
+    "mtime": 1628261331.348382
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/ill_2_0.mp3": {
+    "mtime": 1628261364.5641017
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/ill_2_1.mp3": {
+    "mtime": 1628261384.541031
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/ill_2_2.mp3": {
+    "mtime": 1628261465.3505673
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/ill_2_3.mp3": {
+    "mtime": 1628261485.810455
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/lack_of_power_0.mp3": {
+    "mtime": 1628162533.8750517
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/looks_horrible_0.mp3": {
+    "mtime": 1628686280.8909705
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/looks_horrible_1.mp3": {
+    "mtime": 1628686318.9073308
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/looks_horrible_2.mp3": {
+    "mtime": 1628260590.4933505
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/looks_horrible_3.mp3": {
+    "mtime": 1628260724.7891207
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/looks_horrible_4.mp3": {
+    "mtime": 1628686422.0502717
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_0.mp3": {
+    "mtime": 1628260842.9439044
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_1.mp3": {
+    "mtime": 1628260860.64259
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_2.mp3": {
+    "mtime": 1628260894.6521819
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_3.mp3": {
+    "mtime": 1628260924.9507275
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_4.mp3": {
+    "mtime": 1628260951.685307
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_5.mp3": {
+    "mtime": 1628260975.8118062
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_6.mp3": {
+    "mtime": 1628261010.0646029
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/need_router_calibration_7.mp3": {
+    "mtime": 1628261049.038175
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/radio/radio.mp3": {
+    "mtime": 1628168012.624475
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/fungus/fungus.psd": {
+    "mtime": 1628334407.8539672
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/king_utilizer/king_utilizer.blend": {
+    "mtime": 1628421536.4086406
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/king_utilizer/king_utilizer.psd": {
+    "mtime": 1628403726.4382203
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/king_utilizer/utilizer.psd": {
+    "mtime": 1628262507.6418483
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/fabricator/fabricator.psd": {
+    "mtime": 1628343871.4573069
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/turret/turret.psd": {
+    "mtime": 1628343288.4769015
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/weapons/turret/turret_emission.psd": {
+    "mtime": 1628715151.7896552
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/crate/crate_tumor.psd": {
+    "mtime": 1628371541.338039
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/crate/crate_tumor_emission.psd": {
+    "mtime": 1628371586.866588
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/terminal/terminal_guy.psd": {
+    "mtime": 1628371332.444319
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/enemies/king_utilizer/king_utilizer_emission.psd": {
+    "mtime": 1628403858.6997666
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/misc/terminal_guy_music.mp3": {
+    "mtime": 1628371253.421643
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/tumor_king/tumor_king.psd": {
+    "mtime": 1628431818.252808
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/withering/tumor_king/tumor_king_emission.psd": {
+    "mtime": 1628431870.7380953
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/interruption/interruption.blend": {
+    "mtime": 1628601549.492209
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/interruption/tumor_king.psd": {
+    "mtime": 1628431818.252808
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/interruption/tumor_king_emission.psd": {
+    "mtime": 1628431870.7380953
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/zombie_0.mp3": {
+    "mtime": 1628162533.8750517
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/ai/zombie_1.mp3": {
+    "mtime": 1628162533.8750517
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/radio/stay_still_0.mp3": {
+    "mtime": 1628168012.624475
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/suicide_cutscene/suicide_cutscene.blend": {
+    "mtime": 1628700660.8065486
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/destroyed/destroyed_world_geometry_new.blend": {
+    "mtime": 1628540799.3083098
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/cutscenes/after_destroy/after_destroy.blend": {
+    "mtime": 1628692844.7233956
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/booth/memory_storage_booth.blend": {
+    "mtime": 1628582494.3397987
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/booth/booth.psd": {
+    "mtime": 1628579143.3878376
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/signs/elevator_sign.psd": {
+    "mtime": 1628582286.2234087
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/fabricator/fabricator_done.mp3": {
+    "mtime": 1628585475.900651
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/fabricator/fabricator_working.mp3": {
+    "mtime": 1628585186.3978403
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/impact/pick_up.wav": {
+    "mtime": 1628587408.4265273
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/player_steps/landing.wav": {
+    "mtime": 1627044964.756239
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/player_steps/step_0.wav": {
+    "mtime": 1614951724.7534366
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/player_steps/step_1.wav": {
+    "mtime": 1614951737.163019
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/player_steps/step_2.wav": {
+    "mtime": 1614951764.4299736
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/player_steps/step_3.wav": {
+    "mtime": 1614951775.386621
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/memory_storage_ambience.mp3": {
+    "mtime": 1628586995.7844198
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/king_utilizer/king_utilizer.mp3": {
+    "mtime": 1628608720.6910603
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/king_utilizer/king_utilizer_death.mp3": {
+    "mtime": 1628588339.7489834
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/come_with_me.mp3": {
+    "mtime": 1628593535.9488807
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/come_with_me_0.mp3": {
+    "mtime": 1628593552.977553
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/come_with_me_1.mp3": {
+    "mtime": 1628619612.9499009
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/come_with_me_2.mp3": {
+    "mtime": 1628694478.2223613
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/death.mp3": {
+    "mtime": 1628594586.2963934
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/last_order_0.mp3": {
+    "mtime": 1628693828.1390264
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monologues/tumor_king/last_order_1.mp3": {
+    "mtime": 1628594902.505471
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/fungus/fungus.mp3": {
+    "mtime": 1628593388.6772213
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/teleporter/teleporter.mp3": {
+    "mtime": 1628595553.792245
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/teleporter/teleporter_turn_off.mp3": {
+    "mtime": 1628597391.3809407
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/teleporter/teleporter_turn_on.mp3": {
+    "mtime": 1628596665.7176466
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/main_menu_ambience.mp3": {
+    "mtime": 1628598296.7835648
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/misc/start_new_game_sound.mp3": {
+    "mtime": 1628598936.2450445
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/slider_grabber.psd": {
+    "mtime": 1628604768.412928
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/king_utilizer/king_utilizer.ogg": {
+    "mtime": 1628608911.95165
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/small_destruction.ogg": {
+    "mtime": 1628611003.1940806
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/weapons/rifle/rifle_shot.mp3": {
+    "mtime": 1628619167.6440861
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/elevator_shaking.ogg": {
+    "mtime": 1628619896.347108
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/memory_storage_ambience.ogg": {
+    "mtime": 1628619934.9832668
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/withering_ambience.ogg": {
+    "mtime": 1628619838.502273
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/monsters/tumor/tumor.ogg": {
+    "mtime": 1628623122.3781638
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/fabricator/fabricator_working.ogg": {
+    "mtime": 1628623781.196585
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/impact/drop.ogg": {
+    "mtime": 1628624625.9794996
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/withering/impact/pick_up.ogg": {
+    "mtime": 1628624678.214859
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/deep_rumble.ogg": {
+    "mtime": 1628630229.3063304
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/destroy_layers.ogg": {
+    "mtime": 1628698048.0199568
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/rumble.ogg": {
+    "mtime": 1628630138.313001
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/source_machine/source_machine_sparks.ogg": {
+    "mtime": 1628631158.6707518
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/source_machine/source_machine_turn_on.ogg": {
+    "mtime": 1628631487.8028612
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/source_machine/source_machine_working.ogg": {
+    "mtime": 1628631568.98139
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/traps/spike.psd": {
+    "mtime": 1628665432.272648
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/proxy/minor_surface.psd": {
+    "mtime": 1628711781.5919108
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/proxy/surface.psd": {
+    "mtime": 1628670152.7450886
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/step_1.wav": {
+    "mtime": 1628671429.8496668
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/step_2.wav": {
+    "mtime": 1628671451.0804143
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/step_3.wav": {
+    "mtime": 1628671464.9182718
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/step_4.wav": {
+    "mtime": 1628671476.2134976
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/landing.wav": {
+    "mtime": 1628672289.7068005
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/landing_1.wav": {
+    "mtime": 1628672289.7068005
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/layers/proxy/player_steps/landing_2.wav": {
+    "mtime": 1628672530.3906696
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/music/horror.ogg": {
+    "mtime": 1628681232.9306438
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/music/poison_tree.ogg": {
+    "mtime": 1628685436.2348354
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/music/fear.ogg": {
+    "mtime": 1628684006.0347056
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/layers/memory_storage/objectives/memory_card/memory_card_emission.psd": {
+    "mtime": 1628687310.677678
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/zap.ogg": {
+    "mtime": 1628688226.8407714
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/metal_detach.ogg": {
+    "mtime": 1628689244.6823027
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/cutscenes/after_destroy.ogg": {
+    "mtime": 1628692726.5075479
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/cutscenes/begining.ogg": {
+    "mtime": 1628693165.0030906
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/cutscenes/last_order.ogg": {
+    "mtime": 1628693993.7819772
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/hit.ogg": {
+    "mtime": 1628693466.133473
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/cutscenes/interruption.ogg": {
+    "mtime": 1628694541.7819996
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/hit_2.ogg": {
+    "mtime": 1628694437.453665
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/eating_1.ogg": {
+    "mtime": 1628695581.391058
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/eating_2.ogg": {
+    "mtime": 1628695600.4703183
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/human/eating_3.ogg": {
+    "mtime": 1628695617.4225788
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/button.ogg": {
+    "mtime": 1628698694.373198
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/button_low.ogg": {
+    "mtime": 1628698710.5412016
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/music/terminal_guy.ogg": {
+    "mtime": 1628699527.69566
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/textures/signs/wire_input.psd": {
+    "mtime": 1628702046.1206815
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/damage_screen.psd": {
+    "mtime": 1628709666.6391814
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/the_end.psd": {
+    "mtime": 1628709826.554889
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/keyboard.ogg": {
+    "mtime": 1628709506.1309648
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/models/items/traps/spike_item.psd": {
+    "mtime": 1628748498.2813387
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/game_icon.png": {
+    "mtime": 1628748762.635429
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/ui/game_icon.ico": {
+    "mtime": 1628748805.8076336
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/containers/container.ogg": {
+    "mtime": 1628751085.3511164
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/containers/tumor_container.ogg": {
+    "mtime": 1628751035.0496874
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/effects/metal_door.ogg": {
+    "mtime": 1628751368.5719492
+  },
+  "C:/Users/user/Dropbox/under_standing/resources/sounds/ambience/main_menu_ambience.ogg": {
+    "mtime": 1628752641.6345062
+  }
+}

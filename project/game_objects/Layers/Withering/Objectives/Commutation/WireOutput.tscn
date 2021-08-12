@@ -1,0 +1,47 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/Wire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/commutation/wire_end/wire_end.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/models/layers/withering/commutation/wire/wire_emission.png" type="Texture" id=5]
+[ext_resource path="res://resources/models/layers/withering/commutation/wire_end/wire_end_emission.png" type="Texture" id=6]
+[ext_resource path="res://resources/models/layers/withering/commutation/wire_end/wire_end.png" type="Texture" id=7]
+[ext_resource path="res://resources/models/layers/withering/commutation/wire/wire.png" type="Texture" id=8]
+[ext_resource path="res://src/objectives/commutation/WireOutput.cs" type="Script" id=10]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.22726, 0.783948, 0.828113 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 8 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 7 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
+
+[node name="WireOutput" type="StaticBody"]
+script = ExtResource( 10 )
+WirePath = NodePath("Wire")
+WireId = "commutator"
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Wire" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.999986, -0.00528832, 0, 0.00528832, 0.999986, 0, 0, 0, 1, -0.0200049, 1.82834, -2.38419e-06 )
+WireMaterial = SubResource( 7 )
+
+[node name="wire_end" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0 )
+material/0 = SubResource( 1 )

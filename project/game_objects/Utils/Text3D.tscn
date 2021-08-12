@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/objects/TextIn3D.cs" type="Script" id=2]
+
+[sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+params_blend_mode = 1
+params_cull_mode = 2
+
+[sub_resource type="World" id=3]
+
+[node name="Text3D" type="Spatial"]
+script = ExtResource( 2 )
+MeshInstancePath = NodePath("Plane")
+ViewportPath = NodePath("Viewport")
+LabelPath = NodePath("Viewport/Label")
+
+[node name="Plane" type="MeshInstance" parent="."]
+transform = Transform( -2, 0, 3.01992e-07, 0, -2, 0, -3.01992e-07, 0, -2, 1.5232e-09, 0, -0.0100877 )
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = SubResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 128, 128 )
+world = SubResource( 3 )
+transparent_bg = true
+handle_input_locally = false
+debanding = true
+hdr = false
+disable_3d = true
+usage = 1
+gui_disable_input = true
+
+[node name="Label" type="Label" parent="Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.756863, 0.756863, 0.756863, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "keke its a 2d text in 3d world"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

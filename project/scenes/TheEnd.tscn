@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://resources/ui/the_end.png" type="Texture" id=2]
+[ext_resource path="res://scripts/UI/FadeIn.gd" type="Script" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Global.GetAudioManager().PlayNonSpatialSound(load(\"res://resources/sounds/effects/keyboard.ogg\"), \"master\")
+	yield(get_tree().create_timer(6.0), \"timeout\")
+	Global.LoadScene(\"res://scenes/MainMenu.tscn\", 0, false)
+	
+	
+"
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MarginContainer"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
+margin_top = -16.0
+rect_scale = Vector2( 2, 2 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+text = "the end"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+margin_left = 512.0
+margin_top = 568.0
+margin_right = 512.0
+margin_bottom = 600.0
+size_flags_horizontal = 6
+size_flags_vertical = 10
+custom_constants/margin_bottom = 16
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer"]
+margin_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource( 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+wait = 3.0
+fade_time = 3.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/models/weapons/drone_gun/drone_gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/weapons/drone_gun/drone_gun_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Weapons/DroneGun.tscn" type="PackedScene" id=4]
+
+[node name="drone_gun" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 3 )
+ItemId = "drone_gun"
+Amount = 1
+Properties = {
+"damage": 0.25,
+"fire_speed": 0.1,
+"weapon": true,
+"weapon_scene": ExtResource( 4 )
+}
+
+[node name="drone_gun" parent="." instance=ExtResource( 1 )]
+
+[node name="drone_gun_phy_collision_shape" parent="." instance=ExtResource( 2 )]

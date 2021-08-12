@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/visual_effects/VfxManager.cs" type="Script" id=1]
+[ext_resource path="res://game_objects/VisualEffects/DamageParticles.tscn" type="PackedScene" id=2]
+
+[node name="VfxManager" type="Node"]
+script = ExtResource( 1 )
+DamageParticles = ExtResource( 2 )

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=1]
+[ext_resource path="res://resources/models/food/lasagna/lasagna_phy_collision_shape.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/models/food/lasagna/lasagna.tscn" type="PackedScene" id=4]
+
+[node name="Lasagna" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 1 )
+ItemId = "lasagna"
+Amount = 3
+Properties = {
+"heal": 10.0,
+"usable": true
+}
+
+[node name="lasagna" parent="." instance=ExtResource( 4 )]
+
+[node name="lasagna_phy_collision_shape" parent="." instance=ExtResource( 3 )]

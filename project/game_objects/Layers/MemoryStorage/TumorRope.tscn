@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/models/layers/memory_storage/tumor_rope/tumor_rope_end.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/Layers/MemoryStorage/LasagnaOnRope.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Rope.cs" type="Script" id=4]
+[ext_resource path="res://resources/models/layers/memory_storage/tumor_rope/tumor_rope.tscn" type="PackedScene" id=6]
+
+[node name="TumorRope" type="Spatial"]
+script = ExtResource( 4 )
+RopeEndScene = ExtResource( 1 )
+RopeMeshPath = NodePath("tumor_rope")
+ScenesToSpawn = [ {
+"chance": 0.15,
+"count": 2,
+"scene": ExtResource( 2 )
+} ]
+
+[node name="tumor_rope" parent="." instance=ExtResource( 6 )]
+
+[node name="tumor_rope_end" parent="." instance=ExtResource( 1 )]

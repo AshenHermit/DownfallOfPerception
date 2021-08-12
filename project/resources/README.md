@@ -1,0 +1,1 @@
+Here should be located game resources, that the exporter creates.

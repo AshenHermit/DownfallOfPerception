@@ -1,0 +1,1 @@
+Here should be located raw resources: models, textures, audio. The exporter reads them and exports them to game resources.

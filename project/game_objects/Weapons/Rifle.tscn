@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/models/weapons/rifle/rifle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/objects/Weapons/Rifle.cs" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.209931
+height = 134.722
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+FireSpeed = 0.01
+OneShot = true
+MuzzlePointNodePath = NodePath("Muzzle")
+VisualNodePath = NodePath("rifle")
+AreaPath = NodePath("Area")
+
+[node name="rifle" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.02201e-06, -69.1355 )
+shape = SubResource( 1 )
+
+[node name="Muzzle" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.22526 )

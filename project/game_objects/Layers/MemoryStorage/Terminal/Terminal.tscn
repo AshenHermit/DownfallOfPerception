@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resources/models/layers/memory_storage/terminal/terminal_static_body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/memory_storage/terminal/terminal_room_static_body.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Utils/Text3D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/objects/Terminal/Terminal.cs" type="Script" id=4]
+[ext_resource path="res://resources/models/layers/memory_storage/terminal/terminal_button_static_body.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/objects/Terminal/TerminalButton.cs" type="Script" id=6]
+[ext_resource path="res://resources/sounds/music/terminal_guy.ogg" type="AudioStream" id=7]
+[ext_resource path="res://resources/models/layers/memory_storage/terminal/terminal_guy.tscn" type="PackedScene" id=8]
+
+[node name="Terminal" type="Spatial"]
+
+[node name="terminal_room_static_body" parent="." instance=ExtResource( 2 )]
+
+[node name="Terminal" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+DisplayPath = NodePath("Text3D")
+
+[node name="Text3D" parent="Terminal" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.979715, -0.200394, 0, 0.200394, 0.979715, 0.169844, 2.45965, 2.15322 )
+
+[node name="terminal_button_static_body" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 0.864081, 0.503352, 0, -0.503352, 0.864081, -0.904579, 1.17021, 1.12524 )
+script = ExtResource( 6 )
+TerminalPath = NodePath("../Terminal")
+_type = 1
+
+[node name="terminal_button_static_body2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 0.861292, 0.50811, 0, -0.50811, 0.861292, 1.207, 1.17021, 1.12524 )
+script = ExtResource( 6 )
+TerminalPath = NodePath("../Terminal")
+
+[node name="terminal_guy" parent="." instance=ExtResource( 8 )]
+
+[node name="TerminalGuy" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80051, 2.12838, -2.49955 )
+stream = ExtResource( 7 )
+unit_size = 3.0
+max_db = -5.0
+autoplay = true
+max_distance = 80.0
+bus = "world"
+attenuation_filter_cutoff_hz = 17747.0

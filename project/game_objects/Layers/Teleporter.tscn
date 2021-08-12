@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/teleporter/teleporter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/teleporter/teleport_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Consuming/Teleporter.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Utils/Text3D.tscn" type="PackedScene" id=4]
+
+[node name="Teleport" type="StaticBody"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+Text3DPath = NodePath("Text3D")
+ModelPath = NodePath("teleporter")
+SceneName = "Proxy"
+
+[node name="teleporter" parent="." instance=ExtResource( 1 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0 )
+
+[node name="teleport_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Text3D" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.925752, -0.378132, 0, 0.378132, 0.925752, 0.269078, -0.339715, -1.59713 )

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/npc/enemies/CreepingEnemy.cs" type="Script" id=1]
+[ext_resource path="res://game_objects/Enemies/CreepingEnemy/scavenger_model.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/models/enemies/scavenger/scavenger_phy_collision_shape.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/Items/Objectives/Fruits/NeuroBlockItem.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.5
+height = 2.5
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.717633, 0.205092, 0.764965 )
+
+[node name="CreepingEnemy" type="KinematicBody"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+MaxHealth = 30.0
+VisualNodePath = NodePath("scavenger")
+CollisionShapePath = NodePath("scavenger_phy_collision_shape")
+AttackFrame = 0.56
+Damage = 10.0
+ItemsToDrop = [ {
+"amount": 1,
+"chance": 0.8,
+"scene": ExtResource( 4 )
+} ]
+RayCastPath = NodePath("RayCast")
+
+[node name="scavenger" parent="." instance=ExtResource( 2 )]
+
+[node name="scavenger_phy_collision_shape" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="scavenger_phy_collision_shape2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0.664039, 2.90261e-08 )
+shape = SubResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 2

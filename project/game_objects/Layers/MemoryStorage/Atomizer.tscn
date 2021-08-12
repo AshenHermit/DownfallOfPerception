@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_objects/Items/Objectives/Fruits/AtomizerItem.tscn" type="PackedScene" id=1]
+
+[node name="Atomizer" type="Spatial"]
+
+[node name="atomizer_rigid_body" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114281, 3.61028, 0 )
+collision_layer = 8
+collision_mask = 8
+mode = 1

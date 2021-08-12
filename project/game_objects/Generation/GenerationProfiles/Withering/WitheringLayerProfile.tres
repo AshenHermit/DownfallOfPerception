@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/Withering/withering_voxel_generator.tres" type="VoxelGeneratorScript" id=1]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/Withering/WitheringLayer.cs" type="Script" id=2]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/SourceMachine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/Containers/container_usable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Commutation/Commutator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/Withering/destroyed_withering_voxel_generator.tres" type="VoxelGeneratorScript" id=6]
+
+[resource]
+script = ExtResource( 2 )
+GeneratorScript = ExtResource( 1 )
+WaitAfterGenerated = 0
+SoundBankId = "withering"
+DestroyedLayerGenerationScript = ExtResource( 6 )
+ContainerScene = ExtResource( 4 )
+CommutatorScene = ExtResource( 5 )
+SourceMachineScene = ExtResource( 3 )

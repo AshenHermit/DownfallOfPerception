@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/router_controller/router_controller.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/router_controller/router_controller_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=3]
+[ext_resource path="res://game_objects/Weapons/RouterController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/models/layers/withering/router_controller/router_controller_icon.png" type="Texture" id=5]
+
+[node name="router_controller_rigid_body" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 3 )
+ItemId = "router_controller"
+Amount = 1
+Properties = {
+"icon": ExtResource( 5 ),
+"remaining_firmware": 3,
+"weapon": true,
+"weapon_scene": ExtResource( 4 )
+}
+
+[node name="router_controller_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 0, 0, 0 )
+
+[node name="router_controller" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.5
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.666407, 0.136638, 0.233084 )
+
+[node name="DeadBody" type="RigidBody"]
+gravity_scale = 2.0
+angular_damp = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.440122, -0.00818408 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.372642, -0.00818408 )
+shape = SubResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+omni_range = 16.0
+omni_attenuation = 3.4822

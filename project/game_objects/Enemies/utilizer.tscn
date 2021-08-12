@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/models/enemies/utilizer/utilizer.glb" type="PackedScene" id=1]
+
+[node name="utilizer" instance=ExtResource( 1 )]
+
+[node name="arms2" parent="Armature/base" index="0"]
+transform = Transform( 1, -9.06964e-08, -6.45341e-07, 6.98687e-08, -0.969639, 0.24454, -6.47926e-07, -0.24454, -0.969639, -1.11022e-16, 0, 0 )
+
+[node name="sword2" parent="Armature/base" index="1"]
+transform = Transform( -0.0126295, -0.0205373, -0.999709, 0.851861, -0.523767, -1.81794e-06, -0.523615, -0.851614, 0.0241098, 1.11013e-16, 5.96047e-08, -3.72529e-08 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"

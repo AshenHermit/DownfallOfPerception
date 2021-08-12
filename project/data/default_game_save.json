@@ -1,0 +1,141 @@
+{
+  "max_health": 100,
+  "health": 100,
+  "inventory": [
+    {
+      "resource_local_to_scene": false,
+      "Amount": 64,
+      "Name": "Light bearer",
+      "PickableItem": "res://game_objects/Items/Light/StreetLightItem.tscn",
+      "Properties": {
+        "placeable": true,
+        "scene_to_place": "res://game_objects/Layers/Withering/Light/StreetLight.tscn"
+      },
+      "Icon": "res://resources/models/layers/withering/lights/street_light/street_light_item_icon.png",
+      "ID": "street_light"
+    },
+    {
+      "resource_local_to_scene": false,
+      "Amount": 64,
+      "Name": "Tracer block",
+      "PickableItem": "res://game_objects/Items/tracer_block.tscn",
+      "Properties": {
+
+      },
+      "Icon": "res://resources/models/items/tracer_block/tracer_block_icon.png",
+      "ID": "tracer_block"  
+    },
+    {
+      "resource_local_to_scene": false,
+      "Amount": 1,
+      "Name": "Drone generator",
+      "PickableItem": "res://game_objects/Items/Weapons/DroneGunItem.tscn",
+      "Properties": {
+        "damage": 0.25,
+        "icon": "res://resources/models/weapons/drone_gun/drone_gun_icon.png",
+        "weapon": true,
+        "weapon_scene": "res://game_objects/Weapons/DroneGun.tscn"
+      },
+      "Icon": "res://resources/models/weapons/drone_gun/drone_gun_icon.png",
+      "ID": "drone_gun"
+    },
+    {
+      "resource_local_to_scene": false,
+      "Amount": 1,
+      "Name": "Grappling gun",
+      "PickableItem": "res://game_objects/Items/Weapons/GrapplingGunItem.tscn",
+      "Properties": {
+        "ammo_item_id": "tracer_block",
+        "damage": 0.25,
+        "weapon": true,
+        "weapon_scene": "res://game_objects/Weapons/GrapplingGun.tscn"
+      },
+      "Icon": "res://resources/models/weapons/grappling_gun/grappling_gun_icon.png",
+      "ID": "grappling_gun"
+    },
+    {
+      "resource_local_to_scene": false,
+      "Amount": 64,
+      "Name": "item.lasagna.name",
+      "PickableItem": "res://game_objects/Items/Food/lasagna.tscn",
+      "Properties": {
+        "heal": 10,
+        "usable": true
+      },
+      "Icon": "res://resources/icons/lasagna.png",
+      "ID": "lasagna"
+    },
+    {
+      "resource_local_to_scene": false,
+      "Name": "item.compass.name",
+      "Amount": 1,
+      "PickableItem": "res://game_objects/Items/Weapons/CompassItem.tscn",
+      "Properties": {
+        "mode": 0,
+        "weapon": true,
+        "weapon_scene": "res://game_objects/Weapons/Compass.tscn"
+      },
+      "Icon": "res://resources/models/weapons/compass/compass_icon.png",
+      "ID": "compass"
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "active_item_id": 0,
+  "spawn_point_id": 0,
+  "player_transform": "Transform( -0.60932, 0, 0.792923, 0, 1, 0, -0.792923, 0, -0.60932, -8.58048, 3.27792, -2.67506 )",
+  "scene": "res://scenes/Begining.tscn",
+  "saved_scenes": {
+    "res://scenes/Begining.tscn": [
+      {
+        "scene": "res://game_objects/Items/Light/StreetLightItem.tscn",
+        "transform": "Transform( -0.0502275, 0.078326, -0.995662, 0.0632638, 0.995167, 0.0750957, 0.996732, -0.0592175, -0.0549401, 13.3307, 1.63952, 17.8268 )",
+        "parent": "."
+      },
+      {
+        "scene": "res://game_objects/Items/Light/StreetLightItem.tscn",
+        "transform": "Transform( 0.967547, -0.136953, 0.21236, 0.175439, 0.968906, -0.174476, -0.181862, 0.20607, 0.961489, 17.1888, 2.05049, 11.9295 )",
+        "parent": "."
+      },
+      {
+        "scene": "res://game_objects/Items/Light/StreetLightItem.tscn",
+        "transform": "Transform( 0.154013, -0.496793, 0.854094, -0.0657907, 0.857333, 0.510541, -0.985876, -0.134821, 0.099356, 9.52269, 8.31684, -4.74612 )",
+        "parent": "."
+      },
+      {
+        "scene": "res://game_objects/Items/Light/StreetLightItem.tscn",
+        "transform": "Transform( -0.816032, 0.0421817, -0.576465, -0.14228, 0.951986, 0.271068, 0.560221, 0.30322, -0.77085, 18.3358, 3.48034, 4.49023 )",
+        "parent": "."
+      },
+      {
+        "scene": "res://game_objects/Layers/Withering/Light/StreetLight.tscn",
+        "transform": "Transform( 0.718864, 0.69418, 0.0367076, -0.173623, 0.230427, -0.957475, -0.673119, 0.681921, 0.286172, -36.2127, 39.2151, -43.8673 )",
+        "parent": "."
+      },
+      {
+        "scene": "res://game_objects/Layers/Withering/Light/StreetLight.tscn",
+        "transform": "Transform( -0.11606, 0.829207, 0.546759, -0.220915, 0.515139, -0.828147, -0.968363, -0.216901, 0.123398, -77.55, 38.7994, -43.8673 )",
+        "parent": "."
+      }
+    ]
+  },
+  "objectives":{
+    
+  }
+}

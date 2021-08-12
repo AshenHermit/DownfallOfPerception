@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=25 format=2]
+
+[ext_resource path="res://src/sounds/SoundBank.cs" type="Script" id=1]
+[ext_resource path="res://resources/sounds/monsters/creeping_enemy/step_2.wav" type="AudioStream" id=2]
+[ext_resource path="res://resources/sounds/monsters/creeping_enemy/step_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://resources/sounds/monsters/creeping_enemy/attack.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/sounds/monsters/creeping_enemy/death.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/sounds/human/human_death.mp3" type="AudioStream" id=6]
+[ext_resource path="res://resources/sounds/turret/turret_fire.mp3" type="AudioStream" id=7]
+[ext_resource path="res://resources/sounds/human/human_damage_1.wav" type="AudioStream" id=8]
+[ext_resource path="res://resources/sounds/human/human_damage_2.wav" type="AudioStream" id=9]
+[ext_resource path="res://resources/sounds/human/human_damage_3.wav" type="AudioStream" id=10]
+[ext_resource path="res://resources/sounds/layers/withering/player_steps/step_3.wav" type="AudioStream" id=11]
+[ext_resource path="res://resources/sounds/layers/withering/player_steps/step_0.wav" type="AudioStream" id=12]
+[ext_resource path="res://resources/sounds/layers/withering/player_steps/step_2.wav" type="AudioStream" id=13]
+[ext_resource path="res://resources/sounds/layers/withering/player_steps/step_1.wav" type="AudioStream" id=14]
+[ext_resource path="res://resources/sounds/layers/withering/player_steps/landing.wav" type="AudioStream" id=15]
+[ext_resource path="res://resources/sounds/layers/proxy/player_steps/step_2.wav" type="AudioStream" id=16]
+[ext_resource path="res://resources/sounds/layers/proxy/player_steps/step_1.wav" type="AudioStream" id=17]
+[ext_resource path="res://resources/sounds/layers/proxy/player_steps/step_4.wav" type="AudioStream" id=18]
+[ext_resource path="res://resources/sounds/layers/proxy/player_steps/landing_2.wav" type="AudioStream" id=19]
+[ext_resource path="res://resources/sounds/layers/proxy/player_steps/step_3.wav" type="AudioStream" id=20]
+[ext_resource path="res://resources/sounds/layers/proxy/player_steps/landing_1.wav" type="AudioStream" id=21]
+[ext_resource path="res://resources/sounds/human/eating_1.ogg" type="AudioStream" id=22]
+[ext_resource path="res://resources/sounds/human/eating_3.ogg" type="AudioStream" id=23]
+[ext_resource path="res://resources/sounds/human/eating_2.ogg" type="AudioStream" id=24]
+
+[resource]
+script = ExtResource( 1 )
+Sounds = {
+"creeping_enemy_attack": [ ExtResource( 4 ) ],
+"creeping_enemy_death": [ ExtResource( 5 ) ],
+"creeping_enemy_step": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"human_damage": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"human_death": [ ExtResource( 6 ) ],
+"human_eating": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"proxy_player_footsteps": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 20 ), ExtResource( 18 ) ],
+"proxy_player_landing": [ ExtResource( 21 ), ExtResource( 19 ) ],
+"turret_shot": [ ExtResource( 7 ) ],
+"withering_player_footsteps": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ) ],
+"withering_player_landing": [ ExtResource( 15 ) ]
+}

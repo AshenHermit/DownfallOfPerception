@@ -1,0 +1,11 @@
+[gd_resource type="VoxelInstanceGenerator" load_steps=2 format=2]
+
+[ext_resource path="res://src/generation/surface_instance_generator.gd" type="Script" id=1]
+
+[resource]
+density = 0.2
+emit_mode = 1
+min_scale = 0.5
+max_scale = 0.5
+vertical_alignment = 0.0
+script = ExtResource( 1 )

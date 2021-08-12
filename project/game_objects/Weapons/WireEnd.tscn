@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Weapons/WireEnd.gd" type="Script" id=1]
+[ext_resource path="res://src/objects/Items/ScriptedWeapon.cs" type="Script" id=2]
+[ext_resource path="res://materials/macro_drones.tres" type="Material" id=3]
+[ext_resource path="res://resources/models/layers/withering/commutation/wire_end/wire_end.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ParticlesMaterial" id=1]
+trail_divisor = 4
+emission_shape = 2
+emission_box_extents = Vector3( 1.5, 0.01, 0.01 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+radial_accel = -1.0
+
+[sub_resource type="PrismMesh" id=2]
+size = Vector3( 0.4, 0.4, 0.4 )
+
+[node name="WireEnd" type="Spatial"]
+script = ExtResource( 2 )
+FireSpeed = 0.1
+OneShot = true
+MuzzlePointNodePath = NodePath("MuzzlePoint")
+Exports = {
+}
+ScriptResource = ExtResource( 1 )
+
+[node name="MuzzlePoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.00830704, 0.00014925, 0.763759 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.00514126 )
+enabled = true
+cast_to = Vector3( 0, 0, 10 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964491, -2.32411 )
+material_override = ExtResource( 3 )
+amount = 20
+lifetime = 4.0
+speed_scale = 10.0
+visibility_aabb = AABB( -1.37197, -1.32364, -1, 2.74394, 2.64728, 2 )
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 2 )
+
+[node name="wire_end" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.04968 )

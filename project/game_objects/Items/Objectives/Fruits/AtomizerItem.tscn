@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/fruits/atomizer/atomizer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/fruits/atomizer/atomizer_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=3]
+
+[node name="AtomizerItem" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 3 )
+ItemId = "atomizer"
+Amount = 1
+
+[node name="atomizer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
+
+[node name="atomizer_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )

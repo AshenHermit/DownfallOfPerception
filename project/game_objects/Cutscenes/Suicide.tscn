@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/models/cutscenes/suicide_cutscene/suicide_cutscene.glb" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/weapons/rifle/rifle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Cutscene.cs" type="Script" id=3]
+
+[node name="suicide_cutscene" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="CameraContainer" parent="Armature" index="0"]
+transform = Transform( 1, 8.0082e-17, -5.55974e-17, -8.66348e-17, 0.468463, -0.883483, -4.47058e-17, 0.883483, 0.468463, 0, -1.57507, 0 )
+
+[node name="GunContainer" parent="Armature/CameraContainer" index="0"]
+transform = Transform( 1, -7.499e-18, 1.02566e-16, -4.05141e-17, 0.887957, 0.459926, -9.45233e-17, -0.459926, 0.887957, -3.33784e-16, -1.88787, 0.843961 )
+
+[node name="rifle" parent="Armature/CameraContainer/GunContainer" index="0" instance=ExtResource( 2 )]
+transform = Transform( 5.28485e-08, -0.7, -3.0598e-08, 0, -3.0598e-08, 0.7, -0.7, -5.28485e-08, -2.31008e-15, 0.190992, 0, 0 )

@@ -1,0 +1,231 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://game_objects/GenerationManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/RouterDigger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/Items/tracer_block.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/textures/withering/surface.png" type="Texture" id=6]
+[ext_resource path="res://game_objects/VfxManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/textures/withering/minor_surface.png" type="Texture" id=8]
+[ext_resource path="res://materials/shaders/triplanar_shader.tres" type="Shader" id=9]
+[ext_resource path="res://game_objects/Items/Objectives/RouterDiggerItem.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_objects/Layers/Withering/Buildings/Booth.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_objects/Items/Weapons/CompassItem.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/Weapons/Compass.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_objects/Layers/Withering/withering_environment.tres" type="Environment" id=14]
+[ext_resource path="res://game_objects/Containers/container_usable.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scripts/SceneComponents/DebugContainer.gd" type="Script" id=18]
+[ext_resource path="res://game_objects/Items/Objectives/MemoryCardItem.tscn" type="PackedScene" id=19]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/Withering/WitheringLayerProfile.tres" type="Resource" id=20]
+[ext_resource path="res://resources/models/layers/withering/router_controller/router_controller_icon.png" type="Texture" id=21]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_1.png" type="Texture" id=23]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/RouterControllerItem.tscn" type="PackedScene" id=24]
+[ext_resource path="res://game_objects/Items/Weapons/GrapplingGunItem.tscn" type="PackedScene" id=25]
+[ext_resource path="res://game_objects/Weapons/GrapplingGun.tscn" type="PackedScene" id=26]
+[ext_resource path="res://game_objects/Weapons/RouterController.tscn" type="PackedScene" id=27]
+[ext_resource path="res://game_objects/Items/Traps/spike_item.tscn" type="PackedScene" id=28]
+[ext_resource path="res://game_objects/Items/Weapons/WireEndItem.tscn" type="PackedScene" id=29]
+[ext_resource path="res://game_objects/Weapons/WireEnd.tscn" type="PackedScene" id=30]
+[ext_resource path="res://resources/sounds/ambience/withering_ambience.ogg" type="AudioStream" id=31]
+[ext_resource path="res://game_objects/Weapons/Rifle.tscn" type="PackedScene" id=32]
+[ext_resource path="res://game_objects/Items/Weapons/RifleItem.tscn" type="PackedScene" id=33]
+[ext_resource path="res://game_objects/Items/Weapons/MobileTurretItem.tscn" type="PackedScene" id=34]
+[ext_resource path="res://game_objects/Items/Weapons/DroneGunItem.tscn" type="PackedScene" id=35]
+[ext_resource path="res://game_objects/Weapons/DroneGun.tscn" type="PackedScene" id=36]
+[ext_resource path="res://game_objects/Weapons/MobileTurret.tscn" type="PackedScene" id=37]
+[ext_resource path="res://scripts/SetEnvironment.gd" type="Script" id=38]
+[ext_resource path="res://game_objects/Generation/GenerationProfiles/surface_instance_generator.tres" type="VoxelInstanceGenerator" id=40]
+
+[sub_resource type="VoxelMesherTransvoxel" id=16]
+
+[sub_resource type="ShaderMaterial" id=26]
+shader = ExtResource( 9 )
+shader_param/AB_mix_offset = 0.025
+shader_param/AB_mix_normal = 1.851
+shader_param/AB_mix_blend = 10.0
+shader_param/A_albedo_enabled = true
+shader_param/A_albedo_tint = Color( 1, 1, 1, 1 )
+shader_param/A_normal_enabled = true
+shader_param/A_normal_strength = 1.0
+shader_param/A_ao_tex_channel = Plane( 1, 1, 1, 1 )
+shader_param/A_ao_enabled = false
+shader_param/A_ao_strength = 1.0
+shader_param/A_uv_offset = null
+shader_param/A_uv_tiles = 2
+shader_param/A_tri_blend_sharpness = 17.86
+shader_param/B_albedo_enabled = true
+shader_param/B_albedo_tint = Color( 1, 1, 1, 1 )
+shader_param/B_normal_enabled = true
+shader_param/B_normal_strength = 1.0
+shader_param/B_normal_distance = 0.001
+shader_param/B_ao_tex_channel = Plane( 1, 1, 1, 0 )
+shader_param/B_ao_enabled = false
+shader_param/B_ao_strength = 1.0
+shader_param/B_uv_offset = null
+shader_param/B_uv_tiles = 2
+shader_param/B_tri_blend_sharpness = 17.86
+shader_param/A_albedo_map = ExtResource( 6 )
+shader_param/B_albedo_map = ExtResource( 8 )
+
+[sub_resource type="ArrayMesh" id=25]
+
+[sub_resource type="VoxelInstanceLibraryItem" id=27]
+name = "spawn_point"
+generator = ExtResource( 40 )
+persistent = true
+mesh = SubResource( 25 )
+cast_shadow = 0
+collision_layer = 0
+collision_mask = 0
+
+[sub_resource type="FastNoiseLite" id=28]
+seed = 10
+
+[sub_resource type="VoxelInstanceGenerator" id=5]
+density = 0.02
+emit_mode = 1
+min_scale = 0.5
+max_scale = 0.5
+vertical_alignment = 0.0
+noise = SubResource( 28 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 23 )
+
+[sub_resource type="VoxelInstanceLibraryItem" id=29]
+name = "decoration"
+generator = SubResource( 5 )
+persistent = true
+mesh = ExtResource( 22 )
+material_override = SubResource( 7 )
+
+[sub_resource type="GDScript" id=30]
+
+[sub_resource type="VoxelInstanceLibrary" id=24]
+item_1 = SubResource( 27 )
+item_2 = SubResource( 29 )
+script = SubResource( 30 )
+
+[node name="scene" type="Spatial"]
+script = ExtResource( 38 )
+environment = ExtResource( 14 )
+
+[node name="PlayerInventory" parent="." instance=ExtResource( 16 )]
+
+[node name="NpcManager" parent="." instance=ExtResource( 17 )]
+
+[node name="VfxManager" parent="." instance=ExtResource( 7 )]
+
+[node name="GenerationManager" parent="." instance=ExtResource( 1 )]
+CurrentGenerationProfile = ExtResource( 20 )
+AmbienceStream = ExtResource( 31 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60625, 2.1086, -0.446983 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="VoxelTerrain" type="VoxelLodTerrain" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesher = SubResource( 16 )
+view_distance = 2048
+lod_count = 8
+lod_distance = 28.0
+material = SubResource( 26 )
+collision_layer = 3
+collision_mask = 3
+collision_lod_count = 1
+run_stream_in_editor = false
+
+[node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
+library = SubResource( 24 )
+
+[node name="WireEnd" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.28162, 3.11899, 3.96558 )
+mode = 1
+Amount = 2
+Properties = {
+"damage": 0.25,
+"weapon": true,
+"weapon_scene": ExtResource( 30 )
+}
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="booth_static_body" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
+
+[node name="DEBUG" type="Spatial" parent="."]
+script = ExtResource( 18 )
+
+[node name="router_controller_rigid_body" parent="DEBUG" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29235, -0.700405, 0.14885 )
+Properties = {
+"icon": ExtResource( 21 ),
+"remaining_firmware": 3,
+"weapon": true,
+"weapon_scene": ExtResource( 27 )
+}
+
+[node name="container_static_body2" parent="DEBUG" instance=ExtResource( 15 )]
+transform = Transform( -0.593784, 0, 0.804625, 0, 1, 0, -0.804625, 0, -0.593784, 4.59433, 1.11882, -2.51913 )
+Exports = {
+"scenes_to_spawn": [ ExtResource( 28 ), ExtResource( 5 ) ]
+}
+
+[node name="GrapplingGunItem" parent="DEBUG" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74622, -1.78771, 0.654781 )
+Properties = {
+"ammo_item_id": "tracer_block",
+"damage": 0.25,
+"weapon": true,
+"weapon_scene": ExtResource( 26 )
+}
+
+[node name="router_digger_item_rigid_body" parent="DEBUG" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89805, -1.11709, 1.13046 )
+Amount = 16
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 3 )
+}
+
+[node name="compass_item" parent="DEBUG" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56004, -1.32211, -0.384447 )
+Properties = {
+"mode": 0,
+"weapon": true,
+"weapon_scene": ExtResource( 13 )
+}
+
+[node name="memory_card_rigid_body" parent="DEBUG" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.86294, -0.123525, 2.70812 )
+
+[node name="RifleItem" parent="DEBUG" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.989871, -0.081198, 0.55425 )
+Properties = {
+"weapon": true,
+"weapon_scene": ExtResource( 32 )
+}
+
+[node name="mobile_turret_rigid_body" parent="DEBUG" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07884, -0.337974, 2.67934 )
+Amount = 10
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 37 )
+}
+
+[node name="drone_gun" parent="DEBUG" instance=ExtResource( 35 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4044, 2.33435, 0.867743 )
+Amount = 16
+Properties = {
+"damage": 0.25,
+"fire_speed": 0.1,
+"weapon": true,
+"weapon_scene": ExtResource( 36 )
+}

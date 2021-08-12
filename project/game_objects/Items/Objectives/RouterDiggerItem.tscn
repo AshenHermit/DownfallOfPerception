@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/models/layers/withering/router_digger/router_digger_item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/withering/router_digger/router_digger_item_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/RouterDigger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=4]
+
+[node name="router_digger_item_rigid_body" type="RigidBody" groups=[
+"Persist",
+]]
+script = ExtResource( 4 )
+ItemId = "router_digger"
+Amount = 1
+Properties = {
+"placeable": true,
+"scene_to_place": ExtResource( 3 )
+}
+
+[node name="router_digger_item" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="router_digger_item_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )

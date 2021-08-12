@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/models/building/stairs.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/building/stairs_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Items/PlaceRegion.cs" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2, 0.400025, 2.36476 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.314601, 0.400025, 2.36476 )
+
+[node name="stairs_static_body" type="StaticBody"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="stairs" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="stairs_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="StaticBody" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4 )
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 3 )
+PlaceableGroup = "building"
+PlacePoint = NodePath("PlacePoint")
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 0.886462, -0.462801, 0, 0.462801, 0.886462, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="PlacePoint" type="Spatial" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="StaticBody2" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0 )
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 3 )
+PlaceableGroup = "building"
+PlacePoint = NodePath("PlacePoint")
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 0.886462, -0.462801, 0, 0.462801, 0.886462, -1.70202, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="PlacePoint" type="Spatial" parent="StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="StaticBody3" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0 )
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 3 )
+PlaceableGroup = "building"
+PlacePoint = NodePath("PlacePoint")
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
+transform = Transform( 1, 0, 0, 0, 0.886462, -0.462801, 0, 0.462801, 0.886462, 1.70734, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="PlacePoint" type="Spatial" parent="StaticBody3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
