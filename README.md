@@ -19,7 +19,7 @@ You can download the assembled game [here](https://drive.google.com/file/d/1j7zA
 ## Voxels
 When I was unaware of the existence of VoxelTools, I wrote my own single threaded GDNative module. It worked well and I could have continued to use it, but I learned about VoxelTools and wanted to use terraforming. In the end, I did not use terraforming, but I liked VoxelTools for its multithreading. The only thing I had to edit the module was, I added a virtual function to VoxelInstancer to get the transformation of an object on the surface so that I could spawn my scenes, not multimesh instances. I will not publish the compiled editor.
 
-## Errors
+## Mistakes
 The mistakes that I made while working on the project.
 They are easy to fix, I just have to take the time to do it. In order not to forget, I will describe them here.
 
