@@ -56,7 +56,8 @@ namespace Game
         {
             ItemId = item.ID;
             Amount = item.Amount;
-            Properties = (Dictionary)item.Properties;
+            Properties = (Dictionary)item.Properties.Duplicate();
+            GD.Print(Properties);
         }
 
     }

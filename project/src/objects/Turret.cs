@@ -9,6 +9,8 @@ namespace Game
         [Export]
         public NodePath RayGeometryPath;
         MeshInstance _rayGeometry;
+        [Export]
+        public NodePath VisualNodePath;
 
         float _maxDistance = 40.0f;
 
@@ -21,6 +23,9 @@ namespace Game
         Vector3 _softTargetPos;
 
         Spatial _muzzle;
+        int _gunBoneId = 0;
+        Skeleton _skeleton;
+        Spatial _gunBone;
 
         AnimationPlayer _animationPlayer;
 
@@ -37,10 +42,15 @@ namespace Game
 
         public override void _Ready()
         {
-            _muzzle = GetNode<Spatial>("Muzzle");
+            _muzzle = GetNode(VisualNodePath).GetNode<Spatial>("Armature/Skeleton/BoneAttachment/Muzzle");
+            _skeleton = GetNode(VisualNodePath).GetNode<Skeleton>("Armature/Skeleton");
+            _gunBoneId = _skeleton.FindBone("gun");
             _rayGeometry = GetNode<MeshInstance>(RayGeometryPath);
+            _rayGeometry.Reparent(_muzzle);
+            _rayGeometry.Transform = Transform.Identity;
+
+
             SetupRay();
-            _animationPlayer = GetNode("turret").GetNode<AnimationPlayer>("AnimationPlayer");
             CallDeferred("DefferedSetup");
         }
         public void DefferedSetup()
@@ -60,8 +70,12 @@ namespace Game
             if (_seeingPlayer) _softTargetPos += (_targetPos - _softTargetPos) / 1.5f;
             else _softTargetPos += (_targetPos - _softTargetPos) / 5.0f;
 
-            LookAt(_softTargetPos, Vector3.Up);
-            RotateObjectLocal(Vector3.Up, Mathf.Pi);
+            Transform bonePose = _skeleton.GetBoneGlobalPose(_gunBoneId);
+            Vector3 origin = -ToLocal(_softTargetPos);
+            origin.y = -origin.y;
+            _skeleton.SetBoneGlobalPoseOverride(_gunBoneId, bonePose.LookingAt(origin, Vector3.Up), 1.0f, true);
+            //_muzzle.LookAt(_softTargetPos, Vector3.Up);
+            //_muzzle.RotateObjectLocal(Vector3.Up, Mathf.Pi);
         }
 
         public void SetupRay()
@@ -90,8 +104,8 @@ namespace Game
             }
 
             Godot.Collections.Dictionary collision = Global.Instance.GetDirectSpaceState().IntersectRay(
-                _rayGeometry.GlobalTransform.origin + GlobalTransform.basis.z * 0.3f,
-                _rayGeometry.GlobalTransform.origin + GlobalTransform.basis.z * _maxDistance
+                _rayGeometry.GlobalTransform.origin + _muzzle.GlobalTransform.basis.z * 0.3f,
+                _rayGeometry.GlobalTransform.origin + _muzzle.GlobalTransform.basis.z * _maxDistance
             );
             if (collision.Count > 0)
             {
@@ -122,14 +136,17 @@ namespace Game
             {
                 if (_attackTimer > 1.0f)
                 {
-                    _targetPos = Global.Instance.GetPlayer().GlobalTransform.origin + Vector3.Up * 4.8f;
+                    _targetPos = Global.Instance.GetPlayer().GlobalTransform.origin + Vector3.Up * 2.0f;
                     if (_seeingPlayer)
                     {
                         _fireTimer -= delta;
                         if (_fireTimer <= 0.0f)
                         {
-                            _animationPlayer.Stop(true);
-                            _animationPlayer.Play("fire");
+                            if (_animationPlayer != null)
+                            {
+                                _animationPlayer.Stop(true);
+                                _animationPlayer.Play("fire");
+                            }
                             Global.Instance.GetPlayer().TakeDamage(_damage);
                             _fireTimer = _fireSpeed;
 
@@ -147,8 +164,8 @@ namespace Game
                 _lookTimer -= delta;
                 if (_lookTimer <= 0.0f)
                 {
-                    _lookTimer = 0.3f + GD.Randf() * (8.0f - _difficulty*8.0f);
-                    _lookTargetPosition = GlobalTransform.origin + _originalNormal*2.0f + MathUtils.Randv()*(_difficulty*2.0f);
+                    _lookTimer = 0.3f + GD.Randf() * (8.0f - _difficulty*7.0f);
+                    _lookTargetPosition = GlobalTransform.origin + _originalNormal*2.6f + MathUtils.Randv()*(_difficulty*2.0f);
                 }
                 _targetPos = _lookTargetPosition;
             }

@@ -13,6 +13,7 @@ namespace Game
             {
                 GetChild(0).GetNode<AnimationPlayer>("AnimationPlayer").GetAnimation("working").Loop = true;
                 GetChild(0).GetNode<AnimationPlayer>("AnimationPlayer").Play("working");
+                GetNode<AudioStreamPlayer3D>("Sound")?.Play();
             }
         }
         public override void Use(Node invoker)

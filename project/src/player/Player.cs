@@ -9,11 +9,22 @@ namespace Game{
         [Export]
         public NodePath CameraNodePath;
         [Export]
+        public NodePath HeadPath;
+        Spatial _head;
+        [Export]
         public NodePath AreaNodePath;
         [Export]
         public NodePath HandPointNodePath;
         [Export]
         public NodePath LightPath;
+        [Export]
+        public NodePath CrouchCollisionShapePath;
+        CollisionShape _crouchCollisionShape;
+        float _crouchHeight = 0.8f;
+        float _crouchInitYPosition = 0.0f;
+        float _crouchYPosition = 0.9f;
+        float _headYRelativeToCrouch = 0.9f;
+        bool _crouching = false;
 
         [Export]
         public float UseDistance = 8.0f;
@@ -111,13 +122,16 @@ namespace Game{
         // methods
         public override void _Ready()
         {
-            
-
             _camera = GetNode<PlayerCamera>(CameraNodePath);
             _area = GetNode<PlayerArea>(AreaNodePath);
             _handPoint = GetNode<Spatial>(HandPointNodePath);
             _handPoint.Transform = _handPoint.Transform.Scaled(Vector3.One+_handPoint.GetParent<Spatial>().Transform.basis.Scale);
             defaultHandPos = _handPoint.GetParent<Spatial>().Transform.origin;
+            _crouchCollisionShape = GetNode<CollisionShape>(CrouchCollisionShapePath);
+            _crouchInitYPosition = _crouchCollisionShape.Transform.origin.y;
+            _crouchHeight = ((CapsuleShape)_crouchCollisionShape.Shape).Height*2.0f;
+            _head = GetNode<Spatial>(HeadPath);
+            _headYRelativeToCrouch = _head.Transform.origin.y - _crouchInitYPosition;
 
             Global.Instance.GetInventory().OnActiveItemChange += OnActiveInventoryItemChange;
             OnGroundedEvent += OnGrounded;
@@ -136,6 +150,7 @@ namespace Game{
         public override void _Process(float delta)
         {
             _controlling = false;
+            UpdateHead(delta);
             if (this.IsAlive() && !Disabled)
             {
                 UpdateObjectToUse();
@@ -143,6 +158,7 @@ namespace Game{
                 FitWeaponCameraDirection();
                 UpdateSteps(delta);
                 if(_isCrazy) UpdateCrazyState(delta);
+                ControlCrouch(delta);
             }
             base._Process(delta);
         }
@@ -225,11 +241,13 @@ namespace Game{
             }
             if (Input.IsActionPressed("move_left"))
             {
+                RollHead(-1.0f);
                 Move(-GlobalTransform.basis.x);
                 _controlling = true;
             }
             if (Input.IsActionPressed("move_right"))
             {
+                RollHead(1.0f);
                 Move(GlobalTransform.basis.x);
                 _controlling = true;
             }
@@ -530,6 +548,57 @@ namespace Game{
                 _currentWeapon.Item = item;
                 _handPoint.AddChild(_currentWeapon);
             }
+        }
+
+        public void ControlCrouch(float delta)
+        {
+            if (Input.IsActionPressed("slow_walk"))
+            {
+                _crouching = true;
+            }
+            else
+            {
+                Godot.Collections.Dictionary collision = Global.Instance.GetDirectSpaceState().IntersectRay(
+                    _head.GlobalTransform.origin, _head.GlobalTransform.origin + Vector3.Up * _crouchHeight + Vector3.Up, new Godot.Collections.Array { this }, 1);
+                if (collision.Count > 0)
+                {
+                    return;
+                }
+                _crouching = false;
+            }
+
+            UpdateCrouch(delta);
+        }
+
+        public void UpdateCrouch(float delta)
+        {
+            Transform trans = _crouchCollisionShape.Transform;
+            if (_crouching)
+            {
+                trans.origin.y += (_crouchYPosition - trans.origin.y) / 6.0f;
+            }
+            else
+            {
+                trans.origin.y += (_crouchInitYPosition - trans.origin.y) / 6.0f;
+            }
+            _crouchCollisionShape.Transform = trans;
+
+            Transform headTrans = _head.Transform;
+            headTrans.origin.y = (trans.origin.y + _headYRelativeToCrouch);
+            _head.Transform = headTrans;
+        }
+
+        public void RollHead(float factor)
+        {
+            Vector3 rot = _head.Rotation;
+            rot.z += -factor * Mathf.Pi / 45.0f / 10.0f;
+            _head.Rotation = rot;
+        }
+        public void UpdateHead(float delta)
+        {
+            Vector3 rot = _head.Rotation;
+            rot.z /= 10.0f;
+            _head.Rotation = rot;
         }
     }
 }

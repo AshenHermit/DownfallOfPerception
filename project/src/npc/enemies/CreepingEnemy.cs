@@ -125,7 +125,7 @@ namespace Game
             {
                 Movement += dir.Normalized() * speed/40.0f;
             }
-            if (dir.Length() < 1.0f && GD.Randf()<0.05f)
+            if (dir.Length() < 4.0f && GD.Randf()<0.05f)
             {
                 if (GlobalTransform.origin.DistanceTo(target) < 50.0f)
                 {

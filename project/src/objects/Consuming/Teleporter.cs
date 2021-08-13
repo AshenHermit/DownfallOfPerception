@@ -45,6 +45,17 @@ namespace Game{
             Global.Instance.GetGenerationManager().ActionHappened("teleporter_used");
             Global.Instance.LoadScene("res://scenes/" + SceneName + ".tscn", SpawnPointId);
         }
+
+        public override void StartedWorking()
+        {
+            GetNode<AudioStreamPlayer3D>("Sound")?.Play();
+            base.StartedWorking();
+        }
+        public override void StoppedWorking()
+        {
+            GetNode<AudioStreamPlayer3D>("Sound")?.Stop();
+            base.StoppedWorking();
+        }
     }
 }
 

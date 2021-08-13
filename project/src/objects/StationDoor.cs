@@ -13,6 +13,8 @@ namespace Game
         public bool OpenOnLayerGenerated = false;
         [Export]
         public bool OpenOnStart = false;
+        [Export]
+        public bool PlaySound = true;
 
         public override void _Ready()
         {
@@ -41,7 +43,7 @@ namespace Game
         public void Open()
         {
             if (_opening) return;
-            Global.Instance.GetAudioManager().PlaySoundAtPosition(
+            if (PlaySound) Global.Instance.GetAudioManager().PlaySoundAtPosition(
                 "res://resources/sounds/effects/metal_door.ogg", GlobalTransform.origin, this);
             _opening = true;
             if (!OpenOnLayerGenerated)
@@ -53,7 +55,7 @@ namespace Game
         public void Close()
         {
             if (!_opening) return;
-            Global.Instance.GetAudioManager().PlaySoundAtPosition(
+            if(PlaySound) Global.Instance.GetAudioManager().PlaySoundAtPosition(
                 "res://resources/sounds/effects/metal_door.ogg", GlobalTransform.origin, this);
             _opening = false;
             _body.CollisionLayer = 1;

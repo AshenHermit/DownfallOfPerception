@@ -83,7 +83,7 @@ namespace Game
                 Godot.Collections.Dictionary<string, object> dict = new Godot.Collections.Dictionary<string, object>();
                 dict["Amount"] = Amount;
                 dict["ID"] = ID;
-                dict["Properties"] = (Godot.Collections.Dictionary)Properties;
+                dict["Properties"] = (Godot.Collections.Dictionary)Properties.Duplicate();
                 dict.Get<Godot.Collections.Dictionary>("Properties").TurnResourcesIntoPaths();
                 dict["Icon"] = Icon;
                 dict["PickableItem"] = PickableItem;
@@ -106,7 +106,7 @@ namespace Game
             public void LoadFromDict(Godot.Collections.Dictionary<string, object> dict)
             {
                 this.AssignDict(dict);
-                (Properties).LoadResourcesWithPaths();
+                Properties.LoadResourcesWithPaths();
             }
         }
 

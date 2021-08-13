@@ -26,6 +26,7 @@ namespace Game
         public Godot.Collections.Dictionary<string, object> DefaultSettings = new Godot.Collections.Dictionary<string, object>(){
             {"locale", "en"},
             {"volume", 0.0f},
+            {"mouse_sensivity", 100.0f},
             {"fullscreen", false},
             {"meat_is_lasagna", false},
             {"debug", false},
@@ -72,6 +73,10 @@ namespace Game
             if (Global.Instance.CurrentSceneInstance == null) return;
             Global.Instance.GetViewport().Msaa = Settings.Get<bool>("fxaa") ? Viewport.MSAA.Disabled : Viewport.MSAA.Msaa4x;
             Global.Instance.GetViewport().Fxaa = Settings.Get<bool>("fxaa");
+            if (Global.Instance.GetPlayerCamera() != null)
+            {
+                Global.Instance.GetPlayerCamera().SetMouseSensivity(Settings.Get<float>("mouse_sensivity"));
+            }
         }
 
         public void InitializeListeners()

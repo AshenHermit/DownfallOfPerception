@@ -59,13 +59,18 @@ namespace Game
             Setup(GetNode<Player>(PlayerNodePath));
             Global.Instance.RegisterPlayerCamera(this);
 
-            MouseSensivity *= 0.006f;
+            SetMouseSensivity(100.0f);
             _startPosition = Transform.origin;
 
             _noise.Seed = Mathf.FloorToInt(GD.Randf() * 1000000.0f);
             _noise.Period = 0.15f;
 
             _shakeContainer = GetParent<Spatial>();
+        }
+
+        public void SetMouseSensivity(float percents)
+        {
+            MouseSensivity = percents / 100.0f * 0.006f;
         }
         public override void _Process(float delta)
         {
