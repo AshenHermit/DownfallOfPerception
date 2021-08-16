@@ -3,6 +3,9 @@ extends VoxelGeneratorScript
 var noise:FastNoiseLite = FastNoiseLite.new()
 
 func _init():
+	setup()
+
+func setup():
 	noise.seed = floor(randf()*10000000)
 	noise.noise_type = FastNoiseLite.TYPE_OPEN_SIMPLEX_2S
 	noise.period = 18.0

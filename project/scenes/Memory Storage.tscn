@@ -144,8 +144,6 @@ AmbienceStream = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60625, -2.2728, -0.446983 )
-collision_layer = 1
-collision_mask = 1
 
 [node name="Particles" type="Particles" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38977, 0 )
@@ -176,7 +174,7 @@ library = SubResource( 24 )
 [node name="MemoryStorageBoot" parent="." instance=ExtResource( 11 )]
 
 [node name="debug" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61712, -3.27391, 1.82713 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81402, -2.21098, 0.893921 )
 script = ExtResource( 19 )
 
 [node name="RifleItem" parent="debug" instance=ExtResource( 18 )]

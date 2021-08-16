@@ -160,6 +160,12 @@ namespace Game
             _worldBusVolume += (_worldBusVolumeTarget - _worldBusVolume) / 16.0f;
             AudioServer.SetBusVolumeDb(WorldBusIndex, _worldBusVolume);
         }
+        public float GetVoiceBusPeakVolume()
+        {
+            return Mathf.Max(
+                AudioServer.GetBusPeakVolumeLeftDb(VoiceBusIndex, 0), 
+                AudioServer.GetBusPeakVolumeRightDb(VoiceBusIndex, 0));
+        }
         public void SetVolume(float volume)
         {
             AudioServer.SetBusVolumeDb(MasterBusIndex, volume);

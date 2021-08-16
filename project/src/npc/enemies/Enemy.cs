@@ -14,6 +14,9 @@ namespace Game
         [Export]
         public Godot.Collections.Array<Godot.Collections.Dictionary> ItemsToDrop = null;
 
+        [Export]
+        public string DisassembleSoundBankId = "metal_disassemble";
+
         protected bool _removeWhenFarFromPlayer = true;
 
         public IPoolContainer PoolContainer { get; set; }
@@ -57,10 +60,6 @@ namespace Game
 
         public override void _Process(float delta)
         {
-            if (Global.Instance.GetNpcManager().IsSomebodyTalking())
-            {
-                SetState((int)StateEnum.IDLE);
-            }
             base._Process(delta);
             if (_removeWhenFarFromPlayer && Global.Instance.GetPlayerCamera().GlobalTransform.origin.DistanceTo(GlobalTransform.origin)>=110.0f)
             {
@@ -76,6 +75,7 @@ namespace Game
             EnemyCorpse body = new EnemyCorpse();
             Global.Instance.CurrentSceneInstance.AddChild(body);
             if(ItemsToDrop!=null) body.SetItemToDrop(ItemsToDrop.GetRandomElement());
+            body.DisassembleSoundBankId = DisassembleSoundBankId;
             body.Mass = 10;
             body.GlobalTransform = GlobalTransform;
             GetNode<Spatial>(VisualNodePath).Reparent(body);
@@ -85,6 +85,17 @@ namespace Game
             QueueFree();
             //this.FreeInPool();
             return body;
+        }
+
+        public void MultiplyItemsChance(float factor)
+        {
+            foreach (Godot.Collections.Dictionary itemDict in ItemsToDrop)
+            {
+                if (itemDict.Contains("chance"))
+                {
+                    itemDict["chance"] = itemDict.GetFloat("chance") * factor;
+                }
+            }
         }
     }
 }

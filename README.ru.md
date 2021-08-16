@@ -34,4 +34,4 @@
 * Непростой пайплайн у аудио ресурсов, постоянно экспортировать куски проекта из fl studio не удобно. Нужно что-то предпринять, я знаю что есть софт для саунд дизайнеров, но я сначала попробую написать свой инструмент.
 
 ### Немного видео
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/FNDD5uT6_58/0.jpg)](https://www.youtube.com/watch?v=FNDD5uT6_58)
+[![some video](https://img.youtube.com/vi/FNDD5uT6_58/0.jpg)](https://www.youtube.com/watch?v=FNDD5uT6_58)

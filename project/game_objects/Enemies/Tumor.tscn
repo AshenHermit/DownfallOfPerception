@@ -7,7 +7,7 @@
 
 [node name="Tumor" type="KinematicBody"]
 script = ExtResource( 3 )
-MaxHealth = 100.0
+MaxHealth = 200.0
 VisualNodePath = NodePath("tumor")
 CollisionShapePath = NodePath("tumor_phy_collision_shape")
 

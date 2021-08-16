@@ -10,7 +10,7 @@
 ]]
 script = ExtResource( 1 )
 ItemId = "street_light"
-Amount = 1
+Amount = 3
 Properties = {
 "placeable": true,
 "scene_to_place": ExtResource( 4 )

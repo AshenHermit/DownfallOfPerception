@@ -44,6 +44,7 @@ namespace Game
             {"scene", "res://scenes/Begining.tscn"},
             {"saved_scenes", new Godot.Collections.Dictionary()},
             {"objectives", new Godot.Collections.Dictionary()},
+            {"generation_profiles_user_data", new Godot.Collections.Dictionary()},
         };
         public Godot.Collections.Dictionary<string, object> GameSave;
 
@@ -86,6 +87,7 @@ namespace Game
                 listenersInitialized = true;
                 Global.Instance.OnSceneReady += () =>
                 {
+                    Global.Instance.DEBUG = false || Settings.Get<bool>("debug");
                     ApplySettings();
                 };
                 Global.Instance.OnPlayerRegistered += () =>
@@ -173,7 +175,6 @@ namespace Game
         public void LoadGame(int saveId)
         {
             Global.Instance.GetAudioManager().StopMusic(0.0f);
-            Global.Instance.DEBUG = false || Settings.Get<bool>("debug");
             _saveId = saveId;
             GameSave = LoadDictionaryFromJson(GameSaveFilePath, GameSave);
             Global.Instance.LoadScene((string)GameSave["scene"], Convert.ToInt32(GameSave["spawn_point_id"]), false);
@@ -236,10 +237,41 @@ namespace Game
             return exportedNodes;
         }
 
+
+        void SaveGeneratoinProfileUserData()
+        {
+            if (Global.Instance.GetGenerationManager() == null) return;
+            if (Global.Instance.GetGenerationManager().CurrentGenerationProfile == null) return;
+            Godot.Collections.Dictionary generationProfiles = (Godot.Collections.Dictionary)((Godot.Collections.Dictionary)GameSave["generation_profiles_user_data"]);
+
+            generationProfiles[Global.Instance.CurrentSceneInstance.Filename] = 
+                Global.Instance.GetGenerationManager().CurrentGenerationProfile.ExportUserData();
+        }
+        public void LoadGenerationProfileUserData()
+        {
+            if (Global.Instance.GetGenerationManager() == null) return;
+            if (Global.Instance.GetGenerationManager().CurrentGenerationProfile == null) return;
+
+            Godot.Collections.Dictionary generationProfiles = (Godot.Collections.Dictionary)((Godot.Collections.Dictionary)GameSave["generation_profiles_user_data"]);
+
+            if (!generationProfiles.Contains(Global.Instance.CurrentSceneInstance.Filename))
+            {
+                Global.Instance.GetGenerationManager().CurrentGenerationProfile.ImportUserData(
+                    new Godot.Collections.Dictionary<string, object>());
+                return;
+            }
+
+            Godot.Collections.Dictionary userData = generationProfiles.Get<Godot.Collections.Dictionary>(Global.Instance.CurrentSceneInstance.Filename);
+
+            Global.Instance.GetGenerationManager().CurrentGenerationProfile.ImportUserData(
+                new Godot.Collections.Dictionary<string, object>(userData));
+        }
         public void SaveScene()
         {
             if (Global.Instance.CurrentSceneInstance!=null)
             {
+                SaveGeneratoinProfileUserData();
+                
                 // will not save nodes if scene is not in persist scenes hash set
                 if (!persistScenes.Contains(Global.Instance.CurrentSceneInstance.Filename)) return;
 

@@ -9,6 +9,7 @@ namespace Game
 
         public override void _Ready()
         {
+            Visible = true;
             Global.Instance.GetPlayer().OnHealthChangeEvent += ShowHealthChangeScreen;
             ShowHealthChangeScreen(0.0f);
         }

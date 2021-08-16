@@ -30,9 +30,7 @@ namespace Game.UI
             SelectItem(null);
             RenderItems();
 
-            // TODO: wtf is wrong with this, need to standardize adding event listeners.
-            // with field and operator or with method? method can be covered in interface, field is not 
-            // (EDIT: actually can, with property), maybe just "event getOnChangeEvent() => ... ?"
+            // TODO: bad
             Global.Instance.GetInventory().OnItemsArrayChanged += OnInventoryUpdate;
             Global.Instance.GetUIManager().AddOverlayChangeListener(OnOverlayChanged);
         }
@@ -109,6 +107,7 @@ namespace Game.UI
                 selectedItem = item;
                 _nameLabel.Text = Game.Inventory.Item.GetLocalizedName(item.ID) + " x" + item.Amount.ToString();
                 _descriptionLabel.BbcodeText = Game.Inventory.Item.GetLocalizedDescription(item.ID);
+                Global.Instance.GetAudioManager().PlayNonSpatialSound("res://resources/sounds/ui/tic.ogg");
             }
             else
             {

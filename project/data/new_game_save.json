@@ -91,6 +91,12 @@
     ]
   },
   "objectives": {
-    
+    "booth_opened": false,
+    "memory_storage_activated": false,
+    "withering_power_activated": false,
+    "destroy_stage_1_passed": false,
+    "last_order_started": false,
+    "player_escaped_order": false,
+    "layers_destroyed": false,
   }
 }

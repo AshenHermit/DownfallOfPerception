@@ -121,8 +121,6 @@ cutscene_name = "AfterDestroy"
 
 [node name="Player" parent="game_objects" instance=ExtResource( 2 )]
 transform = Transform( -0.438544, 0, 0.89871, 0, 1, 0, -0.89871, 0, -0.438543, 13.1664, -32.8941, -87.2571 )
-collision_layer = 1
-collision_mask = 1
 
 [node name="Particles" type="Particles" parent="game_objects/Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38977, 0 )
@@ -177,7 +175,8 @@ transform = Transform( 0.249597, -0.0612342, -0.966411, -0.587495, 0.783766, -0.
 transform = Transform( 0.980591, -0.19584, 0.00938259, 0.193221, 0.973381, 0.12327, -0.033274, -0.119064, 0.992329, -39.9532, -2.73396, -21.0916 )
 Exports = {
 "scenes_to_spawn": [ ExtResource( 5 ) ],
-"timeout": 0.4
+"timeout": 0.4,
+"use_timeout": true
 }
 
 [node name="container_static_body2" parent="StaticBody" instance=ExtResource( 10 )]

@@ -123,9 +123,9 @@ custom_constants/separation = 4
 alignment = 1
 
 [node name="Title" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
-margin_top = 178.0
+margin_top = 160.0
 margin_right = 43.0
-margin_bottom = 278.0
+margin_bottom = 260.0
 size_flags_horizontal = 0
 theme = ExtResource( 4 )
 custom_constants/margin_top = 32
@@ -173,9 +173,9 @@ __meta__ = {
 }
 
 [node name="Title2" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
-margin_top = 282.0
+margin_top = 264.0
 margin_right = 96.0
-margin_bottom = 314.0
+margin_bottom = 296.0
 size_flags_horizontal = 0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 0
@@ -194,9 +194,9 @@ margin_left = 0.0
 margin_right = 74.0
 
 [node name="Title3" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
-margin_top = 318.0
+margin_top = 300.0
 margin_right = 96.0
-margin_bottom = 350.0
+margin_bottom = 332.0
 size_flags_horizontal = 0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 0
@@ -218,9 +218,9 @@ button_type = 1
 screen_fade_path = NodePath("../../../../../FadeScreen")
 
 [node name="Title4" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
-margin_top = 354.0
+margin_top = 336.0
 margin_right = 96.0
-margin_bottom = 386.0
+margin_bottom = 368.0
 size_flags_horizontal = 0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 0
@@ -241,9 +241,9 @@ text = "Settings"
 button_type = 2
 
 [node name="Title5" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
-margin_top = 390.0
+margin_top = 372.0
 margin_right = 96.0
-margin_bottom = 422.0
+margin_bottom = 404.0
 size_flags_horizontal = 0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 0
@@ -258,6 +258,29 @@ margin_left = 80.0
 margin_right = 80.0
 
 [node name="MainMenuButton2" parent="MainMenu/MarginContainer/VBoxContainer/Title5/Control" instance=ExtResource( 6 )]
+margin_left = 0.0
+margin_right = 40.0
+text = "Warning"
+button_type = 4
+
+[node name="Title6" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+margin_top = 408.0
+margin_right = 96.0
+margin_bottom = 440.0
+size_flags_horizontal = 0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 0
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/VBoxContainer/Title6"]
+margin_left = 80.0
+margin_right = 80.0
+
+[node name="MainMenuButton2" parent="MainMenu/MarginContainer/VBoxContainer/Title6/Control" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_right = 40.0
 text = "Exit"

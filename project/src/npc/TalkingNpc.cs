@@ -23,7 +23,9 @@ namespace Game {
         float _talkDistance = 35.0f;
         bool _isTalking = false;
 
-        AudioManager.AudioUnit _currentAudioUnit;
+        public bool IsTalking() => _isTalking;
+
+        protected AudioManager.AudioUnit _currentAudioUnit;
 
         public override void _Ready()
         {
@@ -69,7 +71,7 @@ namespace Game {
                 if (IsPlayerListening()) Talk();
             }
         }
-        public void OnPartEnded() {
+        public virtual void OnPartEnded() {
             Godot.Collections.Array<Godot.Collections.Dictionary> monologeParts = monologues[_currentMonologueId];
             Godot.Collections.Dictionary monologuePart = monologeParts[_currentMonologuePartIndex];
             if (monologuePart.Contains("objective"))
@@ -94,6 +96,10 @@ namespace Game {
                 }
             }
         }
+        public virtual void OnPartStarted()
+        {
+
+        }
         public void Talk()
         {
             if (!IsPlayerListening()) return;
@@ -104,8 +110,12 @@ namespace Game {
 
             _isTalking = true;
             _currentAudioUnit = Global.Instance.GetAudioManager().PlaySoundAtPosition(GetCurrentMonologuePartAudio(), GlobalTransform.origin, this, "voice");
+            _currentAudioUnit.UnitSize = 60.0f;
             _currentAudioUnit.MaxDb = 2.0f;
-            
+            _currentAudioUnit.MaxDistance = 100.0f;
+
+            OnPartStarted();
+
             string currentMonologueText = GetCurrentMonologuePartText();
             Global.Instance.GetNpcManager().SomebodyStartedTalking(currentMonologueText);
         }

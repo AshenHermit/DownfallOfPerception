@@ -14,9 +14,14 @@ namespace Game
         static int _maxTumorsCount = 3;
         int _tumorsCount = 0;
         int _diedTumorsCount = 0;
+        int _maxBatterySocketsCount = 0;
+        int _batterySocketsCount = 0;
 
         Gate _gate;
-        Spatial _terminal;
+        Terminal _terminal;
+
+        Godot.Collections.Array<Spatial> BatterySocketsContainers = new Godot.Collections.Array<Spatial>();
+        Spatial BatterySpawner;
 
         public MemoryStorageLayer()
         {
@@ -38,19 +43,53 @@ namespace Game
 
         public override void _Ready()
         {
+            BatterySocketsContainers = new Godot.Collections.Array<Spatial>();
+
             if (Global.Instance.GetObjectivesManager().IsObjectiveAchieved("memory_storage_activated"))
             {
+                _maxBatterySocketsCount = 4+(int)Mathf.Floor(GD.Randf()*9.0f);
+                _batterySocketsCount = _maxBatterySocketsCount;
+
                 SpawnTerminal();
+                CallDeferred("SetupBatteries");
                 SpawnGate();
             }
+        }
+        public void SetupBatteries()
+        {
+            SpawnBatterySockets();
+            SpawnBattaries();
         }
 
         public void SpawnTerminal()
         {
-            _terminal = GD.Load<PackedScene>("res://game_objects/Layers/MemoryStorage/Terminal/Terminal.tscn").Instance<Spatial>();
-            Global.Instance.CurrentSceneInstance.AddChild(_terminal);
-            _terminal.Translate(new Vector3(120.0f, -120.0f, -90.0f));
-            _terminal.RotateObjectLocal(Vector3.Up, -Mathf.Pi / 2.0f);
+            Spatial terminalRoom = GD.Load<PackedScene>("res://game_objects/Layers/MemoryStorage/Terminal/Terminal.tscn").Instance<Spatial>();
+            Global.Instance.CurrentSceneInstance.AddChild(terminalRoom);
+            terminalRoom.Translate(new Vector3(120.0f, -120.0f, -90.0f));
+            terminalRoom.RotateObjectLocal(Vector3.Up, -Mathf.Pi / 2.0f);
+            _terminal = terminalRoom.GetNode<Terminal>("Terminal");
+        }
+        public void SpawnBatterySockets()
+        {
+            for(int i = 0; i< _maxBatterySocketsCount; ++i)
+            {
+                BatterySocket socket = GD.Load<PackedScene>("res://game_objects/Layers/MemoryStorage/BatterySocket.tscn").Instance<BatterySocket>();
+                Spatial container = ((Godot.Collections.Array)BatterySocketsContainers).GetRandomElement<Spatial>();
+                container.AddChild(socket);
+                socket.Transform = Transform.Identity;
+                socket.Translate(Vector3.Up * (container.GetChildCount()-1) * 2.0f);
+            }
+        }
+        public void SpawnBattaries()
+        {
+            for (int i = 0; i < _maxBatterySocketsCount; ++i)
+            {
+                PickableItem battery = GD.Load<PackedScene>("res://game_objects/Items/Battery/DischargedBattery.tscn").Instance<PickableItem>();
+                BatterySpawner.AddChild(battery);
+                battery.Set("mode", RigidBody.ModeEnum.Kinematic);
+                battery.Transform = Transform.Identity;
+                battery.Translate(Vector3.Up * (BatterySpawner.GetChildCount() - 1) * 0.6f);
+            }
         }
 
         public void SpawnGate()
@@ -80,7 +119,7 @@ namespace Game
                 else
                 {
                     Global.Instance.PopupInfo(Global.Translate("gate.blocked_message"));
-                    if(Global.Instance.DEBUG) _gate.Open();
+                    if (Global.Instance.DEBUG) _gate.Open();
                 }
             }
 
@@ -88,6 +127,15 @@ namespace Game
             {
                 Global.Instance.GetAudioManager().PlayNonSpatialSound("res://resources/sounds/deep_rumble.ogg");
                 Global.Instance.GetObjectivesManager().AchieveObjective("destroy_stage_1_passed");
+            }
+
+            if (actionId == "terminal_battery_socket_activated")
+            {
+                _batterySocketsCount -= 1;
+                if (_batterySocketsCount <= 0)
+                {
+                    _terminal.Activate();
+                }
             }
         }
 

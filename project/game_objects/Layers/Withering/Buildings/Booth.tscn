@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://resources/models/layers/withering/buildings/booth/booth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/models/layers/withering/buildings/booth/booth_phy_collision_shape.tscn" type="PackedScene" id=2]
@@ -11,10 +11,18 @@
 [ext_resource path="res://scripts/SceneComponents/IfObjectiveAchieved.gd" type="Script" id=9]
 [ext_resource path="res://game_objects/Layers/Begining/DetachableStationDoor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game_objects/Layers/Withering/Objectives/Fruits/Piston.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game_objects/Layers/MemoryStorage/Atomizer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Fruits/Atomizer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/sounds/ambience/elevator_shaking.ogg" type="AudioStream" id=13]
 [ext_resource path="res://resources/sounds/ambience/elevator_stop.mp3" type="AudioStream" id=14]
-[ext_resource path="res://resources/sounds/effects/metal_detach.ogg" type="AudioStream" id=15]
+[ext_resource path="res://resources/textures/signs/lock.png" type="Texture" id=15]
+[ext_resource path="res://src/objects/SceneComponents/RemoveOnGenerated.cs" type="Script" id=16]
+
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 15 )
 
 [node name="Booth" type="StaticBody"]
 collision_layer = 3
@@ -71,8 +79,8 @@ came_from_teleporter = true
 [node name="teleport_static_body" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.85184, -1.01906, -0.266727 )
 NeedItemsCount = {
-"atomizer": 3,
-"piston": 3
+"atomizer": 6,
+"piston": 6
 }
 SpawnPointId = 1
 
@@ -84,18 +92,28 @@ objective_id = "booth_opened"
 [node name="StationDoor" parent="if_booth_opened" instance=ExtResource( 7 )]
 transform = Transform( 1, 9.31323e-10, -7.45058e-09, -1.86265e-09, 1, 2.8871e-08, 3.72529e-09, 1.47847e-08, 1, 0, 0, 0 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="StationDoor3" parent="if_booth_opened" instance=ExtResource( 7 )]
 transform = Transform( -0.0482721, -1.39495, -0.057351, 0.863986, 0.0152296, -1.09764, 1.09669, -0.0733989, 0.862215, -2.47256, -0.104646, 7.03553 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="StationDoor4" parent="if_booth_opened" instance=ExtResource( 7 )]
 transform = Transform( 1.11064e-08, -0.0449775, -0.836973, -0.820703, -0.170043, 0.00913779, -0.170289, 0.819521, -0.0440394, 0.51657, -3.96584, 6.42109 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="StationDoor2" parent="if_booth_opened" instance=ExtResource( 7 )]
 transform = Transform( -1, 1.35973e-07, -1.11759e-08, -1.546e-07, -1, 4.38304e-08, 2.23517e-08, -7.567e-09, 1, 0, -3.46105, -9.53674e-07 )
 OpenOnLayerGenerated = true
+PlaySound = false
+
+[node name="LockSign" type="MeshInstance" parent="if_booth_opened"]
+transform = Transform( 0.698382, 0.00964969, 0.0069783, -0.010021, 0.697347, 0.0386054, -0.00643356, -0.0386999, 0.697384, 0.0380608, -1.66239, 0.139699 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+script = ExtResource( 16 )
 
 [node name="if_not_booth_opened" type="Spatial" parent="."]
 script = ExtResource( 9 )
@@ -104,19 +122,15 @@ objective_id = "booth_opened"
 
 [node name="DetachableStationDoor" parent="if_not_booth_opened" instance=ExtResource( 10 )]
 transform = Transform( 0.11351, 0.278164, -1.39979, 0.180135, 1.39019, 0.290863, 1.41575, -0.199185, 0.0752217, 7.65202, 3.5839, 1.19386 )
-DetachSoundStream = ExtResource( 15 )
 
 [node name="DetachableStationDoor2" parent="if_not_booth_opened" instance=ExtResource( 10 )]
 transform = Transform( -1.27014, 0.213164, -1.53013, 1.50903, -0.253256, -1.2879, -0.331024, -1.97242, -6.68841e-08, -2.41659, 5.48358, -1.81007 )
-DetachSoundStream = ExtResource( 15 )
 
 [node name="DetachableStationDoor3" parent="if_not_booth_opened" instance=ExtResource( 10 )]
 transform = Transform( 0.134075, -1.19248, 1.81195e-07, -1.19248, -0.134075, -9.31304e-10, 2.11702e-08, -1.79956e-07, -1.2, -2.00925, 0.420795, 2.60444 )
-DetachSoundStream = ExtResource( 15 )
 
 [node name="DetachableStationDoor4" parent="if_not_booth_opened" instance=ExtResource( 10 )]
 transform = Transform( -0.130266, -0.270722, -1.39979, -0.264596, -1.37661, 0.290863, -1.40097, 0.285169, 0.0752217, 6.64678, -1.26783, 1.24788 )
-DetachSoundStream = ExtResource( 15 )
 
 [node name="street_light" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.993254, 0, 0.11596, 0, 1, 0, -0.11596, 0, 0.993254, 4.00031, 3.93564, 2.48646 )

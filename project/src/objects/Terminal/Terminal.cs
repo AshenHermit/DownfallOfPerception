@@ -6,15 +6,27 @@ namespace Game
     public class Terminal : Usable
     {
         [Export]
+        public NodePath TerminalGuySoundPath;
+        [Export]
         public NodePath DisplayPath;
         TextIn3D _diplay;
 
         Godot.Collections.Array<string> _pageTexts = new Godot.Collections.Array<string>();
+
+        bool _working = false;
+
         int _currentPage = 0;
 
         bool _shure = false;
         bool _chekingIfShure = false;
-        bool _activated = false;
+        bool _destructionActivated = false;
+
+        public void Activate()
+        {
+            _working = true;
+            GetNode<AudioStreamPlayer3D>(TerminalGuySoundPath).Play();
+            UpdateDisplay();
+        }
 
         public override void _Ready()
         {
@@ -28,10 +40,12 @@ namespace Game
 
         public override void Use(Node invoker)
         {
+            if (!_working) return;
+
             if (CanActivate())
             {
                 Global.Instance.GetAudioManager().PlaySoundAtPosition("res://resources/sounds/effects/button_low.ogg", GlobalTransform.origin, this);
-                if (!_activated && !_shure)
+                if (!_destructionActivated && !_shure)
                 {
                     _chekingIfShure = true;
                     UpdateDisplay();
@@ -55,12 +69,18 @@ namespace Game
 
         void UpdateDisplay()
         {
+            if (!_working)
+            {
+                _diplay.SetText("");
+                return;
+            }
+
             if (_chekingIfShure)
             {
                 _diplay.SetText(Global.Translate("terminal.checking_if_sure"));
                 return;
             }
-            if (_activated)
+            if (_destructionActivated)
             {
                 _diplay.SetText(Global.Translate("terminal.activated_text"));
                 return;
@@ -70,11 +90,13 @@ namespace Game
 
         public void PressRightButton()
         {
+            if (!_working) return;
+
             //TODO: this terminal doesnt look like an actual terminal
             if (_chekingIfShure)
             {
-                ActivateDestroy();
-                _activated = true;
+                ActivateDestruction();
+                _destructionActivated = true;
                 _chekingIfShure = false;
                 UpdateDisplay();
                 Global.Instance.GetAudioManager().PlaySoundAtPosition("res://resources/sounds/effects/button_low.ogg", GlobalTransform.origin, this);
@@ -87,6 +109,8 @@ namespace Game
         }
         public void PressLeftButton()
         {
+            if (!_working) return;
+
             if (_chekingIfShure)
             {
                 _chekingIfShure = false;
@@ -106,10 +130,10 @@ namespace Game
 
         public bool CanActivate()
         {
-            return _currentPage == 2 && !_activated;
+            return _currentPage == 2 && !_destructionActivated;
         }
 
-        public void ActivateDestroy()
+        public void ActivateDestruction()
         {
             if (!CanActivate()) return;
             Global.Instance.GetGenerationManager().ActionHappened("layer_system_destroy_activated");

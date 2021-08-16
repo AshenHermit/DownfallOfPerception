@@ -36,9 +36,10 @@ namespace Game
                 if (body is Spatial && body is IUsable)
                 {
                     Spatial spatialBody = (Spatial)body;
-                    if (!_player.GetCamera().IsPositionBehind(spatialBody.GlobalTransform.origin))
+                    IUsable usable = (IUsable)body;
+                    if (!_player.GetCamera().IsPositionBehind(usable.GetUseInfoPoint().GlobalTransform.origin))
                     {
-                        float distance = spatialBody.GlobalTransform.origin.DistanceTo(_player.GlobalTransform.origin);
+                        float distance = usable.GetUseInfoPoint().GlobalTransform.origin.DistanceTo(_player.GlobalTransform.origin);
                         if (distance < maxDistance)
                         {
                             maxDistance = distance;

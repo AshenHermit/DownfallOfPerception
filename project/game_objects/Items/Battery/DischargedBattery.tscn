@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Items/Battery/battery_discharged_material.tres" type="Material" id=3]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=4]
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery_discharged_icon.png" type="Texture" id=5]
+[ext_resource path="res://game_objects/Items/Weapons/DischargedBatteryWeapon.tscn" type="PackedScene" id=6]
+
+[node name="DischargedBattery" type="RigidBody"]
+script = ExtResource( 4 )
+ItemId = "discharged_battery"
+Amount = 1
+Properties = {
+"icon": ExtResource( 5 ),
+"weapon": true,
+"weapon_scene": ExtResource( 6 )
+}
+
+[node name="battery" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.653 )
+material_override = ExtResource( 3 )
+
+[node name="battery_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.653 )

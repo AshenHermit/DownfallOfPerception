@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://game_objects/GenerationManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/generation/DecorationsSpawner.cs" type="Script" id=10]
 [ext_resource path="res://game_objects/Layers/Corpse.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game_objects/Layers/MemoryStorage/TumorRope.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/sounds/effects/hum.ogg" type="AudioStream" id=13]
 [ext_resource path="res://resources/models/layers/withering/decorations/surface_decorations/surface_decoration_2.obj" type="ArrayMesh" id=15]
 [ext_resource path="res://game_objects/PlayerInventory.tscn" type="PackedScene" id=16]
 [ext_resource path="res://game_objects/NpcManager.tscn" type="PackedScene" id=17]
@@ -57,26 +58,21 @@ CurrentGenerationProfile = ExtResource( 3 )
 transform = Transform( -0.129021, 0, 0.991642, 0, 1, 0, -0.991642, 0, -0.129021, -12.1423, 13.0308, 32.5458 )
 script = ExtResource( 28 )
 local_velocity = Vector3( 0, 0, -10 )
-came_from_teleporter = true
 
 [node name="WitheringSpawnPoint" type="Spatial" parent="game_objects"]
 transform = Transform( -0.976623, 0, -0.214957, 0, 1, 0, 0.214957, 0, -0.976623, -13.9752, 40.2904, -60.3426 )
 script = ExtResource( 28 )
 id = 1
 local_velocity = Vector3( 0, 0, -10 )
-came_from_teleporter = true
 
 [node name="MemoryStorageSpawnPoint" type="Spatial" parent="game_objects"]
 transform = Transform( -0.129021, 0, 0.991642, 0, 1, 0, -0.991642, 0, -0.129021, -4.40155, 44.8075, -17.0373 )
 script = ExtResource( 28 )
 id = 2
 local_velocity = Vector3( 0, 0, -10 )
-came_from_teleporter = true
 
 [node name="Player" parent="game_objects" instance=ExtResource( 2 )]
 transform = Transform( -0.129021, 0, 0.991642, 0, 1, 0, -0.991642, 0, -0.129021, -13.6831, 8.50322, 32.4602 )
-collision_layer = 1
-collision_mask = 1
 MaxSpeed = 0.9
 Mass = 0.5
 
@@ -111,10 +107,14 @@ key = "ScreenFade"
 
 [node name="ScreenFade" type="Area" parent="register_to_ScreenFade"]
 script = ExtResource( 21 )
+sound_path = NodePath("Sound")
 
 [node name="CollisionShape" type="CollisionShape" parent="register_to_ScreenFade/ScreenFade"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3977, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="register_to_ScreenFade/ScreenFade"]
+stream = ExtResource( 13 )
 
 [node name="GoToChosenScene" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0041, 29.6047, -13.4556 )
@@ -128,116 +128,122 @@ shape = SubResource( 2 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 19 )
 
-[node name="ProxySystem" type="Spatial" parent="."]
+[node name="register_to_ProxySystem" type="Spatial" parent="."]
+script = ExtResource( 8 )
+key = "ProxySystem"
+
+[node name="ProxySystem" type="Spatial" parent="register_to_ProxySystem"]
 script = ExtResource( 20 )
 indicators_path = NodePath("Indicators")
-teleport_trigger_path = NodePath("../GoToChosenScene")
+teleport_trigger_path = NodePath("../../GoToChosenScene")
 
-[node name="Indicators" type="Spatial" parent="ProxySystem"]
+[node name="Indicators" type="Spatial" parent="register_to_ProxySystem/ProxySystem"]
 
-[node name="Begining" type="Spatial" parent="ProxySystem/Indicators"]
+[node name="Begining" type="Spatial" parent="register_to_ProxySystem/ProxySystem/Indicators"]
 
-[node name="surface_decoration_2" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_2" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( 0.240245, 0.9261, -0.290897, -0.970712, 0.229204, -0.0719951, -7.45058e-09, 0.299674, 0.954042, -36.5427, 20.6942, -12.733 )
 
-[node name="surface_decoration_4" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_4" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( -0.413506, 0.910056, 0.0284897, -0.677764, -0.328551, 0.657792, 0.607988, 0.252692, 0.75266, -37.8493, 14.9026, -13.5685 )
 
-[node name="surface_decoration_5" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_5" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( -0.161442, 0.964947, -0.206916, 0.799937, 0.00516254, -0.600061, -0.577959, -0.262395, -0.77273, -37.7112, 18.3274, -19.0215 )
 
-[node name="surface_decoration_3" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_3" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( -0.317598, 0.28594, 0.904085, 0.409574, 0.901287, -0.141175, -0.855208, 0.325453, -0.403361, -37.0136, 22.597, -20.1546 )
 
-[node name="surface_decoration_6" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_6" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( -0.746107, -0.0262096, 0.66531, -0.621716, 0.385068, -0.68205, -0.238313, -0.922516, -0.303596, 4.84021, 15.6951, 7.93852 )
 
-[node name="surface_decoration_8" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_8" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( -0.888615, -0.187746, 0.418468, -0.454691, 0.240911, -0.857448, 0.0601688, -0.952215, -0.299444, 46.418, 32.7314, -25.4387 )
 
-[node name="surface_decoration_9" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_9" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( -0.0881386, -0.95122, -0.295653, -0.881664, -0.0636328, 0.467566, -0.463572, 0.301878, -0.833049, 48.2298, 27.9903, -34.5089 )
 
-[node name="surface_decoration_7" parent="ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
+[node name="surface_decoration_7" parent="register_to_ProxySystem/ProxySystem/Indicators/Begining" instance=ExtResource( 23 )]
 transform = Transform( 0.799921, 0.202186, 0.565019, 0.431547, -0.848067, -0.307488, 0.417005, 0.489798, -0.76564, 8.58735, 19.8856, -2.19254 )
 
-[node name="Withering" type="Spatial" parent="ProxySystem/Indicators"]
+[node name="Withering" type="Spatial" parent="register_to_ProxySystem/ProxySystem/Indicators"]
 
-[node name="surface_decoration_1" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_1" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.911784, 0.403243, 0.0777546, -0.410671, 0.895292, 0.172633, 7.45058e-09, -0.189335, 0.981912, -36.5046, 22.9129, -11.7943 )
 
-[node name="surface_decoration_6" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_6" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.995868, 0.0494815, 0.0761444, -0.0890199, 0.697602, 0.710934, -0.0179404, -0.714774, 0.699125, 1.13204, 8.33972, 2.55094 )
 
-[node name="surface_decoration_8" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_8" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.995868, 0.0187026, 0.0888629, -0.0890199, 0.394386, 0.914623, -0.0179404, -0.918754, 0.394421, 45.6621, 29.6469, -26.6595 )
 
-[node name="surface_decoration_9" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_9" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.144263, 0.083293, 0.986028, -0.28395, 0.95803, -0.0393841, -0.947924, -0.274301, 0.161859, 45.3143, 26.5406, -30.5535 )
 
-[node name="surface_decoration_10" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_10" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( -0.875841, -0.110467, -0.469786, -0.0535143, 0.989677, -0.132947, 0.479623, -0.0913001, -0.872712, 45.4799, 26.8537, -31.6092 )
 
-[node name="surface_decoration_7" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_7" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.992993, -0.114041, -0.0309639, 0.0815764, 0.851119, -0.518596, 0.0854953, 0.512436, 0.854459, 1.03067, 8.22523, -2.18817 )
 
-[node name="surface_decoration_2" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_2" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( -0.187188, 0.410671, 0.892362, 0.0843103, 0.911784, -0.401924, -0.978699, 7.45058e-09, -0.205299, -36.8417, 22.1644, -15.4564 )
 
-[node name="surface_decoration_3" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_3" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( -0.858267, 0.23741, 0.454988, 0.386567, 0.882197, 0.268876, -0.337555, 0.406651, -0.848936, -36.3591, 23.3385, -18.8163 )
 
-[node name="surface_decoration_4" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_4" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.0214082, 0.602014, 0.798198, -0.436449, 0.723915, -0.534283, -0.899474, -0.336935, 0.278247, -36.524, 22.0543, -13.0804 )
 
-[node name="surface_decoration_5" parent="ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
+[node name="surface_decoration_5" parent="register_to_ProxySystem/ProxySystem/Indicators/Withering" instance=ExtResource( 27 )]
 transform = Transform( 0.0751974, 0.98365, 0.16364, 0.374173, 0.124279, -0.918993, -0.924305, 0.130336, -0.35871, -35.3348, 20.8666, -17.7396 )
 
-[node name="Memory Storage" type="Spatial" parent="ProxySystem/Indicators"]
+[node name="Memory Storage" type="Spatial" parent="register_to_ProxySystem/ProxySystem/Indicators"]
 
-[node name="TumorRope" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( 0.991183, -0.131466, -0.0165104, -0.130486, -0.94688, -0.293926, 0.0230078, 0.293489, -0.955686, -18.5264, 30.5042, -16.0484 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope5" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope5" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( 0.617095, 0.762086, -0.196007, 0.722551, -0.647427, -0.242402, -0.311631, 0.00795999, -0.95017, -16.3236, 32.0022, -22.0026 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope6" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope6" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( -0.880382, 0.46804, 0.0765846, -0.429926, -0.719429, -0.545514, -0.200225, -0.513187, 0.834595, -11.0926, 33.9554, -17.7134 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope2" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope2" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( 0.920669, -0.369136, -0.126912, -0.293525, -0.440371, -0.848479, 0.257316, 0.81842, -0.513787, -23.4995, 33.8053, -15.0225 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope4" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope4" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( 0.943138, -0.278648, -0.181233, -0.270691, -0.327409, -0.905279, 0.192917, 0.902861, -0.38422, -16.5286, 34.3657, -12.5856 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope7" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope7" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( -0.587881, 0.128092, -0.798742, 0.540704, -0.672194, -0.505761, -0.601693, -0.72921, 0.32591, -22.3949, 38.972, 7.49195 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope8" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope8" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( -0.587881, -0.493622, -0.640884, 0.540704, -0.829044, 0.142561, -0.601693, -0.26272, 0.754283, 1.96876, 43.2488, 2.96567 )
 ScenesToSpawn = [  ]
 
-[node name="TumorRope3" parent="ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
+[node name="TumorRope3" parent="register_to_ProxySystem/ProxySystem/Indicators/Memory Storage" instance=ExtResource( 12 )]
 transform = Transform( 0.850303, -0.0862309, 0.51918, 0.475521, -0.296856, -0.828104, 0.22553, 0.951021, -0.211413, -12.3155, 35.7942, -10.4378 )
 ScenesToSpawn = [  ]
 
-[node name="LayerChangeTrigger" type="Area" parent="ProxySystem"]
-transform = Transform( 0.999687, 0, -0.025008, 0, 1, 0, 0.025008, 0, 0.999687, 68.7294, 7.34086, -6.65659 )
+[node name="LayerChangeTrigger" type="Area" parent="register_to_ProxySystem/ProxySystem"]
+transform = Transform( 0.999687, -0.0237792, -0.00774284, 0, 0.309615, -0.950862, 0.025008, 0.950565, 0.309518, 68.9162, 20.107, -14.1219 )
 
-[node name="CollisionShape" type="CollisionShape" parent="ProxySystem/LayerChangeTrigger"]
+[node name="CollisionShape" type="CollisionShape" parent="register_to_ProxySystem/ProxySystem/LayerChangeTrigger"]
 shape = SubResource( 4 )
 
 [node name="Corpse" parent="." instance=ExtResource( 11 )]
 transform = Transform( 0.762514, 0.119709, -0.115788, -0.0917556, 0.754803, 0.176116, 0.138989, -0.158448, 0.751492, -54.7648, 42.0927, -27.0671 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="register_to_ScreenFade/ScreenFade" to="register_to_ScreenFade/ScreenFade" method="_on_ScreenFade_body_entered"]
 [connection signal="body_exited" from="register_to_ScreenFade/ScreenFade" to="register_to_ScreenFade/ScreenFade" method="_on_ScreenFade_body_exited"]
 [connection signal="body_entered" from="GoToChosenScene" to="GoToChosenScene" method="_on_Area_body_entered"]
-[connection signal="body_entered" from="ProxySystem/LayerChangeTrigger" to="ProxySystem" method="_on_LayerChangeTrigger_body_entered"]
-[connection signal="body_exited" from="ProxySystem/LayerChangeTrigger" to="ProxySystem" method="_on_LayerChangeTrigger_body_exited"]
+[connection signal="body_entered" from="register_to_ProxySystem/ProxySystem/LayerChangeTrigger" to="register_to_ProxySystem/ProxySystem" method="_on_LayerChangeTrigger_body_entered"]
+[connection signal="body_exited" from="register_to_ProxySystem/ProxySystem/LayerChangeTrigger" to="register_to_ProxySystem/ProxySystem" method="_on_LayerChangeTrigger_body_exited"]

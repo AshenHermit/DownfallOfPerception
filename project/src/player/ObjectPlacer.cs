@@ -247,6 +247,10 @@ namespace Game
                         ((IContainingItem)_objectToPlace).SetItem(_item);
                     }
 
+                    if (Global.Instance.GetGenerationManager() != null)
+                        Global.Instance.GetAudioManager().PlaySoundFromBankAtPosition(
+                        Global.Instance.GetGenerationManager().GetSoundIdFromBank("place_object"), _objectToPlace.GlobalTransform.origin, _objectToPlace);
+
                     _objectToPlace = null;
                     _objectAgent = null;
                     _placeRegion = null;

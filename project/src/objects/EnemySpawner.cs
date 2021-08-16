@@ -61,6 +61,7 @@ namespace Game
         public override void _Process(float delta)
         {
             if (!Enabled) return;
+            if (Global.Instance.GetNpcManager().IsSomebodyTalking()) return;
 
             if (GlobalTransform.origin.DistanceTo(Global.Instance.GetPlayer().GlobalTransform.origin) < workingDistance)
             {

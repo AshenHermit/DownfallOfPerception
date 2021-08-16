@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://game_objects/UI/QuickInventoryItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=2]
@@ -25,9 +25,10 @@
 [ext_resource path="res://src/ui/info_popups/InfoPopupDriver.cs" type="Script" id=23]
 [ext_resource path="res://game_objects/UI/InfoPopup.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scripts/SceneComponents/DebugContainer.gd" type="Script" id=25]
+[ext_resource path="res://resources/ui/elements/panel.png" type="Texture" id=26]
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0, 0, 0, 0.258824 )
+bg_color = Color( 0, 0, 0, 0.337255 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 17
@@ -37,11 +38,14 @@ font_data = ExtResource( 20 )
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.607843 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.164706, 0.164706, 0.164706, 1 )
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 26 )
+region_rect = Rect2( 12, 12, 232, 232 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.109804, 0.109804, 0.109804, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.443137, 0.121569, 0.207843, 1 )
@@ -54,6 +58,20 @@ blend_mode = 1
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 256, 256 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0, 0, 0, 1 )
@@ -166,10 +184,10 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="TabContainer" type="TabContainer" parent="GameOverlay/CenterContainer2"]
-margin_left = 405.0
-margin_top = 235.0
-margin_right = 619.0
-margin_bottom = 365.0
+margin_left = 429.0
+margin_top = 116.0
+margin_right = 594.0
+margin_bottom = 483.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 2 )
@@ -180,7 +198,10 @@ __meta__ = {
 }
 
 [node name="Inventory" parent="GameOverlay/CenterContainer2/TabContainer" instance=ExtResource( 3 )]
-margin_top = 26.0
+margin_left = 12.0
+margin_top = 50.0
+margin_right = -12.0
+margin_bottom = -12.0
 
 [node name="HealthBar" type="Control" parent="."]
 anchor_left = 0.5
@@ -199,29 +220,30 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -200.5
-margin_top = -12.0
+margin_top = -14.0
 margin_right = 200.5
 margin_bottom = 12.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Container" type="MarginContainer" parent="HealthBar/PanelContainer"]
 margin_right = 401.0
-margin_bottom = 24.0
-custom_constants/margin_right = 8
-custom_constants/margin_top = 8
-custom_constants/margin_left = 8
-custom_constants/margin_bottom = 8
+margin_bottom = 26.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackgroundPanel" type="Panel" parent="HealthBar/PanelContainer/Container"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 393.0
+modulate = Color( 1, 1, 1, 0.356863 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 391.0
 margin_bottom = 16.0
 custom_styles/panel = SubResource( 4 )
 __meta__ = {
@@ -229,9 +251,9 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="HealthBar/PanelContainer/Container"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 393.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 391.0
 margin_bottom = 16.0
 
 [node name="SlowHealthPanel" type="Panel" parent="HealthBar/PanelContainer/Container/Control"]
@@ -295,6 +317,7 @@ margin_bottom = 40.0
 [node name="DamageScreen" type="TextureRect" parent="." groups=[
 "DontHide",
 ]]
+visible = false
 modulate = Color( 1, 0, 0.141176, 1 )
 material = SubResource( 7 )
 anchor_right = 1.0
@@ -346,15 +369,18 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MenuOverlay/CenterContainer2"]
-margin_left = 512.0
-margin_top = 300.0
-margin_right = 512.0
-margin_bottom = 300.0
+margin_left = 500.0
+margin_top = 288.0
+margin_right = 524.0
+margin_bottom = 312.0
 theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 13 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuOverlay/CenterContainer2/PanelContainer"]
-margin_right = 165.0
-margin_bottom = 251.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 177.0
+margin_bottom = 279.0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -364,9 +390,14 @@ custom_constants/margin_bottom = 16
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 149.0
-margin_bottom = 235.0
+margin_bottom = 251.0
 
-[node name="Label" type="Label" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 133.0
+margin_bottom = 51.0
+custom_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 margin_right = 133.0
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 15 )
@@ -376,42 +407,42 @@ script = ExtResource( 16 )
 string_id = "game_menu_title"
 
 [node name="Button5" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
-margin_top = 39.0
+margin_top = 55.0
 margin_right = 133.0
-margin_bottom = 71.0
+margin_bottom = 87.0
 
 [node name="Button6" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
-margin_top = 75.0
+margin_top = 91.0
 margin_right = 133.0
-margin_bottom = 107.0
+margin_bottom = 123.0
 text = "load last save"
 button_type = 1
 
 [node name="Button2" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
-margin_top = 111.0
+margin_top = 127.0
 margin_right = 133.0
-margin_bottom = 143.0
+margin_bottom = 159.0
 text = "settings"
 button_type = 2
 
 [node name="Button3" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
-margin_top = 147.0
+margin_top = 163.0
 margin_right = 133.0
-margin_bottom = 179.0
+margin_bottom = 195.0
 text = "exit to main menu"
 button_type = 3
 
 [node name="Button4" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
-margin_top = 183.0
+margin_top = 199.0
 margin_right = 133.0
-margin_bottom = 215.0
+margin_bottom = 231.0
 text = "exit to desktop"
 button_type = 4
 
 [node name="Control" type="Control" parent="MenuOverlay/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 219.0
+margin_top = 235.0
 margin_right = 133.0
-margin_bottom = 219.0
+margin_bottom = 235.0
 script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -27,7 +27,9 @@ namespace Game
         public override void Disable()
         {
             base.Disable();
+            _working = false;
             _animSpeedTarget = 0.0f;
+            StoppedWorking();
         }
 
         void SetupAnimations()

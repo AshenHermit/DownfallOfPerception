@@ -6,15 +6,20 @@ namespace Game
 {
     public class ProxyLayer : GenerationProfile
     {
-
-        public Spatial ScreenFade;
+        public Area ScreenFade;
+        public Spatial ProxySystem;
 
         public ProxyLayer()
         {
 
         }
 
-
+        public override Godot.Collections.Dictionary<string, object> GetDefaultUserData()
+        {
+            return new Godot.Collections.Dictionary<string, object> {
+                { "current_layer_index", 0 }
+            };
+        }
 
         public override VoxelGeneratorScript GetGeneratorScript()
         {
@@ -23,8 +28,15 @@ namespace Game
 
         public override void _Ready()
         {
-            
+            base._Ready();
+
+            if (Global.Instance.SpawnPointId != -1)
+            {
+                UserData["current_layer_index"] = Global.Instance.SpawnPointId;
+            }
+            ProxySystem.Call("setup");
         }
+
 
         public override void ObjectiveAchieved(string objectiveId)
         {
@@ -36,8 +48,9 @@ namespace Game
             //TODO: bad
             if(actionId == "going_to_scene_Withering" || actionId == "going_to_scene_Begining" || actionId == "going_to_scene_Memory Storage")
             {
-                ScreenFade.GetParent().RemoveChild(ScreenFade);
-                ScreenFade.Free();
+                ScreenFade.Monitoring = false;
+                //ScreenFade.GetParent().RemoveChild(ScreenFade);
+                //ScreenFade.Free();
             }
             if(actionId == "going_to_scene_Begining")
             {

@@ -13,10 +13,13 @@ CollisionShapePath = NodePath("fungus_phy_collision_shape")
 npcId = "fungus"
 
 [node name="fungus" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.49, 0 )
 
 [node name="fungus_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.49, 0 )
 
 [node name="Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 0.984908, 0, -0.173081, 0, 1, 0, 0.173081, 0, 0.984908, 0.434895, 2.64805, -4.23046 )
 stream = ExtResource( 4 )
 unit_size = 12.0
 max_distance = 50.0

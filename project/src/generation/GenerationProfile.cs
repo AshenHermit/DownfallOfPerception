@@ -1,5 +1,6 @@
 ﻿using Godot;
 using System;
+using Game.Utils;
 
 namespace Game
 {
@@ -12,6 +13,8 @@ namespace Game
         public VoxelGeneratorScript GeneratorScript;
         [Export]
         public int WaitAfterGenerated = 0;
+
+        public Godot.Collections.Dictionary<string, object> UserData = new Godot.Collections.Dictionary<string, object>();
 
         Godot.Collections.Dictionary<string, int> _objectsCounter = new Godot.Collections.Dictionary<string, int>();
 
@@ -34,6 +37,19 @@ namespace Game
         public virtual void _Process(float delta)
         {
 
+        }
+
+        public virtual Godot.Collections.Dictionary<string, object> GetDefaultUserData()
+        {
+            return new Godot.Collections.Dictionary<string, object>();
+        }
+        public void ImportUserData(Godot.Collections.Dictionary<string, object> userData)
+        {
+            UserData = GetDefaultUserData().Assign(userData.Duplicate());
+        }
+        public Godot.Collections.Dictionary<string, object> ExportUserData()
+        {
+            return UserData.Duplicate();
         }
 
         public virtual bool SceneIsValid()

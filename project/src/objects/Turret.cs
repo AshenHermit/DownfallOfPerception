@@ -13,6 +13,7 @@ namespace Game
         public NodePath VisualNodePath;
 
         float _maxDistance = 40.0f;
+        bool _farFromPlayer;
 
         float _attackTimer = 0.0f;
         float _fireTimer = 0.0f;
@@ -25,7 +26,6 @@ namespace Game
         Spatial _muzzle;
         int _gunBoneId = 0;
         Skeleton _skeleton;
-        Spatial _gunBone;
 
         AnimationPlayer _animationPlayer;
 
@@ -38,6 +38,11 @@ namespace Game
         public void SetDifficulty(float difficulty)
         {
             _difficulty = difficulty;
+        }
+
+        public bool IsFarFromPlayer()
+        {
+            return GlobalTransform.origin.DistanceTo(Global.Instance.GetPlayer().GlobalTransform.origin) > _maxDistance;
         }
 
         public override void _Ready()
@@ -62,11 +67,13 @@ namespace Game
         {
             base._Process(delta);
 
-            if (GlobalTransform.origin.DistanceTo(Global.Instance.GetPlayer().GlobalTransform.origin) < _maxDistance)
-            {
-                CastRay();
-            }
+            _farFromPlayer = IsFarFromPlayer();
+
+            if (!_farFromPlayer) CastRay();
             UpdateFiring(delta);
+
+            if (_farFromPlayer) return;
+
             if (_seeingPlayer) _softTargetPos += (_targetPos - _softTargetPos) / 1.5f;
             else _softTargetPos += (_targetPos - _softTargetPos) / 5.0f;
 
@@ -91,7 +98,7 @@ namespace Game
 
         public void CastRay()
         {
-            float dot = (Global.Instance.GetPlayer().GlobalTransform.origin - GlobalTransform.origin).Normalized().Dot(_originalNormal);
+            float dot = ((Global.Instance.GetPlayer().GlobalTransform.origin) - (GlobalTransform.origin + _originalNormal * 2.0f)).Normalized().Dot(_originalNormal);
 
             bool canSeePlayer = true;
             if (dot < 0.2f)
@@ -134,7 +141,7 @@ namespace Game
         {
             if (_attackTimer > 0.0f)
             {
-                if (_attackTimer > 1.0f)
+                if (_attackTimer > 1.0f && !_farFromPlayer)
                 {
                     _targetPos = Global.Instance.GetPlayer().GlobalTransform.origin + Vector3.Up * 2.0f;
                     if (_seeingPlayer)
@@ -161,6 +168,8 @@ namespace Game
             }
             else
             {
+                if (_farFromPlayer) return;
+
                 _lookTimer -= delta;
                 if (_lookTimer <= 0.0f)
                 {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://game_objects/GenerationManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://scripts/SceneComponents/DebugContainer.gd" type="Script" id=36]
 [ext_resource path="res://scripts/SceneComponents/RegisterNode.gd" type="Script" id=37]
 [ext_resource path="res://game_objects/Layers/Corpse.tscn" type="PackedScene" id=38]
+[ext_resource path="res://game_objects/WorldEnvironment.tscn" type="PackedScene" id=39]
 [ext_resource path="res://game_objects/Items/Weapons/DroneGunItem.tscn" type="PackedScene" id=40]
 [ext_resource path="res://game_objects/Generation/GenerationProfiles/surface_instance_generator.tres" type="VoxelInstanceGenerator" id=41]
 [ext_resource path="res://scripts/SceneComponents/Trigger.gd" type="Script" id=42]
@@ -119,8 +120,6 @@ AmbienceStream = ExtResource( 35 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.347017, 0, 0.937859, 0, 1, 0, -0.937859, 0, 0.347017, -11.6211, 7.19795, 7.73389 )
-collision_layer = 1
-collision_mask = 1
 
 [node name="VoxelTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 61.0756, 69.1282, 112.785 )
@@ -164,7 +163,7 @@ ResultItemScene = ExtResource( 44 )
 ResultAmount = 1
 
 [node name="fabricator_static_body4" parent="game_objects/Station" instance=ExtResource( 33 )]
-transform = Transform( -0.215072, 0, 0.254667, 0, 0.333335, 0, -0.254667, 0, -0.215072, -0.885814, 2.36916, 4.14083 )
+transform = Transform( -0.215072, 0, 0.254667, 0, 0.333335, 0, -0.254667, 0, -0.215072, -0.991394, 2.36916, 4.05415 )
 NeedItemsCount = {
 "atomizer": 2,
 "neuro_block": 1,
@@ -234,13 +233,13 @@ key = "Funguses"
 is_array = true
 
 [node name="Fungus" parent="game_objects/if_last_order_started/register_to_Funguses" instance=ExtResource( 3 )]
-transform = Transform( -0.258819, -0.154751, 0.95345, 8.19564e-08, 0.987084, 0.160209, -0.965927, 0.041465, -0.255476, 24.4687, 3.11899, -44.6693 )
+transform = Transform( -0.258819, -0.154751, 0.953451, 8.19564e-08, 0.987084, 0.160209, -0.965927, 0.041465, -0.255476, 24.5051, 5.65079, -44.6761 )
 monologues = {
 "": null
 }
 
 [node name="Fungus2" parent="game_objects/if_last_order_started/register_to_Funguses" instance=ExtResource( 3 )]
-transform = Transform( 0.258819, 0.124373, -0.957887, -6.79505e-08, 0.991677, 0.12876, 0.965928, -0.0333255, 0.256665, -40.9797, 31.2525, -56.9171 )
+transform = Transform( 0.258819, 0.124373, -0.957888, -6.79505e-08, 0.991677, 0.12876, 0.965928, -0.0333255, 0.256665, -40.9143, 33.7703, -56.9317 )
 monologues = {
 "": null
 }
@@ -304,11 +303,12 @@ script = ExtResource( 37 )
 key = "BeginingTeleporter"
 
 [node name="teleport_static_body" parent="game_objects/register_BeginingTeleporter" instance=ExtResource( 32 )]
-transform = Transform( 1, -2.25239e-08, 5.96046e-08, -2.98023e-08, 1, 3.72529e-09, 2.98023e-08, -2.45539e-08, 1, -5.00679e-06, -3.8147e-06, 5.00679e-06 )
+transform = Transform( 1, -2.25239e-08, 0, -2.98023e-08, 1, 3.7253e-09, 8.9407e-08, -2.45539e-08, 1, -5.00679e-06, -3.8147e-06, 5.00679e-06 )
 NeedItemsCount = {
 "lasagna": 4,
 "piston": 2
 }
+CanDamage = false
 
 [node name="StickLamp" parent="game_objects" instance=ExtResource( 12 )]
 transform = Transform( 0.999971, 0, -0.00766192, 0, 1, 0, 0.00766192, 0, 0.999971, -7.41018, 3.16648, 13.9985 )
@@ -325,9 +325,13 @@ collision_mask = 3
 material_override = ExtResource( 8 )
 material/0 = null
 
-[node name="Node" type="Node" parent="StaticBody/begining_world_geometry"]
+[node name="Spatial" type="Spatial" parent="StaticBody/begining_world_geometry"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1915, -27.0599, 12.2084 )
+script = ExtResource( 36 )
+
+[node name="Node" type="Node" parent="StaticBody/begining_world_geometry/Spatial"]
 script = ExtResource( 10 )
-MeshInstancePath = NodePath("..")
+MeshInstancePath = NodePath("../..")
 Decorations = [ {
 "density": 0.002,
 "material": SubResource( 1 ),
@@ -337,42 +341,43 @@ Decorations = [ {
 [node name="begining_world_geometry_phy_collision_shape" parent="StaticBody" instance=ExtResource( 9 )]
 visible = false
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Debug" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3412, 5.37308, 17.8661 )
 script = ExtResource( 36 )
 
-[node name="street_light_item_rigid_body" parent="Spatial" instance=ExtResource( 19 )]
+[node name="street_light_item_rigid_body" parent="Debug" instance=ExtResource( 19 )]
 transform = Transform( -0.0532596, 0, -0.998581, 0, 1, 0, 0.998581, 0, -0.0532596, 0, 0, 0 )
 Properties = {
 "placeable": true,
 "scene_to_place": ExtResource( 11 )
 }
 
-[node name="street_light_item_rigid_body2" parent="Spatial" instance=ExtResource( 19 )]
+[node name="street_light_item_rigid_body2" parent="Debug" instance=ExtResource( 19 )]
 transform = Transform( 0.90515, 0.319581, 0.280304, -0.275407, 0.943165, -0.185988, -0.323811, 0.0911498, 0.941721, 4.5171, 0.33028, -6.294 )
 Properties = {
 "placeable": true,
 "scene_to_place": ExtResource( 11 )
 }
 
-[node name="street_light_item_rigid_body3" parent="Spatial" instance=ExtResource( 19 )]
-transform = Transform( 0.00900561, 0, 0.99996, 0, 1, 0, -0.99996, 0, 0.00900561, -3.47604, 4.56584, -22.8364 )
+[node name="street_light_item_rigid_body3" parent="Debug" instance=ExtResource( 19 )]
+transform = Transform( 0.00900561, 0, 0.99996, 0, 1, 0, -0.99996, 0, 0.00900561, -4.24723, 4.56584, -22.8433 )
+mode = 3
 Properties = {
 "placeable": true,
 "scene_to_place": ExtResource( 11 )
 }
 
-[node name="street_light_item_rigid_body4" parent="Spatial" instance=ExtResource( 19 )]
+[node name="street_light_item_rigid_body4" parent="Debug" instance=ExtResource( 19 )]
 transform = Transform( -0.730913, 0, -0.682471, 0, 1, 0, 0.682471, 0, -0.730913, 4.8261, 2.83558, -14.086 )
 Properties = {
 "placeable": true,
 "scene_to_place": ExtResource( 11 )
 }
 
-[node name="street_light2" parent="Spatial" instance=ExtResource( 11 )]
+[node name="street_light2" parent="Debug" instance=ExtResource( 11 )]
 transform = Transform( 0.718864, 0.69418, 0.0367076, -0.173623, 0.230427, -0.957475, -0.673119, 0.681921, 0.286172, -49.5539, 33.842, -61.7334 )
 
-[node name="street_light3" parent="Spatial" instance=ExtResource( 11 )]
+[node name="street_light3" parent="Debug" instance=ExtResource( 11 )]
 transform = Transform( -0.11606, 0.829207, 0.546759, -0.220915, 0.515139, -0.828147, -0.968363, -0.216901, 0.123398, -90.8912, 33.4263, -61.7334 )
 
 [node name="ScreenFade" type="Area" parent="."]
@@ -393,9 +398,10 @@ objective_id = "layers_destroyed"
 script = ExtResource( 22 )
 scene_name = "Withering"
 spawn_point_id = 1
+screen_fade_path = NodePath("../../ScreenFade")
 
 [node name="CollisionShape" type="CollisionShape" parent="if_not_layers_destroyed/GoToWithering"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426003, -12.8451, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426003, -4.66126, 0 )
 shape = SubResource( 2 )
 
 [node name="trash_pipe_static_body" parent="." instance=ExtResource( 27 )]
@@ -445,6 +451,8 @@ Exports = {
 }
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 39 )]
 
 [connection signal="body_entered" from="game_objects/if_last_order_started/TrapArea" to="game_objects/if_last_order_started/TrapArea" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="game_objects/if_last_order_started/TrapArea" to="game_objects/if_last_order_started/TrapArea" method="_on_Area_body_exited"]

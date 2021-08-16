@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game_objects/Items/Battery/battery_discharged_material.tres" type="Material" id=1]
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/objects/Weapons/DischargedBatteryWeapon.cs" type="Script" id=3]
+[ext_resource path="res://src/visual_effects/NoiseMovement.cs" type="Script" id=4]
+[ext_resource path="res://game_objects/Items/Battery/ChargeableBattery.tscn" type="PackedScene" id=5]
+
+[node name="DischargedBatteryWeapon" type="Spatial"]
+script = ExtResource( 3 )
+FireSpeed = 1.0
+ModelPath = NodePath("Noise/battery")
+ChargeableBatteryScene = ExtResource( 5 )
+ModelContainerPath = NodePath("Noise")
+
+[node name="Noise" type="Spatial" parent="."]
+script = ExtResource( 4 )
+
+[node name="battery" parent="Noise" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.85583, -3.18431 )
+material_override = ExtResource( 1 )

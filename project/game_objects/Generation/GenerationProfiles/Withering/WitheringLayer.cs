@@ -64,7 +64,7 @@ namespace Game
 
             if (Global.Instance.GetObjectivesManager().IsObjectiveAchieved("player_escaped_order"))
             {
-                _remainingKingUtilizersCount = 3 + (int)Mathf.Floor(GD.Randf() * 10.0f);
+                _remainingKingUtilizersCount = 6 + (int)Mathf.Floor(GD.Randf() * 8.0f);
             }
             else
             {
@@ -119,16 +119,21 @@ namespace Game
             trans = trans.Rotated(Vector3.Up, Mathf.Pi);
             trans.origin = new Vector3(-80.0f, -80.0f + 8.0f, 45.0f+14.0f);
             aiInstance.GlobalTransform = trans;
-            UpdateAi();
+            CallDeferred("UpdateAi");
         }
 
         //TODO: too long method
         void UpdateAi()
         {
+            aiInstance.SetMonologue("");
             if (!Global.Instance.GetObjectivesManager().IsObjectiveAchieved("withering_power_activated"))
             {
                 aiInstance.Discharge();
                 aiInstance.SetMonologue("lack_of_power");
+            }
+            else
+            {
+                aiInstance.Charge();
             }
             if (Global.Instance.GetObjectivesManager().IsObjectiveAchieved("withering_power_activated") &&
                 !Global.Instance.GetObjectivesManager().IsObjectiveAchieved("talked_about_looks_horrible"))
@@ -206,7 +211,7 @@ namespace Game
                 Global.Instance.GetObjectivesManager().AchieveObjective("booth_opened");
             }
 
-            if (actionId == "source_machine_connected") 
+            if (actionId == "source_machine_connected")
             {
                 commutator.GetNode<AudioStreamPlayer3D>("Sound").Play();
                 Global.Instance.GetObjectivesManager().AchieveObjective("withering_power_activated");
@@ -522,19 +527,36 @@ namespace Game
         {
             return GetDistanceToNearestRouter(position) < 10.0f;
         }
-        public float GetDistanceToNearestRouter(Vector3 searchPosition)
+        public int GetNearestRouterIndex(Vector3 searchPosition)
         {
-            if (_routersPositions.Count == 0) return 9999.0f;
-            //TODO
-            //return searchPosition.DistanceTo(_routersPositions[0]);
+            if (_routersPositions.Count == 0) return -1;
 
             float minDist = -1.0f;
-            for(int i=0; i < _routersPositions.Count; ++i)
+            int nearestIndex = -1;
+            for (int i = 0; i < _routersPositions.Count; ++i)
             {
                 float dist = searchPosition.DistanceTo(_routersPositions[i]);
-                if (dist < minDist || minDist == -1.0f) minDist = dist;
+                if (dist < minDist || minDist == -1.0f) {
+                    minDist = dist;
+                    nearestIndex = i;
+                }
             }
-            return minDist;
+            return nearestIndex;
+        }
+        public float GetDistanceToNearestRouter(Vector3 searchPosition)
+        {
+            int nearestIndex = GetNearestRouterIndex(searchPosition);
+            if (nearestIndex == -1) return 9999.0f;
+
+            return searchPosition.DistanceTo(_routersPositions[nearestIndex]);
+        }
+
+        public void RemoveRouterAtPosition(Vector3 searchPosition)
+        {
+            int nearestIndex = GetNearestRouterIndex(searchPosition);
+            if (nearestIndex == -1) return;
+
+            _routersPositions.RemoveAt(nearestIndex);
         }
 
 

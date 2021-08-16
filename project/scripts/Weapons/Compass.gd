@@ -35,7 +35,7 @@ func _ready():
 	animation_player.play("working")
 	armature = this.get_node(model_path).get_node("Armature")
 	text_container = this.get_node(model_path).get_node("text_container")
-	text3d = text_container.get_node("Text3D")
+	text3d = text_container.get_node("Text3D").RequestText3D()
 	update_text()
 	
 func _process(delta):
@@ -85,6 +85,7 @@ func update_distance_to_router():
 	has_router = distance_to_router<10.0
 
 func update_text():
+	#if text3d==null: return
 	if mode==ModeEnum.NWES: text3d.SetText(Global.Translate("compass_info.nwes"))
 	if mode==ModeEnum.CENTER:
 		if can_find_center():

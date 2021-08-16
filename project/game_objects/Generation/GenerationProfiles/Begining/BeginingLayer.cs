@@ -75,6 +75,7 @@ namespace Game
                 if ((Global.Instance.GetObjectivesManager().IsObjectiveAchieved("tumor_king_killed")
                 || Global.Instance.GetObjectivesManager().IsObjectiveAchieved("layers_destroyed")))
                 {
+                    TumorKingNpc.DieWithSound = false;
                     TumorKingNpc.SetHealth(0.0f);
                 }
             }
@@ -164,11 +165,12 @@ namespace Game
                 Global.Instance.GetPlayer().MakeNormal();
                 await ToSignal(Global.Instance.CurrentSceneInstance.GetTree().CreateTimer(5.0f+GD.Randf()*5.0f), "timeout");
                 if (!SceneIsValid()) return;
-                Global.Instance.GetPlayerCamera().PlayCutscene("Suicide");
+                Global.Instance.GetPlayerCamera().PlayCutscene("Suicide", true);
                 await ToSignal(Global.Instance.CurrentSceneInstance.GetTree().CreateTimer(5.2f), "timeout");
                 if (!SceneIsValid()) return;
                 Global.Instance.GetPlayerCamera().SetActiveState(false);
                 Global.Instance.LoadScene("res://scenes/MainMenu.tscn");
+                Global.Instance.GetAudioManager().StopMusic(0.0f);
             }
         }
 

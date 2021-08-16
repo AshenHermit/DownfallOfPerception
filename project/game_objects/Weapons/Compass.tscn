@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/models/weapons/compass/compass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/Items/ScriptedWeapon.cs" type="Script" id=2]
 [ext_resource path="res://scripts/Weapons/Compass.gd" type="Script" id=3]
-[ext_resource path="res://game_objects/Utils/Text3D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_objects/Utils/PlayerWeaponText3D.tscn" type="PackedScene" id=4]
 
 [node name="Compass" type="Spatial"]
 script = ExtResource( 2 )
@@ -14,10 +14,11 @@ Exports = {
 ScriptResource = ExtResource( 3 )
 
 [node name="compass" parent="." instance=ExtResource( 1 )]
-transform = Transform( 2, 0, 0, 0, 1.53603, -1.28086, 0, 1.28086, 1.53603, 0, -0.12038, -0.238192 )
+transform = Transform( 1.6, 0, 0, 0, 1.22883, -1.02469, 0, 1.02469, 1.22883, 0, -0.12038, -0.238192 )
 
 [node name="text_container" type="Spatial" parent="compass"]
-transform = Transform( -0.4, -4.11308e-08, -6.03954e-08, -4.17232e-08, 0.399981, 0.00393733, 5.99876e-08, 0.00393733, -0.399981, -0.295308, 0.264112, -0.17991 )
+transform = Transform( -1, -1.02827e-07, -1.50988e-07, -1.04308e-07, 0.999952, 0.00984317, 1.49969e-07, 0.00984317, -0.999952, -0.526778, -0.0145619, -0.326697 )
 
 [node name="Text3D" parent="compass/text_container" instance=ExtResource( 4 )]
-transform = Transform( 1.62921e-07, -1, -4.37114e-08, 0, 4.37114e-08, -1, 1, 1.62921e-07, 7.12149e-15, -5.96046e-08, 0.273959, 0.0249248 )
+transform = Transform( 1.55766e-07, -0.8, 3.49691e-08, -2.98023e-08, -3.49691e-08, -0.8, 0.8, 1.55766e-07, -2.98023e-08, -1.01328e-06, 0.440009, 1.19209e-07 )
+WeaponPath = NodePath("../../..")

@@ -44,6 +44,7 @@ namespace Game{
             //TODO: extract this pattern from other places to one method
             Global.Instance.GetGenerationManager().ActionHappened("teleporter_used");
             Global.Instance.LoadScene("res://scenes/" + SceneName + ".tscn", SpawnPointId);
+            SetUsableState(false);
         }
 
         public override void StartedWorking()

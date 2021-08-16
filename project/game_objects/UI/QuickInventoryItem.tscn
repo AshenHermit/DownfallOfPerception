@@ -5,9 +5,7 @@
 [ext_resource path="res://resources/ui/quick_inventory_item_placeholder.png" type="Texture" id=3]
 [ext_resource path="res://resources/ui/item_selection.png" type="Texture" id=4]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=5]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+[ext_resource path="res://resources/ui/elements/panel.png" type="Texture" id=6]
 
 [node name="QuickInventoryItem" type="TextureRect"]
 modulate = Color( 1, 1, 1, 0.698039 )
@@ -39,14 +37,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Panel" parent="."]
+[node name="bg" type="NinePatchRect" parent="."]
 show_behind_parent = true
 margin_right = 64.0
 margin_bottom = 64.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 6 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="SelectionNode" type="TextureRect" parent="."]
 show_behind_parent = true

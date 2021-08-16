@@ -15,7 +15,7 @@ var router_digger = null
 var calibrated = false
 
 func _ready():
-	text_node = this.get_node("Text3D")
+	text_node = this.get_node("Text3D").RequestText3D()
 	ray_cast = this.get_node("RayCast")
 	update_text()
 	
@@ -29,6 +29,8 @@ func _process(delta):
 			update_text()
 
 func update_text():
+	if text_node==null: return
+	
 	if router_digger!=null:
 		if not calibrated:
 			text_node.SetText(Global.Translate("router_controller.connection_established"))

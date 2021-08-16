@@ -5,15 +5,13 @@
 [ext_resource path="res://scripts/UI/LocalizedLabel.gd" type="Script" id=3]
 [ext_resource path="res://main_menu_theme.tres" type="Theme" id=4]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://resources/ui/elements/panel.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.117647, 0.117647, 0.117647, 1 )
-
 [sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="Settings" type="MarginContainer"]
 anchor_right = 1.0
@@ -22,12 +20,15 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+container_path = NodePath("Container")
 language_menu_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Language")
 fullscreen_button_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3/Fullscreen")
 fxaa_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4/FXAA")
 debug_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer5/Debug")
 volume_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer6/Volume")
 volume_num_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer6/Control/VolumeNum")
+mouse_sensivity_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7/MouseSensivity")
+mouse_sensivity_num_path = NodePath("Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7/Control/MouseSensivityNum")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color( 1, 1, 1, 0.815686 )
@@ -36,22 +37,35 @@ margin_bottom = 600.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="Container" type="MarginContainer" parent="."]
-margin_left = 364.0
-margin_top = 82.0
-margin_right = 659.0
-margin_bottom = 517.0
+margin_left = 249.0
+margin_top = 62.0
+margin_right = 775.0
+margin_bottom = 537.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Panel2" type="Panel" parent="Container"]
-margin_right = 295.0
-margin_bottom = 435.0
-custom_styles/panel = SubResource( 5 )
+[node name="Panel2" type="NinePatchRect" parent="Container"]
+margin_right = 526.0
+margin_bottom = 475.0
+texture = ExtResource( 6 )
+patch_margin_left = 112
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="GoBackButton" type="Button" parent="Container"]
-margin_left = 245.0
-margin_right = 295.0
-margin_bottom = 32.0
+[node name="MarginContainer2" type="MarginContainer" parent="Container"]
+margin_right = 526.0
+margin_bottom = 475.0
+custom_constants/margin_right = 14
+custom_constants/margin_top = 14
+
+[node name="GoBackButton" type="Button" parent="Container/MarginContainer2"]
+margin_left = 462.0
+margin_top = 14.0
+margin_right = 512.0
+margin_bottom = 46.0
 size_flags_horizontal = 10
 size_flags_vertical = 2
 theme = ExtResource( 4 )
@@ -60,8 +74,8 @@ script = ExtResource( 3 )
 string_id = "settings_button.CLOSE"
 
 [node name="MarginContainer" type="MarginContainer" parent="Container"]
-margin_right = 295.0
-margin_bottom = 435.0
+margin_right = 526.0
+margin_bottom = 475.0
 mouse_filter = 2
 custom_constants/margin_right = 64
 custom_constants/margin_top = 64
@@ -74,12 +88,12 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/MarginContainer"]
 margin_left = 64.0
 margin_top = 64.0
-margin_right = 231.0
-margin_bottom = 371.0
-size_flags_horizontal = 2
+margin_right = 462.0
+margin_bottom = 411.0
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer"]
-margin_right = 167.0
+margin_right = 398.0
 margin_bottom = 35.0
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
@@ -92,20 +106,21 @@ string_id = "settings.title"
 
 [node name="MarginContainer" type="MarginContainer" parent="Container/MarginContainer/VBoxContainer"]
 margin_top = 39.0
-margin_right = 167.0
-margin_bottom = 287.0
+margin_right = 398.0
+margin_bottom = 323.0
 custom_constants/margin_top = 16
 
 [node name="Panel2" type="Panel" parent="Container/MarginContainer/VBoxContainer/MarginContainer"]
+modulate = Color( 1, 1, 1, 0.388235 )
 margin_top = 16.0
-margin_right = 167.0
-margin_bottom = 248.0
+margin_right = 398.0
+margin_bottom = 284.0
 custom_styles/panel = SubResource( 6 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer"]
 margin_top = 16.0
-margin_right = 167.0
-margin_bottom = 248.0
+margin_right = 398.0
+margin_bottom = 284.0
 mouse_filter = 1
 custom_constants/margin_right = 43
 custom_constants/margin_top = 16
@@ -118,11 +133,11 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 124.0
-margin_bottom = 216.0
+margin_right = 355.0
+margin_bottom = 252.0
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
-margin_right = 108.0
+margin_right = 339.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
@@ -137,7 +152,7 @@ string_id = "settings.volume.label"
 
 [node name="Volume" type="HSlider" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
 margin_left = 51.0
-margin_right = 104.0
+margin_right = 335.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
@@ -145,9 +160,9 @@ min_value = -20.0
 max_value = 10.0
 
 [node name="Control" type="Control" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
-margin_left = 108.0
+margin_left = 339.0
 margin_top = 16.0
-margin_right = 108.0
+margin_right = 339.0
 margin_bottom = 16.0
 size_flags_vertical = 4
 __meta__ = {
@@ -167,16 +182,64 @@ size_flags_horizontal = 4
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "0"
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-string_id = "settings.volume.label"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 339.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
+margin_top = 8.0
+margin_right = 104.0
+margin_bottom = 24.0
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+text = "mouse sensivity"
+script = ExtResource( 3 )
+string_id = "settings.mouse_sensivity.label"
+
+[node name="MouseSensivity" type="HSlider" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
+margin_left = 108.0
+margin_right = 335.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+theme = ExtResource( 5 )
+max_value = 300.0
+
+[node name="Control" type="Control" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
+margin_left = 339.0
+margin_top = 16.0
+margin_right = 339.0
+margin_bottom = 16.0
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseSensivityNum" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = -8.0
+margin_right = 4.0
+margin_bottom = 8.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 108.0
-margin_bottom = 68.0
+margin_top = 72.0
+margin_right = 339.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_top = 8.0
@@ -200,9 +263,9 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 108.0
-margin_bottom = 112.0
+margin_top = 108.0
+margin_right = 339.0
+margin_bottom = 148.0
 
 [node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 margin_top = 12.0
@@ -226,9 +289,9 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
-margin_top = 116.0
-margin_right = 108.0
-margin_bottom = 156.0
+margin_top = 152.0
+margin_right = 339.0
+margin_bottom = 192.0
 
 [node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
 margin_top = 12.0
@@ -252,9 +315,9 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
-margin_top = 160.0
-margin_right = 108.0
-margin_bottom = 200.0
+margin_top = 196.0
+margin_right = 339.0
+margin_bottom = 236.0
 
 [node name="Label" type="Label" parent="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
 margin_top = 12.0
@@ -279,9 +342,9 @@ custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 
 [node name="Label3" type="Label" parent="Container/MarginContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.0666667 )
-margin_top = 291.0
-margin_right = 167.0
-margin_bottom = 307.0
+margin_top = 327.0
+margin_right = 398.0
+margin_bottom = 343.0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -291,8 +354,15 @@ __meta__ = {
 }
 string_id = ""
 
-[connection signal="pressed" from="Container/GoBackButton" to="." method="_on_GoBackButton_pressed"]
+[node name="MarginContainer2" type="MarginContainer" parent="Container/MarginContainer/VBoxContainer"]
+margin_top = 347.0
+margin_right = 398.0
+margin_bottom = 347.0
+custom_constants/margin_right = 398
+
+[connection signal="pressed" from="Container/MarginContainer2/GoBackButton" to="." method="_on_GoBackButton_pressed"]
 [connection signal="value_changed" from="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer6/Volume" to="." method="_on_Volume_value_changed"]
+[connection signal="value_changed" from="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer7/MouseSensivity" to="." method="_on_MouseSensivity_value_changed"]
 [connection signal="item_selected" from="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Language" to="." method="_on_Language_item_selected"]
 [connection signal="toggled" from="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3/Fullscreen" to="." method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="Container/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4/FXAA" to="." method="_on_FXAA_toggled"]

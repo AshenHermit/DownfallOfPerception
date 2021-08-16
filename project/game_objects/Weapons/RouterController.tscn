@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/models/layers/withering/router_controller/router_controller.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/Items/ScriptedWeapon.cs" type="Script" id=2]
-[ext_resource path="res://game_objects/Utils/Text3D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_objects/Utils/PlayerWeaponText3D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Weapons/RouterController.gd" type="Script" id=4]
 
 [node name="RouterController" type="Spatial"]
@@ -17,6 +17,7 @@ transform = Transform( 0.0937956, 0, -0.995591, 0, 1, 0, 0.995591, 0, 0.0937956,
 
 [node name="Text3D" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.338095, 0.466051, 0.555418, 0, 0.612836, -0.51423, -0.725046, -0.217323, -0.258996, 0.881273, 0.636568, 0.140744 )
+WeaponPath = NodePath("..")
 
 [node name="RayCast" type="RayCast" parent="."]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0 )

@@ -10,11 +10,13 @@ namespace Game
         public Godot.Collections.Dictionary<string, int> NeedItemsCount = new Godot.Collections.Dictionary<string, int>();
         public Godot.Collections.Dictionary<string, int> ItemsCount;
 
-        bool _working = false;
+        protected bool _working = false;
 
         public string InfoTitle="";
 
         public bool Disabled = false;
+
+        protected bool _canUseWhenWorking = true;
 
         public ItemConsumer()
         {
@@ -153,7 +155,8 @@ namespace Game
             }
             else
             {
-                return Global.Translate("use_text.USE");
+                if (_canUseWhenWorking) return Global.Translate("use_text.USE");
+                else return "";
             }
         }
     }

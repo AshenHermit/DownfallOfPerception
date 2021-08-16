@@ -72,11 +72,17 @@ namespace Game
         }
         public void DefferedSetup()
         {
-            if (CurrentGenerationProfile != null && _terrain != null)
+            if (CurrentGenerationProfile != null)
             {
-                _terrain.Generator = CurrentGenerationProfile.GetGeneratorScript();
+                if(_terrain != null)
+                {
+                    CurrentGenerationProfile.GetGeneratorScript()?.Call("setup");
+                    _terrain.Generator = CurrentGenerationProfile.GetGeneratorScript();
+                    _terrain.Visible = false;
+                }
+                //TODO: why is this here
+                Global.Instance.GetGameStorage().LoadGenerationProfileUserData();
                 CurrentGenerationProfile.CallDeferred("_Ready");
-                _terrain.Visible = false;
             }
         }
 

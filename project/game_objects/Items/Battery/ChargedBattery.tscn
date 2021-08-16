@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery_phy_collision_shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_objects/Items/Battery/battery_charged_material.tres" type="Material" id=3]
+[ext_resource path="res://src/objects/Items/PickableItem.cs" type="Script" id=4]
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery_charged_icon.png" type="Texture" id=5]
+
+[node name="ChargedBattery" type="RigidBody"]
+script = ExtResource( 4 )
+ItemId = "charged_battery"
+Amount = 1
+Properties = {
+"icon": ExtResource( 5 )
+}
+
+[node name="battery" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.65346 )
+material_override = ExtResource( 3 )
+
+[node name="battery_phy_collision_shape" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.65346 )

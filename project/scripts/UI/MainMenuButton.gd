@@ -5,6 +5,7 @@ enum ButtonType{
 	NEW_GAME,
 	SETTINGS,
 	EXIT,
+	WARNING,
 }
 
 export(ButtonType) var button_type
@@ -33,6 +34,10 @@ func open_scene(scene):
 	var instance = scene.instance()
 	get_node("/root").add_child(instance)
 
+func open_modal_window(window_scene_path):
+	var settings = load(window_scene_path).instance()
+	Global.CurrentSceneInstance.get_node("MainMenu").add_child(settings)
+
 func _on_pressed():
 	if button_type == ButtonType.CONTINUE:
 		Global.GetGameStorage().ContinueGame()
@@ -42,8 +47,9 @@ func _on_pressed():
 		yield(get_tree().create_timer(3.0), "timeout")
 		Global.GetGameStorage().StartNewGame()
 	if button_type == ButtonType.SETTINGS:
-		var settings = load("res://game_objects/UI/Settings.tscn").instance()
-		Global.CurrentSceneInstance.get_node("MainMenu").add_child(settings)
+		open_modal_window("res://game_objects/UI/Settings.tscn")
+	if button_type == ButtonType.WARNING:
+		open_modal_window("res://game_objects/UI/Warning.tscn")
 	if button_type == ButtonType.EXIT:
 		Global.ExitGame()
 		

@@ -213,7 +213,7 @@ namespace Game
         {
             RotateX(-deltaX);
             Vector3 rotation = Rotation;
-            rotation.x = Mathf.Clamp(rotation.x, -Mathf.Pi / 2.0f + Mathf.Pi / 16.0f, Mathf.Pi / 2.0f - Mathf.Pi / 16.0f);
+            rotation.x = Mathf.Clamp(rotation.x, -Mathf.Pi / 2.0f + Mathf.Pi / 32.0f, Mathf.Pi / 2.0f - Mathf.Pi / 32.0f);
             Rotation = rotation;
             //GDE.Print(rotation.x);
             _player.RotateY(-deltaY);

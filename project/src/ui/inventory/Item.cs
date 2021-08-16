@@ -30,7 +30,9 @@ namespace Game.UI {
 
         public void OnGuiInput(InputEvent e)
         {
-            if(e is InputEventMouseButton)
+            if (_uiInventory == null) return;
+
+            if (e is InputEventMouseButton)
             {
                 if (_draggable) { 
                     InputEventMouseButton buttonEvent = (InputEventMouseButton)e;

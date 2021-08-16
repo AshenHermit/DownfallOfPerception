@@ -27,6 +27,11 @@ namespace Game{
         bool _crouching = false;
 
         [Export]
+        public NodePath Text3DPath;
+        TextIn3D _text3D;
+        public TextIn3D GetText3D() => _text3D;
+
+        [Export]
         public float UseDistance = 8.0f;
 
         [Export]
@@ -122,6 +127,7 @@ namespace Game{
         // methods
         public override void _Ready()
         {
+            _text3D = GetNode<TextIn3D>(Text3DPath);
             _camera = GetNode<PlayerCamera>(CameraNodePath);
             _area = GetNode<PlayerArea>(AreaNodePath);
             _handPoint = GetNode<Spatial>(HandPointNodePath);
@@ -142,7 +148,7 @@ namespace Game{
             if (Global.Instance.DEBUG)
             {
                 MaxSpeed *= 1.6f;
-                GetNode<OmniLight>("Light").OmniRange = 100.0f;
+                //GetNode<OmniLight>("Light").OmniRange = 100.0f;
                 CanFly = true;
                 JumpStrength *= 1.5f;
             }
@@ -221,6 +227,12 @@ namespace Game{
             {
                 float damage = Mathf.Max(0.0f, (-PreventVelocityY - 30.0f) / 1.1f);
                 TakeDamage(damage);
+            }
+            if (PreventVelocityY < 0.0f)
+            {
+                Transform headTrans = _crouchCollisionShape.Transform;
+                headTrans.origin.y += PreventVelocityY / 60.0f;
+                _crouchCollisionShape.Transform = headTrans;
             }
             PlayLandingSound();
         }
@@ -340,8 +352,11 @@ namespace Game{
         void UpdateObjectToUse()
         {
             IUsable newObjectToUse = FindObjectToUse();
-            _objectToUse = newObjectToUse;
-            OnObjectToUseChanged.Invoke((Spatial)_objectToUse);
+            if (newObjectToUse != _objectToUse)
+            {
+                OnObjectToUseChanged.Invoke((Spatial)newObjectToUse);
+                _objectToUse = newObjectToUse;
+            }
         }
         /// <summary>
         /// Finds object under camera ray or nearest object that can be used
@@ -357,7 +372,24 @@ namespace Game{
                     return (IUsable)collision["collider"];
                 }
             }
-            return _area.GetNearestUsableObject();
+
+            // area
+            IUsable objectToUse = null;
+            objectToUse = _area.GetNearestUsableObject();
+            if (objectToUse == null) return null;
+
+            //for not to get object behind some wall
+            collision = Global.Instance.GetDirectSpaceState().IntersectRay(
+                _camera.GlobalTransform.origin, objectToUse.GetUseInfoPoint().GlobalTransform.origin,
+                new Godot.Collections.Array { this }, 1+2+8);
+            if (collision.Count > 0)
+            {
+                if (collision.Get<Spatial>("collider") != objectToUse)
+                {
+                    return null;
+                }
+            }
+            return objectToUse;
         }
         void TryToUseObject()
         {
@@ -527,6 +559,13 @@ namespace Game{
                 }
             }
         }
+
+        public void ResetCurrentWeapon()
+        {
+            if (_currentWeapon == null) return;
+            OnActiveInventoryItemChange();
+        }
+
         /// <summary>
         /// Removes old weapon and instantiates new weapon in hand.
         /// Or just removes weapon from hands if item and weaponScene are null.
@@ -573,13 +612,14 @@ namespace Game{
         public void UpdateCrouch(float delta)
         {
             Transform trans = _crouchCollisionShape.Transform;
+            float standUpSpeed = GetHealth() / GetMaxHealth();
             if (_crouching)
             {
-                trans.origin.y += (_crouchYPosition - trans.origin.y) / 6.0f;
+                trans.origin.y += (_crouchYPosition - trans.origin.y) / 6.0f * standUpSpeed;
             }
             else
             {
-                trans.origin.y += (_crouchInitYPosition - trans.origin.y) / 6.0f;
+                trans.origin.y += (_crouchInitYPosition - trans.origin.y) / 6.0f * standUpSpeed;
             }
             _crouchCollisionShape.Transform = trans;
 
@@ -591,13 +631,13 @@ namespace Game{
         public void RollHead(float factor)
         {
             Vector3 rot = _head.Rotation;
-            rot.z += -factor * Mathf.Pi / 45.0f / 10.0f;
+            rot.z += -factor * Mathf.Pi / 90.0f / 10.0f;
             _head.Rotation = rot;
         }
         public void UpdateHead(float delta)
         {
             Vector3 rot = _head.Rotation;
-            rot.z /= 10.0f;
+            rot.z /= 1.2f;
             _head.Rotation = rot;
         }
     }

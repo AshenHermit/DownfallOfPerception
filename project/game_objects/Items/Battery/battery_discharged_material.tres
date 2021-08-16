@@ -1,0 +1,14 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery.png" type="Texture" id=1]
+[ext_resource path="res://resources/models/layers/memory_storage/battery/battery_discharged_emission.png" type="Texture" id=2]
+
+[resource]
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 2 )

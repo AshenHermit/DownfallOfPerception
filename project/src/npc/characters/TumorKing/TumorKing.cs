@@ -9,6 +9,8 @@ namespace Game
         float _playbackSpeedTarget = 1.0f;
         SpatialMaterial _material;
 
+        public bool DieWithSound = true;
+
         public override void _Ready()
         {
             base._Ready();
@@ -17,9 +19,6 @@ namespace Game
             _animationPlayer.GetAnimation("idle").Loop = true;
             _animationPlayer.Play("idle");
             SetupMaterial();
-
-            //TODO:KLUDGE:
-            GetNode<AudioStreamPlayer3D>("Sound").Play();
         }
 
         void SetupMaterial()
@@ -54,7 +53,9 @@ namespace Game
             _playbackSpeedTarget = 0.0f;
             _material.EmissionEnabled = false;
             GetNode<AudioStreamPlayer3D>("Sound").Stop();
-            Global.Instance.GetAudioManager().PlaySoundAtPosition("res://resources/sounds/monologues/tumor_king/death.mp3", GlobalTransform.origin, this);
+
+            if(DieWithSound)
+                Global.Instance.GetAudioManager().PlaySoundAtPosition("res://resources/sounds/monologues/tumor_king/death.mp3", GlobalTransform.origin, this);
         }
     }
 }

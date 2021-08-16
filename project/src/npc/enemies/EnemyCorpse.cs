@@ -9,6 +9,7 @@ namespace Game
         Godot.Collections.Dictionary _itemToDropDict = null;
         float _timer = 40.0f;
         public bool CanBeDisassembled = true;
+        public string DisassembleSoundBankId = "metal_disassemble";
 
         public override void _Ready()
         {
@@ -60,6 +61,13 @@ namespace Game
 
         public void Use(Node invoker)
         {
+            Disassemble();
+        }
+
+        public void Disassemble()
+        {
+            Global.Instance.GetAudioManager().PlaySoundFromBankAtPosition(
+                DisassembleSoundBankId, GlobalTransform.origin, (Spatial)Global.Instance.CurrentSceneInstance);
             DropItem();
             QueueFree();
         }

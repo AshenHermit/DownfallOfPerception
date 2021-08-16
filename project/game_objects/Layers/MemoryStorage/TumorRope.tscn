@@ -10,7 +10,7 @@ script = ExtResource( 4 )
 RopeEndScene = ExtResource( 1 )
 RopeMeshPath = NodePath("tumor_rope")
 ScenesToSpawn = [ {
-"chance": 0.15,
+"chance": 0.08,
 "count": 2,
 "scene": ExtResource( 2 )
 } ]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/objects/ChargeableBattery.cs" type="Script" id=1]
+
+[node name="ChargeableBattery" type="Spatial"]
+script = ExtResource( 1 )
+DischargedBatteryItemScenePath = "res://game_objects/Items/Battery/DischargedBattery.tscn"
+ChargedBatteryItemScenePath = "res://game_objects/Items/Battery/ChargedBattery.tscn"

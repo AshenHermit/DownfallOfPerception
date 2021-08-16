@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/models/layers/memory_storage/booth/booth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/models/layers/memory_storage/booth/booth_phy_collision_shape.tscn" type="PackedScene" id=2]
@@ -8,11 +8,13 @@
 [ext_resource path="res://game_objects/Layers/Teleporter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game_objects/Layers/Begining/StationDoor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/objects/Booth.cs" type="Script" id=8]
+[ext_resource path="res://src/objects/SceneComponents/RemoveOnGenerated.cs" type="Script" id=9]
 [ext_resource path="res://game_objects/Layers/MemoryStorage/TumorRope.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game_objects/Layers/Withering/Objectives/Fruits/Piston.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game_objects/Layers/MemoryStorage/Atomizer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_objects/Layers/Withering/Objectives/Fruits/Atomizer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/sounds/ambience/elevator_shaking.mp3" type="AudioStream" id=13]
 [ext_resource path="res://resources/sounds/ambience/elevator_stop.mp3" type="AudioStream" id=14]
+[ext_resource path="res://resources/textures/signs/lock.png" type="Texture" id=15]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -26,6 +28,13 @@ emission_on_uv2 = false
 emission_texture = ExtResource( 3 )
 
 [sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="QuadMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 15 )
 
 [node name="MemoryStorageBoot" type="StaticBody"]
 collision_layer = 3
@@ -111,25 +120,29 @@ came_from_teleporter = true
 [node name="teleport_static_body" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.85184, -1.01906, -0.266727 )
 NeedItemsCount = {
-"lasagna": 6
+"lasagna": 16
 }
 SpawnPointId = 2
 
 [node name="StationDoor" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.0918571, 0.279327, -1.40115, 0.00224796, 1.40401, 0.280045, 1.42872, -0.020168, 0.089644, 7.53647, -0.214273, 1.18597 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="StationDoor3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -8.74228e-08, -2, 8.74228e-08, 0, -8.74225e-08, -1.99999, 1.99999, -8.74225e-08, 3.82136e-15, -2.91875, 5.48358, -0.159915 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="StationDoor4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 5.81145e-07, -1.2, 1.41561e-07, -1.2, 3.57628e-07, 2.79397e-09, -2.8871e-08, -1.78814e-07, -1.2, -2.44833, -0.107796, 2.47726 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="StationDoor2" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.0918573, -0.279327, -1.40115, -0.00224817, -1.40401, 0.280045, -1.42872, 0.0201682, 0.089644, 6.56328, -5.07385, 1.2664 )
 OpenOnLayerGenerated = true
+PlaySound = false
 
 [node name="street_light" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.567324, -0.0367603, -0.822674, 0.0173335, 0.999315, -0.0327, 0.823312, 0.00429168, 0.567573, -4.55369, 5.37954, 0.400685 )
@@ -149,3 +162,9 @@ transform = Transform( -1.50996e-07, -1.32005e-14, 2, 1.74846e-07, -2, 0, -2, -1
 material_override = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="LockSign" type="MeshInstance" parent="."]
+transform = Transform( -0.0520722, 0.209685, -0.976381, 0.0396131, 0.977372, 0.207785, 0.997857, -0.0278576, -0.0592002, 6.77154, -2.58037, 1.25724 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+script = ExtResource( 9 )

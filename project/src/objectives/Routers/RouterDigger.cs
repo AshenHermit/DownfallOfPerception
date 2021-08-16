@@ -184,6 +184,10 @@ namespace Game
             GetNode<Spatial>(WireInputPath).Visible = true;
             //TODO: awfull
             GetNode<Spatial>(WireInputPath).Set("wire_id", "router_digger");
+
+            if (Global.Instance.CurrentSceneName != "Withering") return;
+            Global.Instance.GetGenerationManager()
+                .GetCurrentGenerationProfile<WitheringLayer>().RemoveRouterAtPosition(GlobalTransform.origin);
         }
 
         public bool Calibrate(float factor)

@@ -8,4 +8,4 @@
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81878, 0 )
 collision_layer = 8
 collision_mask = 8
-mode = 1
+mode = 3

@@ -10,9 +10,9 @@ extents = Vector3( 2, 0.400025, 2.36476 )
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.314601, 0.400025, 2.36476 )
 
-[node name="stairs_static_body" type="StaticBody"]
-collision_layer = 3
-collision_mask = 3
+[node name="stairs_static_body" type="StaticBody" groups=[
+"Persist",
+]]
 
 [node name="stairs" parent="." instance=ExtResource( 1 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )

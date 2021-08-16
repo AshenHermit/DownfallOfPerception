@@ -9,10 +9,15 @@ namespace Game
     {
         [Export]
         public PackedScene WireOutputScene;
+        [Export]
+        public NodePath DefenceAreaPath;
+        Area _defenceArea;
 
         AnimationPlayer _animationPlayer;
         AnimationPlayer _panelAnimationPlayer;
         AnimationPlayer _handAnimationPlayer;
+
+        float _animationPlaybackSpeedTarget = 0.0f;
 
         Spatial _handPoint;
 
@@ -21,6 +26,7 @@ namespace Game
         bool _bodyGrabbed = false;
         bool _mustTalkWhenPlayerArrived = false;
         bool _wiresUnfolded = false;
+        bool _working = false;
 
         int _wireOutputCounter = 3;
         public void SetWiresOutputsCount(int wiresCount)
@@ -47,15 +53,25 @@ namespace Game
             _panelAnimationPlayer = GetNode("AIPanel").GetNode<AnimationPlayer>("AnimationPlayer");
             _handAnimationPlayer = GetNode("AIHand").GetNode<AnimationPlayer>("AnimationPlayer");
             _handPoint = GetNode("AIHand").GetNode("HandArmature").GetNode("base3").GetNode("arm_12").GetNode("arm_22").GetNode<Spatial>("hand");
+            _defenceArea = GetNode<Area>(DefenceAreaPath);
+            _defenceArea.Monitoring = false;
             SetupAnimations();
             SetupWireOutputs();
             Damageable = false;
 
             this.SetupVerticalUsable(this);
+
+            //TODO:kludge:
+            if(Global.Instance.CurrentSceneName != "Withering")
+            {
+                Charge();
+            }
         }
         public override void _Process(float delta)
         {
             base._Process(delta);
+            UpdateTalkingAnimation();
+            _animationPlayer.PlaybackSpeed += (_animationPlaybackSpeedTarget - _animationPlayer.PlaybackSpeed) / 20.0f;
             UpdateBodyInHand(delta);
             this.UpdateVerticalUsable();
         }
@@ -120,7 +136,7 @@ namespace Game
             {
                 bodyInArea = WeakRef(body);
                 Global.Instance.GetGenerationManager().ActionHappened("ai_got_" + bodyName);
-                TakeBodyInArea(); //DEBUG
+                TakeBodyInArea();
             }
         }
 
@@ -169,12 +185,14 @@ namespace Game
 
         public void Discharge(bool canBreath = true)
         {
-            _animationPlayer.PlaybackSpeed = 0.0f;
+            _animationPlaybackSpeedTarget = 0.0f;
             if (!canBreath) GetNode<AudioStreamPlayer3D>("Sound").Stop();
+            _working = false;
         }
         public void Charge()
         {
-            _animationPlayer.PlaybackSpeed = 1.0f;
+            MakeIdle();
+            _working = true;
         }
         public void MakeSick()
         {
@@ -187,9 +205,51 @@ namespace Game
             _panelAnimationPlayer.Play("unfold");
         }
 
-        public override Spatial GetUseInfoPoint()
+        public void _OnDefenceAreaBodyEntered(Node body)
         {
+            if (!IsTalking()) return;
+            if (!(body is Enemy)) return;
+            Enemy enemy = (Enemy)body;
+            enemy.MultiplyItemsChance(1.0f / 5.0f);
+            enemy.Die();
+        }
+
+        public override void OnPartStarted()
+        {
+            base.OnPartStarted();
+            _defenceArea.Monitoring = true;
+        }
+        public override void OnPartEnded()
+        {
+            base.OnPartEnded();
+            _defenceArea.Monitoring = false;
+        }
+
+        public override Spatial GetUseInfoPoint()
+        { 
             return this.UseInfoPoint;
+        }
+
+        void MakeIdle()
+        {
+            if (!_working) return;
+            _animationPlaybackSpeedTarget = 0.5f;
+        }
+
+        void UpdateTalkingAnimation()
+        {
+            if (!_working) return;
+            if (!IsTalking())
+            {
+                MakeIdle();
+            }
+            else
+            {
+                float volume = (Global.Instance.GetAudioManager().GetVoiceBusPeakVolume() + 20.0f)/3.0f;
+                _animationPlaybackSpeedTarget = Mathf.Clamp(
+                    volume, 0.0f, 1.0f);
+            }
+
         }
     }
 }

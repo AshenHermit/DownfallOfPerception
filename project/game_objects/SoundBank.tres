@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=25 format=2]
+[gd_resource type="Resource" load_steps=31 format=2]
 
 [ext_resource path="res://src/sounds/SoundBank.cs" type="Script" id=1]
 [ext_resource path="res://resources/sounds/monsters/creeping_enemy/step_2.wav" type="AudioStream" id=2]
@@ -24,6 +24,12 @@
 [ext_resource path="res://resources/sounds/human/eating_1.ogg" type="AudioStream" id=22]
 [ext_resource path="res://resources/sounds/human/eating_3.ogg" type="AudioStream" id=23]
 [ext_resource path="res://resources/sounds/human/eating_2.ogg" type="AudioStream" id=24]
+[ext_resource path="res://resources/sounds/monsters/metal_disassemble_2.ogg" type="AudioStream" id=25]
+[ext_resource path="res://resources/sounds/monsters/metal_disassemble_1.ogg" type="AudioStream" id=26]
+[ext_resource path="res://resources/sounds/layers/withering/impact/place_object_1.ogg" type="AudioStream" id=27]
+[ext_resource path="res://resources/sounds/layers/withering/impact/place_object_2.ogg" type="AudioStream" id=28]
+[ext_resource path="res://resources/sounds/layers/proxy/impact/place_object_1.wav" type="AudioStream" id=29]
+[ext_resource path="res://resources/sounds/layers/proxy/impact/place_object_2.wav" type="AudioStream" id=30]
 
 [resource]
 script = ExtResource( 1 )
@@ -34,9 +40,12 @@ Sounds = {
 "human_damage": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "human_death": [ ExtResource( 6 ) ],
 "human_eating": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"metal_disassemble": [ ExtResource( 26 ), ExtResource( 25 ) ],
+"proxy_place_object": [ ExtResource( 29 ), ExtResource( 30 ) ],
 "proxy_player_footsteps": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 20 ), ExtResource( 18 ) ],
 "proxy_player_landing": [ ExtResource( 21 ), ExtResource( 19 ) ],
 "turret_shot": [ ExtResource( 7 ) ],
+"withering_place_object": [ ExtResource( 27 ), ExtResource( 28 ) ],
 "withering_player_footsteps": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ) ],
 "withering_player_landing": [ ExtResource( 15 ) ]
 }

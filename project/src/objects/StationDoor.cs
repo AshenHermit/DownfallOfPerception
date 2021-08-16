@@ -24,7 +24,11 @@ namespace Game
         }
         public override void _ExitTree()
         {
-            if (OpenOnLayerGenerated) Global.Instance.GetGenerationManager().OnStartAreaGenerated -= Open;
+            if (OpenOnLayerGenerated) {
+                if (Global.Instance.GetGenerationManager() != null) {
+                    Global.Instance.GetGenerationManager().OnStartAreaGenerated -= Open;
+                }
+            }
         }
 
         public override void _Process(float delta)
